@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ShopComponent } from './shop/shop.component';
 import { PagesComponent } from './pages/pages.component';
 import { ElementsComponent } from './elements/elements.component';
+import { OurpagesModule } from './ourpages/ourpages.module';
+import { OurpagesComponent } from './ourpages/ourpages.component';
 
 const routes: Routes = [
   {
@@ -14,6 +16,11 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+  },
+  {
+    path: 'home1',
+    component: OurpagesComponent,
+    loadChildren: () => import('./ourpages/ourpages.module').then(m => m.OurpagesModule)
   },
   {
     path: 'shop',
