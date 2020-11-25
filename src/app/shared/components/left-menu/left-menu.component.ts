@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavService, Menu } from '../../services/nav.service';
 import { Router } from '@angular/router';
+import { ApiservicesService } from 'src/app/services/apiservices.service';
 
 @Component({
   selector: 'app-left-menu',
@@ -11,14 +12,21 @@ export class LeftMenuComponent implements OnInit {
 
   public menuItems: Menu[];
 
-  constructor(private router: Router, public navServices: NavService) {
-    this.navServices.leftMenuItems.subscribe(menuItems => this.menuItems = menuItems );
-    this.router.events.subscribe((event) => {
-      this.navServices.mainMenuToggle = false;
-    });
+  constructor(private router: Router, public navServices: NavService,private apiservice:ApiservicesService) {
+
+    // this.navServices.leftMenuItems.subscribe(menuItems => this.menuItems = menuItems );
+    // this.router.events.subscribe((event) => {
+    //   this.navServices.mainMenuToggle = false;
+    // });
+
   }
 
   ngOnInit(): void {
+    this.apiservice.catandsubcatname().subscribe((res)=>{
+      console.log(res);
+      this.menuItems=res;
+
+    })
   }
 
   leftMenuToggle(): void {

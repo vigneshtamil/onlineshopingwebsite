@@ -148,7 +148,7 @@ export class NavService {
 				{ path: '/pages/typography', title: 'typography', type: 'link', badge: true, badgeText: 'new' },
 				{ path: '/pages/review', title: 'review', type: 'link', badge: true, badgeText: 'new' },
 				{ path: '/pages/order/success', title: 'order-success', type: 'link' },
-					{ 
+					{
 						title: 'compare', type: 'sub', active: false, children: [
 							{ path: '/pages/compare/one', title: 'compare-1', type: 'link' },
 							{ path: '/pages/compare/two', title: 'compare-2', type: 'link', badge: true, badgeText: 'new' }
@@ -173,9 +173,12 @@ export class NavService {
 
 	LEFTMENUITEMS: Menu[] = [
 		{
-			title: 'clothing', type: 'sub', megaMenu: true, active: false, children: [
+      title: 'clothing', type: 'sub', megaMenu: true, active: false,
+       children: [
 			  {
-				  title: 'mens fashion',  type: 'link', active: false, children: [
+          title: 'mens fashion',  type: 'link', active: false,
+
+          children: [
 					  { path: '/home/fashion', title: 'sports wear',  type: 'link' },
 					  { path: '/home/fashion', title: 'top',  type: 'link' },
 					  { path: '/home/fashion', title: 'bottom',  type: 'link' },
@@ -186,7 +189,8 @@ export class NavService {
 					  { path: '/home/fashion', title: 'ethic wear',  type: 'link' },
 					  { path: '/home/fashion', title: 'sports wear',  type: 'link' }
 				  ]
-			  },
+        },
+
 			  {
 				  title: 'women fashion',  type: 'link', active: false, children: [
 					  { path: '/home/fashion', title: 'dresses',  type: 'link' },

@@ -128,8 +128,25 @@
             <div class="show-div setting">
                 <h6>My Account</h6>
                 <ul>
-                    <li *ngFor="let language of languages">
-                        <a href="javascript:void(0)" (click)="changeLanguage(language.code)">{{ language.name }}</a>
+                    <li>
+                        <a [routerLink]="['/pages/login']" [queryParams]="{debug: true}" fragment="education">
+                        Login
+                      </a>
+                    </li>
+                    <li>
+                        <a>
+                    Logout
+                  </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/pages/register']" [queryParams]="{debug: true}" fragment="education">
+                      Register
+                    </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/pages/forget/password']" [queryParams]="{debug: true}" fragment="education">
+                    Forget Password
+                  </a>
                     </li>
                 </ul>
                 <!-- <h6>currency</h6>
