@@ -1,0 +1,30 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { Ng5SliderModule } from 'ng5-slider';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { SharedModule } from '../shared/shared.module';
+
+import { OurpagesComponent } from './ourpages.component';
+import { OurRoutingModule } from './ourpages-routing.module';
+import { ProductlistComponent } from './productlist/productlist.component';
+import { ProductBoxFourComponent } from './product/product-box-four/product-box-four.component';
+
+
+@NgModule({
+  declarations: [    
+    OurpagesComponent, ProductlistComponent, ProductBoxFourComponent
+  ],
+  imports: [
+    CommonModule,
+    NgxPayPalModule,
+    Ng5SliderModule,
+    InfiniteScrollModule,
+    SharedModule,
+    OurRoutingModule
+  ]
+})
+export class OurpagesModule { }
+
+
+

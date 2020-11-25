@@ -1,0 +1,37 @@
+<app-breadcrumb [title]="'products'" [breadcrumb]="'Products'"></app-breadcrumb>
+<section class="section-b-space">
+    <div class="collection-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+
+                </div>
+                <div class="collection-content col">
+                    <div class="page-main-content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="top-banner-wrapper">
+                                    <a [routerLink]="['/shop/collection/left/sidebar']">
+                                        <img src="assets/images/collection-banner.jpg" class="img-fluid " alt="">
+                                    </a>
+                                </div>
+                                <div class="collection-product-wrapper" id="products">
+                                    <div class="product-wrapper-grid" [ngClass]="layoutView">
+                                        <div class="row">
+                                            <div class="col-grid-box" [ngClass]="grid">
+                                                <div class="product-box">
+                                                    <app-productbox-four></app-productbox-four>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<p>productlist works!</p>
