@@ -49,7 +49,7 @@ export class CheckoutComponent implements OnInit {
   // Stripe Payment Gateway
   stripeCheckout() {
     var handler = (<any>window).StripeCheckout.configure({
-      key: environment.stripe_token, // publishble key
+      key: environment.apiurl, // publishble key
       locale: 'auto',
       token: (token: any) => {
         // You can access the token ID with `token.id`.
@@ -68,7 +68,7 @@ export class CheckoutComponent implements OnInit {
   private initConfig(): void {
     this.payPalConfig = {
         currency: this.productService.Currency.currency,
-        clientId: environment.paypal_token,
+        clientId: environment.apiurl,
         createOrderOnClient: (data) => < ICreateOrderRequest > {
           intent: 'CAPTURE',
           purchase_units: [{
