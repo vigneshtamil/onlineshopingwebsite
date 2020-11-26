@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavService, Menu } from '../../services/nav.service';
 import { Router } from '@angular/router';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
-
+import {ProductService} from '../../../ourpages/shared/product.service';
 @Component({
   selector: 'app-left-menu',
   templateUrl: './left-menu.component.html',
@@ -12,23 +12,25 @@ export class LeftMenuComponent implements OnInit {
 
   public menuItems: Menu[];
 
-  constructor(private router: Router, public navServices: NavService,private apiservice:ApiservicesService) {
+  constructor(private router: Router, public navServices: NavService,private apiservice:ApiservicesService,public ProductService:ProductService) {
 
-    // this.navServices.leftMenuItems.subscribe(menuItems => this.menuItems = menuItems );
-    // this.router.events.subscribe((event) => {
-    //   this.navServices.mainMenuToggle = false;
-    // });
+    this.navServices.leftMenuItems.subscribe(menuItems => this.menuItems = menuItems );
+    this.router.events.subscribe((event) => {
+      this.navServices.mainMenuToggle = false;
+    });
 
   }
 
   ngOnInit(): void {
     this.apiservice.catandsubcatname().subscribe((res)=>{
-      console.log(res);
       this.menuItems=res;
 
     })
   }
-
+  getproducts(subid){
+    this.ProductService.searchsubid=subid
+    this.router.navigate(['home1/product'], { queryParams: { serach: this.ProductService.searchproductslist,subid:this.ProductService.searchsubid }});
+  }
   leftMenuToggle(): void {
     this.navServices.leftMenuToggle = !this.navServices.leftMenuToggle;
   }

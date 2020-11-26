@@ -71,7 +71,6 @@ export class CollectionInfinitescrollComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   addItems() {
