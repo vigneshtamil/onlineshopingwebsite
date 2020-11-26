@@ -14,10 +14,10 @@ export class LeftMenuComponent implements OnInit {
 
   constructor(private router: Router, public navServices: NavService,private apiservice:ApiservicesService) {
 
-    // this.navServices.leftMenuItems.subscribe(menuItems => this.menuItems = menuItems );
-    // this.router.events.subscribe((event) => {
-    //   this.navServices.mainMenuToggle = false;
-    // });
+    this.navServices.leftMenuItems.subscribe(menuItems => this.menuItems = menuItems );
+    this.router.events.subscribe((event) => {
+      this.navServices.mainMenuToggle = false;
+    });
 
   }
 
