@@ -14,4 +14,7 @@ export class ProductService {
   searchproducts(filterdata) {
     return this.http.post<any>(this.apiurl + `/admin/searchproducts/`,filterdata)
   }
+  getfullproductview(filterdata) {
+    return this.http.post<any>(this.apiurl + `/admin/getfullproductview/`,filterdata)
+  }
 }

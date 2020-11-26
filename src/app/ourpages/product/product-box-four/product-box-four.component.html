@@ -5,13 +5,13 @@
             <span class="lable2">% off</span>
         </div> -->
         <div class="front">
-            <a>
+            <a (click)="openfullview(products.productid,products._id)">
                 <img [defaultImage]="products.productimg ? products.productimg : 'assets/images/product/placeholder.jpg'" [lazyLoad]="ProductService.apiurl+products.productimg" class="img-fluid lazy-loading" alt="test">
                 <!-- <img [src]="'assets/images/product/placeholder.jpg'" class="img-fluid lazy-loading" alt="test"> -->
             </a>
         </div>
         <div class="back" *ngIf="onHowerChangeImage">
-            <a>
+            <a (click)="openfullview(products.productid,products._id)">
                 <img [src]="ImageSrc ? ImageSrc : products.img1" class="img-fluid lazy-loading">
             </a>
         </div>
