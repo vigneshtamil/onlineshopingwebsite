@@ -59,8 +59,17 @@ export class BloglistComponent implements OnInit {
     else{
       this.bloglist.blogid=_id
       this.router.navigate(['home1/blog/'],{queryParams:{id:_id}})
-      this.bloglist.blogview(_id).subscribe(res=>{
+
+      var send={
+        _id:_id
+      }
+      this.bloglist.blogview(send).subscribe(res=>{
         this.blogviewcount=res
+        if(res.status == "1")
+        {
+         
+        }
+
       })
     }
   }
@@ -81,6 +90,7 @@ export class BloglistComponent implements OnInit {
     })
   }
   recentbloglist(_id){
+    this.router.navigate(['home1/blog/'],{queryParams:{id:_id}})
     var data={
       "recent":_id
     }

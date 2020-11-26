@@ -26,7 +26,7 @@ export class BlogService {
     return this.http.post<any>(environment.apiurl+'/blog/category/list',data, httpOptions)
   }
   blogview(data:any){
-    return this.http.post<any>(environment.apiurl+'/blogcategory/count',data, httpOptions)
+    return this.http.post<any>(environment.apiurl+'/blog/count/site',data, httpOptions)
   }
   blogrecent(){
     return this.http.get<any>(environment.apiurl+'/blog/recent', httpOptions)
