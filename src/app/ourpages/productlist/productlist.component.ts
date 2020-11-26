@@ -10,14 +10,17 @@ export class ProductlistComponent implements OnInit {
   public grid: string = 'col-xl-3 col-md-6';
   public layoutView: string = 'grid-view';
   public products: any[] = [];
-  constructor(public ProductService:ProductService) { }
+  constructor(public ProductService:ProductService) { 
+    alert()
+  }
 
   ngOnInit(): void {
+    alert()
     this.searchproduct();
   }
   searchproduct(){
     var filterdata={
-      searchtext:'',
+      searchtext:this.ProductService.searchproductslist,
       categoryid:'',
       subcategoryid:''
     }

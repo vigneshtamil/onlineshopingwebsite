@@ -84,8 +84,12 @@
                         </div>
                     </div>
                     <div _ngcontent-serverapp-c117="">
-                        <form _ngcontent-serverapp-c124="" novalidate="" role="form" class="form_search ng-untouched ng-pristine ng-valid"><input _ngcontent-serverapp-c124="" id="query search-autocomplete" type="search" placeholder="Find the best for your..." aria-expanded="true" class="nav-search nav-search-field"><button _ngcontent-serverapp-c124="" type="button"
-                                name="nav-submit-button" class="btn-search"><i _ngcontent-serverapp-c124="" class="ti-search"></i></button></form>
+                        <form _ngcontent-serverapp-c124="" novalidate="" role="form" class="form_search ng-untouched ng-pristine ng-valid">
+                            <input _ngcontent-serverapp-c124="" [(ngModel)]="searchbox" name="searchbox" id="query search-autocomplete" type="search" placeholder="Find the best for your..." aria-expanded="true" class="nav-search nav-search-field">
+                            <button _ngcontent-serverapp-c124="" (click)="searchproductlist()" type="button" name="nav-submit-button" class="btn-search">
+                                <i _ngcontent-serverapp-c124="" class="ti-search"></i>
+                            </button>
+                        </form>
                     </div>
                     <div class="menu-right pull-right">
                         <div>

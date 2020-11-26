@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import {ProductService} from '../../../ourpages/shared/product.service';
+import {ProductlistComponent} from '../../../ourpages/productlist/productlist.component';
 @Component({
   selector: 'app-header-one',
   templateUrl: './header-one.component.html',
@@ -11,10 +13,10 @@ export class HeaderOneComponent implements OnInit {
   @Input() themeLogo: string = 'assets/images/icon/logo.png'; // Default Logo
   @Input() topbar: boolean = true; // Default True
   @Input() sticky: boolean = false; // Default false
-  
+  searchbox:string=''
   public stick: boolean = false;
 
-  constructor() { }
+  constructor(public ProductService:ProductService,private router: Router,) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +30,13 @@ export class HeaderOneComponent implements OnInit {
   	} else {
   	  this.stick = false;
   	}
+  }
+
+  searchproductlist(){
+    alert()
+    this.ProductService.searchproductslist=this.searchbox;
+    this.router.navigate(['home1']);
+    // this.ProductlistComponent.ngOnInit()
   }
 
 }

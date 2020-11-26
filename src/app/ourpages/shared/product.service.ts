@@ -7,6 +7,7 @@ export class ProductService {
   // apiurl:String='http://localhost:3000';
   apiurl:String='http://208.109.8.9:3005';
   productlist:any[]
+  searchproductslist:string=''
   constructor(private http: HttpClient) { }
 
   searchproducts(filterdata) {
