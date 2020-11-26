@@ -1,29 +1,135 @@
 <app-breadcrumb [title]="'News & Events'" [breadcrumb]="'News and Event'"></app-breadcrumb>
 <!--section start-->
-<section class="blog-detail-page section-b-space">
+<section class="section-b-space  blog-page blog-detail-page section-b-space">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 blog-detail">
-                <img src="assets/images/about-main.jpg" class="img-fluid" alt="" />
-                <h1>Title</h1>
-                <h2>Blog Category Name</h2>
+            <div class="col-sm-9 blog-detail">
+                <img src="http://208.109.8.9:3005/{{blogdata[0].imagepath}}" class="img-fluid" alt="" />
+                <h1>{{blogdata[0].englishtitle}}</h1>
+                <h2>{{blogdata[0].blogcategoryname}}</h2>
                 <ul class="post-social">
-                    <li>25 January 2018 </li>
+                    <li> Posted On:{{blogdata[0].postedon | date:'dd/MMM/yyyy'}} </li>
                     <li>Posted By : Admin Admin </li>
-                    <li><i class="fa fa-eye"></i> 5 views </li>
+                    <li><i class="fa fa-eye"></i>{{blogdata[0].blogviewcount}} views </li>
                 </ul>
-                <p>Fusce scelerisque augue a viverra semper. Etiam nisi nibh, vestibulum quis augue id, imperdiet fringilla dolor. Nulla sed nisl vel nisi cursus finibus. Vivamus ut augue nec justo viverra laoreet. Nunc efficitur, arcu ac cursus gravida,
-                    lorem elit commodo urna, id viverra libero tellus non ipsum. Fusce molestie ultrices nibh feugiat pretium. Donec pulvinar arcu metus, et dapibus odio condimentum id. Quisque malesuada mauris sit amet dui feugiat, ut pretium mauris
-                    luctus. Ut aliquam, tellus nec molestie condimentum, tellus arcu dignissim quam, a gravida nunc nulla vel magna. Sed pulvinar tortor et euismod blandit. Proin accumsan orci ac nunc fermentum vehicula.</p>
-                <p>Cras quis neque urna. Pellentesque mollis, dui nec elementum elementum, ipsum quam suscipit ligula, sit amet lobortis dolor sem sed neque. Vivamus consequat est non sodales efficitur. Aliquam sodales eleifend sodales. Aliquam auctor ipsum
-                    quis nisl facilisis, at convallis mauris iaculis. Duis eleifend, magna ac convallis blandit, dui dui auctor leo, sed tincidunt nisi mauris ut nulla. Praesent porttitor dui ac turpis commodo porttitor. Integer ligula nisi, bibendum
-                    non sem at, porta condimentum dui.</p>
-                <p>Proin id eleifend diam, euismod dictum nibh. Ut ullamcorper in purus at tempor. Nullam mattis risus nec velit semper lobortis. Donec accumsan ligula fermentum, ultricies massa eget, cursus leo. Suspendisse placerat elit et lacus aliquam,
-                    ut elementum leo aliquet. Integer ornare, ipsum eu lacinia viverra, lectus ipsum scelerisque nisl, nec iaculis leo elit id arcu. Aliquam id ante elit. Donec commodo purus eget lacus pharetra, et egestas metus blandit. Quisque pellentesque
-                    porta urna, sed dictum enim viverra a.</p>
+                <div [innerHTML]="blogdata[0].description"></div>
+
             </div>
+            <!--Blog sidebar start-->
+            <div class="col-xl-3 col-lg-4 col-md-5">
+                <div class="blog-sidebar">
+                    <form>
+                        <div class="theme-card">
+                            <h4>Category</h4>
+                            <ul class="category">
+                                <li>
+                                    <div *ngFor="let category of ddlcategory">
+                                        <!-- <h6 (click)="openbloglist(category._id)">{{category.blogcategoryname}}</h6> -->
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+
+                    <div class="theme-card">
+                        <h4>Recent Blog</h4>
+                        <ul class="recent-blog">
+                            <li>
+                                <div class="media">
+                                    <img class="img-fluid" src="assets/images/blog/1.jpg" alt="Generic placeholder image">
+                                    <div class="media-body align-self-center">
+                                        <h6>25 Dec 2018</h6>
+                                        <p>0 hits</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="media">
+                                    <img class="img-fluid" src="assets/images/blog/2.jpg" alt="Generic placeholder image">
+                                    <div class="media-body align-self-center">
+                                        <h6>25 Dec 2018</h6>
+                                        <p>0 hits</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="media">
+                                    <img class="img-fluid" src="assets/images/blog/3.jpg" alt="Generic placeholder image">
+                                    <div class="media-body align-self-center">
+                                        <h6>25 Dec 2018</h6>
+                                        <p>0 hits</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="media">
+                                    <img class="img-fluid" src="assets/images/blog/4.jpg" alt="Generic placeholder image">
+                                    <div class="media-body align-self-center">
+                                        <h6>25 Dec 2018</h6>
+                                        <p>0 hits</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="media">
+                                    <img class="img-fluid" src="assets/images/blog/5.jpg" alt="Generic placeholder image">
+                                    <div class="media-body align-self-center">
+                                        <h6>25 Dec 2018</h6>
+                                        <p>0 hits</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="theme-card">
+                        <h4>Popular Blog</h4>
+                        <ul class="popular-blog">
+                            <li>
+                                <div class="media">
+                                    <div class="blog-date">
+                                        <span>03 </span>
+                                        <span>may</span>
+                                    </div>
+                                    <div class="media-body align-self-center">
+                                        <h6>Injected humour the like</h6>
+                                        <p>0 hits</p>
+                                    </div>
+                                </div>
+                                <p>it look like readable English. Many desktop publishing text. </p>
+                            </li>
+                            <li>
+                                <div class="media">
+                                    <div class="blog-date">
+                                        <span>03 </span>
+                                        <span>may</span>
+                                    </div>
+                                    <div class="media-body align-self-center">
+                                        <h6>Injected humour the like</h6>
+                                        <p>0 hits</p>
+                                    </div>
+                                </div>
+                                <p>it look like readable English. Many desktop publishing text. </p>
+                            </li>
+                            <li>
+                                <div class="media">
+                                    <div class="blog-date">
+                                        <span>03 </span>
+                                        <span>may</span>
+                                    </div>
+                                    <div class="media-body align-self-center">
+                                        <h6>Injected humour the like</h6>
+                                        <p>0 hits</p>
+                                    </div>
+                                </div>
+                                <p>it look like readable English. Many desktop publishing text. </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--Blog sidebar start-->
         </div>
-        <div class="row section-b-space">
+        <!-- <div class="row section-b-space">
             <div class="col-sm-12">
                 <ul class="comment-section">
                     <li>
@@ -50,7 +156,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
         <!-- <div class="row blog-contact">
             <div class="col-sm-12">
                 <h2>Leave Your Comment</h2>
@@ -77,4 +183,5 @@
         </div> -->
     </div>
 </section>
+
 <!--Section ends-->
