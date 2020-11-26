@@ -18,9 +18,9 @@
                                 <div class="collection-product-wrapper" id="products">
                                     <div class="product-wrapper-grid" [ngClass]="layoutView">
                                         <div class="row">
-                                            <div class="col-grid-box" [ngClass]="grid">
+                                            <div class="col-grid-box" [ngClass]="grid" *ngFor="let pr of products">
                                                 <div class="product-box">
-                                                    <app-productbox-four></app-productbox-four>
+                                                    <app-productbox-four [products]="pr"></app-productbox-four>
                                                 </div>
                                             </div>
                                         </div>
