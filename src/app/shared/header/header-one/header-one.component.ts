@@ -33,10 +33,9 @@ export class HeaderOneComponent implements OnInit {
   }
 
   searchproductlist(){
-    alert()
     this.ProductService.searchproductslist=this.searchbox;
-    this.router.navigate(['home1']);
-    // this.ProductlistComponent.ngOnInit()
+    this.router.navigate(['home1/product'], { queryParams: { serach: this.ProductService.searchproductslist,subid:this.ProductService.searchsubid }});
+    // this.ProductlistComponent.ngOnInit(){ queryParams: { serach: this.searchbox,subid:'' } }
   }
 
 }

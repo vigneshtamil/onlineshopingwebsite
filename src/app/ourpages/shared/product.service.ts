@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  // apiurl:String='http://localhost:3000';
-  apiurl:String='http://208.109.8.9:3005';
+  apiurl:String=environment.apiurl
   productlist:any[]
   searchproductslist:string=''
+  searchsubid:string=''
   constructor(private http: HttpClient) { }
 
   searchproducts(filterdata) {

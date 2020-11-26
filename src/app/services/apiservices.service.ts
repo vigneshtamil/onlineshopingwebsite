@@ -27,7 +27,7 @@ export class ApiservicesService {
   }
   register(data: any): Observable<any> {
     return this.http
-      .post<any>('http://localhost:3000'+'/user/login/create', data, httpOptions)
+      .post<any>('http://208.109.8.9:3005'+'/user/login/create', data, httpOptions)
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
@@ -35,21 +35,21 @@ export class ApiservicesService {
   }
   catandsubcatname(): Observable<any> {
     return this.http
-      .get<any>('http://localhost:3000'+'/admin/catandcbcatname',httpOptions)
+      .get<any>('http://208.109.8.9:3005'+'/admin/catandcbcatname',httpOptions)
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
       );
   }
   otpverify(data: any): Observable<any> {
-    return this.http.post<any>('http://localhost:3000'+'/loginotp/verify', data, httpOptions)
+    return this.http.post<any>('http://208.109.8.9:3005'+'/loginotp/verify', data, httpOptions)
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
       );
   }
   login(data: any): Observable<any> {
-    return this.http.post<any>('http://localhost:3000'+'/apk/login', data, httpOptions)
+    return this.http.post<any>('http://208.109.8.9:3005'+'/apk/login', data, httpOptions)
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
@@ -57,14 +57,14 @@ export class ApiservicesService {
   }
 
   forgetpassword(data: any): Observable<any> {
-    return this.http.post<any>('http://localhost:3000'+'/user/forgetpassword', data, httpOptions)
+    return this.http.post<any>('http://208.109.8.9:3005'+'/user/forgetpassword', data, httpOptions)
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
       );
   }
   profileupdate(data: any): Observable<any> {
-    return this.http.post<any>('http://localhost:3000'+'/user/create', data, httpOptions)
+    return this.http.post<any>('http://208.109.8.9:3005'+'/user/create', data, httpOptions)
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))

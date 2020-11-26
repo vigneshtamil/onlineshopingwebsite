@@ -11,11 +11,13 @@ import { ProductlistComponent } from './productlist/productlist.component';
 import { ProductBoxFourComponent } from './product/product-box-four/product-box-four.component';
 import { BlogComponent } from './blog/blog.component';
 import { BloglistComponent } from './bloglist/bloglist.component';
+import { AppgridComponent } from './product/appgrid/appgrid.component';
+import { AppquickviewComponent } from './product/appquickview/appquickview.component';
 
 
 @NgModule({
   declarations: [    
-    OurpagesComponent, ProductlistComponent, ProductBoxFourComponent, BlogComponent, BloglistComponent
+    OurpagesComponent, ProductlistComponent, ProductBoxFourComponent, BlogComponent, BloglistComponent, AppgridComponent, AppquickviewComponent
   ],
   imports: [
     CommonModule,
