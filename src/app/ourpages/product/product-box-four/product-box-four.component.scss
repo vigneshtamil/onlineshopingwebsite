@@ -1,0 +1,27 @@
+.productlist_cart {
+    background-color: #fdd7b6eb;
+    border-radius: 6px;
+    color: white;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+}
+
+.productlist_cart a {
+    background-color: white;
+    margin: 2%;
+}
+
+.productlist_box {
+    border: 1px solid #ebe8e8;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.productlist_cart i {
+    font-size: 15px;
+}
+
+.productlist_cart i:hover {
+    font-size: 15px;
+}
