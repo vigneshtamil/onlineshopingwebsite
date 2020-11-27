@@ -129,27 +129,27 @@
                 <h6>My Account</h6>
                 <ul>
                     <li>
-                        <a [routerLink]="['/pages/login']" [queryParams]="{debug: true}" fragment="education">
+                        <a [routerLink]="['/user/login']" [queryParams]="{debug: true}" fragment="education">
                         Login
                       </a>
                     </li>
-                    <li>
-                        <a>
+                    <li *ngIf="profileshow">
+                        <a (click)="looutfn()">
                     Logout
                   </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/pages/register']" [queryParams]="{debug: true}" fragment="education">
+                        <a [routerLink]="['/user/register']" [queryParams]="{debug: true}" fragment="education">
                       Register
                     </a>
                     </li>
-                    <li>
-                        <a [routerLink]="['/pages/forget/password']" [queryParams]="{debug: true}" fragment="education">
+                    <!-- <li>
+                        <a [routerLink]="['/user/changepassword']" [queryParams]="{debug: true}" fragment="education">
                     Forget Password
                   </a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/pages/profile']" [queryParams]="{debug: true}" fragment="education">
+                    </li> -->
+                    <li *ngIf="profileshow">
+                        <a [routerLink]="['/user/profile']" [queryParams]="{debug: true}" fragment="education">
                         profile
                 </a>
                     </li>

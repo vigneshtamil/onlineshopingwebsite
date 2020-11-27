@@ -13,7 +13,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private apiservice: ApiservicesService,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService,
+
+    ) { }
 
   ngOnInit(): void {
     this.formbuildergrp();
@@ -30,6 +32,12 @@ export class LoginComponent implements OnInit {
       if (res.status == "1") {
         this.toastrService.success(res.message);
         this.formbuildergrp();
+console.log(res)
+        localStorage.setItem('loginresponse', res.token);
+      //  this.apiservice.callMethodOfSecondComponent();
+       // alert(res.token)
+
+      //  window.location.reload();
       } else {
         this.toastrService.error(res.message);
       }

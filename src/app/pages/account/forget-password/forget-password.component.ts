@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
-
+import jwt_decode from "jwt-decode";
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
@@ -9,10 +9,16 @@ import { ApiservicesService } from 'src/app/services/apiservices.service';
 })
 export class ForgetPasswordComponent implements OnInit {
   commonform: FormGroup;
+  decoded: any;
+  localvalue: string;
   constructor(private formBuilder: FormBuilder,
     private apiservice:ApiservicesService) { }
 
   ngOnInit(): void {
+
+    this.localvalue = localStorage.getItem('loginresponse')
+    this.decoded = jwt_decode(this.localvalue);
+    console.log(this.decoded)
     this.formbuildergrp();
   }
 
@@ -38,5 +44,11 @@ alert(res.message);
    }
 
 })
+  }
+
+  public openDashboard: boolean = false;
+
+  ToggleDashboard() {
+    this.openDashboard = !this.openDashboard;
   }
 }

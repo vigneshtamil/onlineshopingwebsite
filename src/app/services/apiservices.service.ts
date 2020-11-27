@@ -14,7 +14,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApiservicesService {
-
+commenurl:String="http://localhost:3000"
+  invokeEvent: any;
   constructor(private http: HttpClient,private router:Router) { }
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
@@ -25,9 +26,14 @@ export class ApiservicesService {
       return of(result as T);
     };
   }
+  // callMethodOfSecondComponent() {
+  //   this.invokeEvent.next("super")
+  // }
   register(data: any): Observable<any> {
     return this.http
-      .post<any>('http://208.109.8.9:3005'+'/user/login/create', data, httpOptions)
+
+      .post<any>(this.commenurl+'/user/login/create', data, httpOptions)
+
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
@@ -35,21 +41,27 @@ export class ApiservicesService {
   }
   catandsubcatname(): Observable<any> {
     return this.http
-      .get<any>('http://208.109.8.9:3005'+'/admin/catandcbcatname',httpOptions)
+
+      .get<any>(this.commenurl+'/admin/catandcbcatname',httpOptions)
+
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
       );
   }
   otpverify(data: any): Observable<any> {
-    return this.http.post<any>('http://208.109.8.9:3005'+'/loginotp/verify', data, httpOptions)
+
+    return this.http.post<any>(this.commenurl+'/loginotp/verify', data, httpOptions)
+
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
       );
   }
   login(data: any): Observable<any> {
-    return this.http.post<any>('http://208.109.8.9:3005'+'/apk/login', data, httpOptions)
+
+    return this.http.post<any>(this.commenurl+'/apk/login', data, httpOptions)
+
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
@@ -57,17 +69,45 @@ export class ApiservicesService {
   }
 
   forgetpassword(data: any): Observable<any> {
-    return this.http.post<any>('http://208.109.8.9:3005'+'/user/forgetpassword', data, httpOptions)
+
+    return this.http.post<any>(this.commenurl+'/user/forgetpassword', data, httpOptions)
+
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
       );
   }
   profileupdate(data: any): Observable<any> {
-    return this.http.post<any>('http://208.109.8.9:3005'+'/user/create', data, httpOptions)
+
+    return this.http.post<any>(this.commenurl+'/user/create', data, httpOptions)
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
       );
   }
+  addressupdate(data: any): Observable<any> {
+    return this.http.post<any>(this.commenurl+'/user/updateadd', data, httpOptions)
+
+      .pipe(
+        tap((c: any) => console.log(`sucessfully....`)),
+        catchError(this.handleError<any>("falid......"))
+      );
+  }
+
+
+  useraddresslist(data: any): Observable<any> {
+    return this.http.post<any>(this.commenurl+'/user/addresslist', data, httpOptions)
+      .pipe(
+        tap((c: any) => console.log(`sucessfully....`)),
+        catchError(this.handleError<any>("falid......"))
+      );
+  }
+  addressremove(data: any): Observable<any> {
+    return this.http.post<any>(this.commenurl+'/user/addresslist', data, httpOptions)
+      .pipe(
+        tap((c: any) => console.log(`sucessfully....`)),
+        catchError(this.handleError<any>("falid......"))
+      );
+  }
+
 }

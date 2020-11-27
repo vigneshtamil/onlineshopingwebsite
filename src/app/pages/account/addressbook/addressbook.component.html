@@ -1,0 +1,119 @@
+<app-breadcrumb [title]="'Address Add'" [breadcrumb]="'Address Add'"></app-breadcrumb>
+
+<!-- section start -->
+<section class="section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="account-sidebar" (click)="ToggleDashboard()">
+                    <a hre="javascript:void(0)" class="popup-btn">
+                        my account
+                    </a>
+                </div>
+                <div class="dashboard-left" [class.open]="openDashboard">
+                    <div class="collection-mobile-back" (click)="ToggleDashboard()">
+                        <span class="filter-back">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i> back
+                        </span>
+                    </div>
+                    <div class="block-content">
+                        <ul>
+                            <li><a [routerLink]="[ '/user/profile']">Account Info</a></li>
+                            <li class="active"><a [routerLink]="[ '/user/addressbook']">Address Add</a></li>
+                            <li><a href="javascript:void(0)">My Orders</a></li>
+                            <li><a href="javascript:void(0)">My Wishlist</a></li>
+                            <li><a [routerLink]="['/user/addresslist']">Address Book</a></li>
+                            <li><a href="javascript:void(0)">My Account</a></li>
+                            <li><a [routerLink]="['/user/changepassword']">Change Password</a></li>
+                            <li class="last"><a href="javascript:void(0)">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="dashboard-right">
+                    <div class="dashboard">
+                        <!-- <div class="page-title">
+                            <h2>My Dashboard</h2>
+                        </div> -->
+                        <!-- <div class="welcome-msg">
+                            <p>Hello, MARK JECNO !</p>
+                            <p>From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.</p>
+                        </div> -->
+                        <div class="box-account box-info">
+                            <!-- <div class="box-head">
+                                <h2>Account Information</h2>
+                            </div> -->
+                            <div class="row">
+                                <section class="contact-page register-page section-b-space">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h3>SHIPPING ADDRESS</h3>
+                                                <form class="theme-form" [formGroup]="addressform" (ngSubmit)="onAddressSubmit()">
+                                                    <div class="form-row">
+                                                        <div class="col-md-6">
+                                                            <label for="name">Contact Name</label>
+                                                            <input type="text" formControlName="addressname" class="form-control" id="home-ploat" placeholder="contact name" required="">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="name">Contactnumber</label>
+                                                            <input type="text" formControlName="contactnumber" class="form-control" id="address-two" placeholder="contact number" required="">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="email">Addresslineone</label>
+                                                            <input type="text" formControlName="addresslineone" class="form-control" id="zip-code" placeholder="address line one" required="">
+                                                        </div>
+
+
+                                                        <div class="col-md-6">
+                                                            <label for="email">Addresslinetwo</label>
+                                                            <input type="text" formControlName="addresslinetwo" class="form-control" id="zip-code" placeholder="address line two" required="">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="email">Landmark</label>
+                                                            <input type="text" formControlName="landmark" class="form-control" id="zip-code" placeholder="landmark" required="">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="email">City</label>
+                                                            <input type="text" formControlName="city" class="form-control" id="zip-code" placeholder="city" required="">
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="email">State</label>
+                                                            <input type="text" formControlName="state" class="form-control" id="zip-code" placeholder="state" required="">
+                                                        </div>
+
+                                                        <div class="col-md-6 select_input">
+                                                            <label for="review">Country *</label>
+                                                            <select formControlName="county" class="form-control" size="1">
+                              <option value="India">India</option>
+                              <option value="UAE">UAE</option>
+                              <option value="U.K">U.K</option>
+                              <option value="US">US</option>
+                          </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="email">Pincode</label>
+                                                            <input type="text" formControlName="pincode" class="form-control" id="pincode" placeholder="pincode" required="">
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <button class="btn btn-sm btn-solid" type="submit">Save Address</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- Section ends -->
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -35,28 +35,37 @@ this .otpformgrp();
     this.commonform = this.formBuilder.group({
       customername: ['', [Validators.required]],
       mobileno: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required]],
+      conpassword: ['', [Validators.required]],
     });
   }
 
   onSubmit()
   {
-this.apiservice.register(this.commonform.value).subscribe((res)=>{
-  console.log(res);
-  if(res.status=="1")
-  {
-    this.mobnumber=res.mobileno
-    this.createform = false;
-    this.otpformif = true;
-    this.toastrService.success(res.message);
-  }
-  else
-  {
-    this.toastrService.error(res.message);
-  }
+    if(this.commonform.value.password == this.commonform.value.conpassword )
+    {
+      this.apiservice.register(this.commonform.value).subscribe((res)=>{
+        console.log(res);
+        if(res.status=="1")
+        {
+          this.mobnumber=res.mobileno
+          this.createform = false;
+          this.otpformif = true;
+          this.toastrService.success(res.message);
+        }
+        else
+        {
+          this.toastrService.error(res.message);
+        }
 
 
-})
+      })
+    }
+    else
+    {
+      this.toastrService.error("Password Not Matched...");
+    }
+
   }
   onotpSubmit()
   {
