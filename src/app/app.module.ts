@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
 import { ShopComponent } from './shop/shop.component';
 import { PagesComponent } from './pages/pages.component';
 import { ElementsComponent } from './elements/elements.component';
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md'
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -24,12 +24,14 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
+
     AppComponent,
     ShopComponent,
     PagesComponent,
     ElementsComponent,
   ],
   imports: [
+    MDBBootstrapModule.forRoot(), // angular-bootstrap-md
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     HttpClientModule,

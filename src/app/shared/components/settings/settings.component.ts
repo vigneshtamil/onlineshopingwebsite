@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { ProductService } from "../../services/product.service";
 import { Product } from "../../classes/product";
+import { ActivatedRoute, Router } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
+import { ApiservicesService } from 'src/app/services/apiservices.service';
 
 @Component({
   selector: 'app-settings',
@@ -12,6 +15,8 @@ import { Product } from "../../classes/product";
 })
 export class SettingsComponent implements OnInit {
 
+  localvalue: string;
+  profileshow: boolean = false;
   public products: Product[] = [];
   public search: boolean = false;
 
@@ -43,18 +48,31 @@ export class SettingsComponent implements OnInit {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
     private translate: TranslateService,
-    public productService: ProductService) {
+    private router:Router,
+    public productService: ProductService,
+    private apiservice:ApiservicesService) {
+
     this.productService.cartItems.subscribe(response => this.products = response);
   }
 
   ngOnInit(): void {
+    this.localvalue = localStorage.getItem('loginresponse')
+    console.log(this.localvalue);
+    if (this.localvalue == null) {
+      this.profileshow=false;
+    }
+    else {
+      this.profileshow=true;
+    }
+
   }
 
-  searchToggle(){
+
+  searchToggle() {
     this.search = !this.search;
   }
 
-  changeLanguage(code){
+  changeLanguage(code) {
     if (isPlatformBrowser(this.platformId)) {
       this.translate.use(code)
     }
@@ -71,5 +89,11 @@ export class SettingsComponent implements OnInit {
   changeCurrency(currency: any) {
     this.productService.Currency = currency
   }
+  looutfn()
+  {
+    localStorage.removeItem("loginresponse");
+    this.router.navigate(['/user/login'])
+  //  window.location.reload();
 
+  }
 }
