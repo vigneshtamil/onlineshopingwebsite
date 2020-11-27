@@ -18,11 +18,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppsliderComponent } from './dashboard/appslider/appslider.component';
 import { ProductboxOneComponent } from './product/productbox-one/productbox-one.component';
 import { LatestblogComponent } from './dashboard/latestblog/latestblog.component';
+import { OverallorderlistComponent } from './overallorderlist/overallorderlist.component';
 
 
 @NgModule({
   declarations: [    
-    OurpagesComponent, ProductlistComponent, ProductBoxFourComponent, BlogComponent, BloglistComponent, AppgridComponent, AppquickviewComponent, ProductfullviewComponent, DashboardComponent, AppsliderComponent, ProductboxOneComponent, LatestblogComponent
+    OurpagesComponent, ProductlistComponent, ProductBoxFourComponent, BlogComponent, BloglistComponent, AppgridComponent, AppquickviewComponent, ProductfullviewComponent, DashboardComponent, AppsliderComponent, ProductboxOneComponent, LatestblogComponent, OverallorderlistComponent
   ],
   imports: [
     CommonModule,

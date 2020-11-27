@@ -26,4 +26,7 @@ export class ProductService {
   latestblogs() {
     return this.http.get<any>(this.apiurl + `/blog/recent`)
   }
+  orderlist(data) {
+    return this.http.post<any>(this.apiurl + `/admin/orderoveralllist`,data)
+  }
 }
