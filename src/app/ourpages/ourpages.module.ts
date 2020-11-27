@@ -17,11 +17,18 @@ import { ProductfullviewComponent } from './product/productfullview/productfullv
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppsliderComponent } from './dashboard/appslider/appslider.component';
 import { ProductboxOneComponent } from './product/productbox-one/productbox-one.component';
+import { DDUKGYComponent } from './ddukgy/ddukgy.component';
+import { AboutusbreadcrumbComponent } from './aboutusbreadcrumb/aboutusbreadcrumb.component';
+import { TNULMComponent } from './tnulm/tnulm.component';
+import { TNSRLMComponent } from './tnsrlm/tnsrlm.component';
+import { TermsandbugzComponent } from './termsandbugz/termsandbugz.component';
+import { PrivacyandpolicyComponent } from './privacyandpolicy/privacyandpolicy.component';
+import { SitemapComponent } from './sitemap/sitemap.component';
 
 
 @NgModule({
   declarations: [    
-    OurpagesComponent, ProductlistComponent, ProductBoxFourComponent, BlogComponent, BloglistComponent, AppgridComponent, AppquickviewComponent, ProductfullviewComponent, DashboardComponent, AppsliderComponent, ProductboxOneComponent
+    OurpagesComponent, ProductlistComponent, ProductBoxFourComponent, BlogComponent, BloglistComponent, AppgridComponent, AppquickviewComponent, ProductfullviewComponent, DashboardComponent, AppsliderComponent, ProductboxOneComponent, DDUKGYComponent, AboutusbreadcrumbComponent, TNULMComponent, TNSRLMComponent, TermsandbugzComponent, PrivacyandpolicyComponent, SitemapComponent
   ],
   imports: [
     CommonModule,

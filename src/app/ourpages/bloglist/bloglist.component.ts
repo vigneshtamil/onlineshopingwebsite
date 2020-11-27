@@ -18,6 +18,7 @@ export class BloglistComponent implements OnInit {
   blogrecent:[];
   ddlpopular:[];
   blogpop:[];
+  public finished: boolean = false
   constructor(public bloglist: BlogService, private router: Router) { }
   // transform(value) {
   //   return this.sanitized.bypassSecurityTrustHtml(value);
@@ -51,6 +52,10 @@ export class BloglistComponent implements OnInit {
     }
     this.bloglist.blogcattopenlist(senddata).subscribe(res => {
       console.log(res);
+      if(res.status==2)
+      {
+        alert("No Record found in this Category")
+      }
       this.blogcatlist = res.bloglist
 
     })

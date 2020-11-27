@@ -88,6 +88,7 @@
     1.General CSS start
     ==========================*/
 
+@import '~bootstrap/scss/bootstrap';
 html {
     overflow-x: hidden;
     scroll-behavior: smooth;
@@ -14184,10 +14185,10 @@ div#loading-bar {
 .sidenav nav {
     overflow-y: auto;
 }
-    
+
 .sidebar-unset {
-  overflow-y: unset !important;
-}  
+    overflow-y: unset !important;
+}
 
 
 /* modal animation */
