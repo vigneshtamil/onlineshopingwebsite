@@ -5,16 +5,16 @@
             <span class="lable2">% off</span>
         </div> -->
         <div class="front">
-            <a>
-                <img [src]="ProductService.apiurl+products.productimg" class="img-fluid lazy-loading" alt="test">
+            <a (click)="openfullview(products.productid,products._id)">
+                <img [defaultImage]="products.productimg ? products.productimg : 'assets/images/product/placeholder.jpg'" [lazyLoad]="ProductService.apiurl+products.productimg" class="img-fluid lazy-loading" alt="test">
                 <!-- <img [src]="'assets/images/product/placeholder.jpg'" class="img-fluid lazy-loading" alt="test"> -->
             </a>
         </div>
-        <!-- <div class="back" *ngIf="onHowerChangeImage">
-            <a [routerLink]="['/shop/product/left/sidebar/', product.title.replace(' ', '-')]">
-                <img [src]="ImageSrc ? ImageSrc : product.images[1].src" class="img-fluid lazy-loading" alt="{{ product.images[1].alt }}">
+        <div class="back" *ngIf="onHowerChangeImage">
+            <a (click)="openfullview(products.productid,products._id)">
+                <img [src]="ImageSrc ? ImageSrc : products.img1" class="img-fluid lazy-loading">
             </a>
-        </div> -->
+        </div>
 
         <div class="cart-info cart-wrap productlist_cart">
             <a href="javascript:void(0)" title="Add to cart" *ngIf="cartModal">
@@ -45,3 +45,4 @@
             </h4>
         </div>
     </div>
+    <app-appquickview #quickView></app-appquickview>

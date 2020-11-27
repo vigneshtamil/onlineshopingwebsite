@@ -31,7 +31,9 @@ commenurl:String="http://localhost:3000"
   // }
   register(data: any): Observable<any> {
     return this.http
+
       .post<any>(this.commenurl+'/user/login/create', data, httpOptions)
+
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
@@ -39,21 +41,27 @@ commenurl:String="http://localhost:3000"
   }
   catandsubcatname(): Observable<any> {
     return this.http
+
       .get<any>(this.commenurl+'/admin/catandcbcatname',httpOptions)
+
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
       );
   }
   otpverify(data: any): Observable<any> {
+
     return this.http.post<any>(this.commenurl+'/loginotp/verify', data, httpOptions)
+
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
       );
   }
   login(data: any): Observable<any> {
+
     return this.http.post<any>(this.commenurl+'/apk/login', data, httpOptions)
+
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
@@ -61,13 +69,16 @@ commenurl:String="http://localhost:3000"
   }
 
   forgetpassword(data: any): Observable<any> {
+
     return this.http.post<any>(this.commenurl+'/user/forgetpassword', data, httpOptions)
+
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
       );
   }
   profileupdate(data: any): Observable<any> {
+
     return this.http.post<any>(this.commenurl+'/user/create', data, httpOptions)
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
@@ -76,6 +87,7 @@ commenurl:String="http://localhost:3000"
   }
   addressupdate(data: any): Observable<any> {
     return this.http.post<any>(this.commenurl+'/user/updateadd', data, httpOptions)
+
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
