@@ -9,39 +9,43 @@
                 <div class="theme-card">
                     <form *ngIf="createform" class="theme-form" [formGroup]="commonform" (ngSubmit)="onSubmit()">
                         <div class="form-row">
-                            <div class="col-md-6">
-                                <label for="fname">First Name</label>
-                                <input type="text" formControlName="customername" class="form-control" id="fname" placeholder="First Name" required="">
-                            </div>
-                            <!-- <div class="col-md-6">
+                            <div class="col-6">
+                                <div class="row">
+                                    <label for="fname">Name</label>
+                                    <input type="text" formControlName="customername" class="form-control" id="fname" placeholder="First Name" required="">
+                                </div>
+                                <!-- <div class="col-md-6">
                                 <label for="review">Last Name</label>
                                 <input type="password" class="form-control" id="lname" placeholder="Last Name" required="">
                             </div> -->
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <label for="mobileno">Mobile Number</label>
-                                <input type="text" formControlName="mobileno" class="form-control" id="mobileno" placeholder="mobile number" required="">
+                                <div class="row">
+                                    <label for="mobileno">Mobile Number</label>
+                                    <input type="text" formControlName="mobileno" class="form-control" id="mobileno" placeholder="mobile number" required="">
+                                </div>
+                                <div class="row">
+                                    <label for="review">Password</label>
+                                    <input type="password" formControlName="password" class="form-control" id="review" placeholder="Enter your password" required="">
+                                </div>
+                                <div class="row">
+                                    <label for="review">Confirm Password</label>
+                                    <input type="password" formControlName="conpassword" class="form-control" id="review" placeholder="Enter your confirm password" required="">
+                                </div>
+                                <button type="submit" class="btn btn-solid">create Account</button>
                             </div>
-                            <div class="col-md-6">
-                                <label for="review">Password</label>
-                                <input type="password" formControlName="password" class="form-control" id="review" placeholder="Enter your password" required="">
+                            <div class="col-6">
+
                             </div>
-                            <button type="submit" class="btn btn-solid">create Account</button>
                         </div>
                     </form>
                     <form *ngIf="otpformif" class="theme-form" [formGroup]="otpform" (ngSubmit)="onotpSubmit()">
-
                         <div class="form-row">
                             <div class="col-md-6">
                                 <label for="mobileno">Enter Otp</label>
                                 <input type="text" formControlName="otpinput" class="form-control" id="mobileno" placeholder="enter a otp" required="">
                             </div>
                         </div>
-
                         <div class="form-row">
                             <button type="submit" class="btn btn-solid">create Account</button>
-
                         </div>
                     </form>
                 </div>

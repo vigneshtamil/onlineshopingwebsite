@@ -10,14 +10,14 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
+  public themeLogo: string = 'assets/images/icon/logo-13.png';
   // For Progressbar
   loaders = this.loader.progress$.pipe(
     delay(1000),
     withLatestFrom(this.loader.progress$),
     map(v => v[1]),
   );
-  
+
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
     private loader: LoadingBarService, translate: TranslateService) {
     if (isPlatformBrowser(this.platformId)) {

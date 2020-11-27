@@ -40,8 +40,13 @@
                             <li *ngFor="let childrenItem of menuItem.subcat">
 
                                 <!-- Link -->
+
+                                <!-- <a class="has-submenu">
+                     {{childrenItem.subcategoryname}}<b class="caret"></b> -->
+
                                 <a class="has-submenu" (click)="getproducts(childrenItem._id)">
                      {{childrenItem.subcategoryname}}
+
                   </a>
                                 <!-- External Link -->
                                 <!-- <a href="{{ !childrenItem.type ? null : childrenItem.path }}" *ngIf="childrenItem.type === 'extLink'">

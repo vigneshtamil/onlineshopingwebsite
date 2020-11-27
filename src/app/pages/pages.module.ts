@@ -39,9 +39,12 @@ import { MasonryGridTwoComponent } from './portfolio/masonry-grid-two/masonry-gr
 import { MasonryGridThreeComponent } from './portfolio/masonry-grid-three/masonry-grid-three.component';
 import { MasonryGridFourComponent } from './portfolio/masonry-grid-four/masonry-grid-four.component';
 import { MasonryFullWidthComponent } from './portfolio/masonry-full-width/masonry-full-width.component';
+import { AddressbookComponent } from './account/addressbook/addressbook.component';
+import { AddresslistComponent } from './account/addresslist/addresslist.component';
 
 @NgModule({
   declarations: [
+
     WishlistComponent,
     CartComponent,
     DashboardComponent,
@@ -73,7 +76,10 @@ import { MasonryFullWidthComponent } from './portfolio/masonry-full-width/masonr
     MasonryGridTwoComponent,
     MasonryGridThreeComponent,
     MasonryGridFourComponent,
-    MasonryFullWidthComponent
+    MasonryFullWidthComponent,
+    AddressbookComponent,
+    AddresslistComponent,
+
   ],
   imports: [
     CommonModule,
