@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDetailsMainSlider, ProductDetailsThumbSlider } from '../../../shared/data/slider';
-import {ProductService} from '../../shared/product.service'
+import {ProductService} from '../../shared/product.service';
+import { ProductSlider } from '../../../shared/data/slider';
 @Component({
   selector: 'app-productfullview',
   templateUrl: './productfullview.component.html',
@@ -9,10 +10,11 @@ import {ProductService} from '../../shared/product.service'
 })
 export class ProductfullviewComponent implements OnInit {
   public product = {};
+  public products :any[]=[];
   public counter: number = 1;
   public activeSlide: any = 0;
   public selectedSize: any;
-  
+  public ProductSliderConfig: any = ProductSlider;
    description:string='Use the sample job postings below to help write your job description and improve your job posting results. Then when youre ready, post your job on Monster to reach the right talent – act now and save 20% when you buy a 60-day job ad!'
   public ProductDetailsMainSliderConfig: any = ProductDetailsMainSlider;
   public ProductDetailsThumbConfig: any = ProductDetailsThumbSlider;
@@ -39,12 +41,13 @@ export class ProductfullviewComponent implements OnInit {
   }
  async bindproduct(filedata){
     await this.ProductService.getfullproductview(filedata).subscribe(res=>{
+    console.log(res);
     
     this.productname=res['result'][0].displayname;
     this.desc=res['result'][0].description;
     this.attributes=res['result'][0].attributes;
     this.stock=res['result'][0].availableqty;
-    this.minusamount='0';
+    this.minusamount=(res['result'][0].mrpprice-res['result'][0].sellingprice).toString();
     this.offer='0';
     this.amount=res['result'][0].sellingprice;
     this.images=[
@@ -52,6 +55,9 @@ export class ProductfullviewComponent implements OnInit {
       {src:this.ProductService.apiurl+res['result'][0].img2,alt:'name'},
       {src:this.ProductService.apiurl+res['result'][0].img3,alt:'name'},
      ]
+
+     this.products=res['relatedproductlist']
+     
     })
   }
   increment() {

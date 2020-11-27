@@ -17,4 +17,7 @@ export class ProductService {
   getfullproductview(filterdata) {
     return this.http.post<any>(this.apiurl + `/admin/getfullproductview/`,filterdata)
   }
+  relatedproducts(filterdata) {
+    return this.http.post<any>(this.apiurl + `/admin/relatedproductlist/`,filterdata)
+  }
 }
