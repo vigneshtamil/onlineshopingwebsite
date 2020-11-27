@@ -1,8 +1,7 @@
 import { Component,OnInit, OnDestroy } from '@angular/core';
 import { ProductSlider } from '../../shared/data/slider';
 import { Product } from '../../shared/classes/product';
-import { ProductService } from '../../shared/services/product.service';
-
+import { ProductService } from '../shared/product.service'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,9 +12,9 @@ export class DashboardComponent implements OnInit {
   public products: Product[] = [];
   
   public ProductSliderConfig: any = ProductSlider;
-  constructor(public productService: ProductService) {
-    this.productService.getProducts.subscribe(response => {
-      this.products = response.filter(item => item.type == 'pets');
+  constructor(public ProductService: ProductService,) {
+    this.ProductService.latestproducts().subscribe(res => {
+      this.products =res['latestproductlist'];
     });
    }
 
