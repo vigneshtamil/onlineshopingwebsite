@@ -28,13 +28,15 @@ import { SitemapComponent } from './sitemap/sitemap.component';
 
 import { LatestblogComponent } from './dashboard/latestblog/latestblog.component';
 import { OverallorderlistComponent } from './overallorderlist/overallorderlist.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { FaqComponent } from './faq/faq.component';
 
 
 
 @NgModule({
   declarations: [    
 
-    OurpagesComponent, ProductlistComponent, ProductBoxFourComponent, BlogComponent, BloglistComponent, AppgridComponent, AppquickviewComponent, ProductfullviewComponent, DashboardComponent, AppsliderComponent, ProductboxOneComponent, DDUKGYComponent, AboutusbreadcrumbComponent, TNULMComponent, TNSRLMComponent, TermsandbugzComponent, PrivacyandpolicyComponent, SitemapComponent,LatestblogComponent, OverallorderlistComponent
+    OurpagesComponent, ProductlistComponent, ProductBoxFourComponent, BlogComponent, BloglistComponent, AppgridComponent, AppquickviewComponent, ProductfullviewComponent, DashboardComponent, AppsliderComponent, ProductboxOneComponent, DDUKGYComponent, AboutusbreadcrumbComponent, TNULMComponent, TNSRLMComponent, TermsandbugzComponent, PrivacyandpolicyComponent, SitemapComponent,LatestblogComponent, OverallorderlistComponent, ContactusComponent, FaqComponent
   ],
   imports: [
     CommonModule,

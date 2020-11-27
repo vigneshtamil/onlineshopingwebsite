@@ -12,6 +12,8 @@ import { ProductlistComponent } from './productlist/productlist.component';
 import { TNSRLMComponent } from './tnsrlm/tnsrlm.component';
 import { TNULMComponent } from './tnulm/tnulm.component';
 import { PrivacyandpolicyComponent } from './privacyandpolicy/privacyandpolicy.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { FaqComponent } from './faq/faq.component';
 
 const routes: Routes = [
   {path:'',component:DashboardComponent},
@@ -23,7 +25,11 @@ const routes: Routes = [
   {path:'ddukgy',component:DDUKGYComponent},
   {path:'tnulm',component:TNULMComponent},
   {path:'privacyandpolicy',component:PrivacyandpolicyComponent},
-  {path:'orderlist',component:OverallorderlistComponent}
+  {path:'orderlist',component:OverallorderlistComponent},
+  {path:'contactus',component:ContactusComponent},
+  {path:'faq',component:FaqComponent}
+  
+  
 
 
 ];
