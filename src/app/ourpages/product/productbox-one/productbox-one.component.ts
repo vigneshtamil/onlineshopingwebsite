@@ -21,6 +21,9 @@ export class ProductboxOneComponent implements OnInit {
       setTimeout(() => { this.loader = false; }, 2000); // Skeleton Loader
     }
   }
+  openfullview(productid,id){
+    this.router.navigate(['/home1/productfullview'],{queryParams:{productid:productid,productinwardid:id}})
+  }
    // Change Variants
    ChangeVariants(color, product) {
     product.variants.map((item) => {

@@ -5,12 +5,12 @@
             <span class="lable4" *ngIf="product.sale">on sale</span> -->
         </div>
         <div class="front">
-            <a>
+            <a (click)="openfullview(product.productid,product._id)">
                 <img [defaultImage]="product.productimg ? product.productimg : 'assets/images/product/placeholder.jpg'" [lazyLoad]="ProductService.apiurl+product.productimg" class="img-fluid lazy-loading" />
             </a>
         </div>
         <div class="back" *ngIf="onHowerChangeImage">
-            <a>
+            <a (click)="openfullview(product.productid,product._id)">
                 <img [src]="ImageSrc ? ImageSrc : product.img1" class="img-fluid lazy-loading">
             </a>
         </div>
@@ -39,7 +39,7 @@
     <div class="product-detail">
         <div>
             <bar-rating [rate]="5" [readOnly]="true"></bar-rating>
-            <a>
+            <a (click)="openfullview(product.productid,product._id)">
                 <h6>{{product.displayname}}</h6>
             </a>
             <p></p>

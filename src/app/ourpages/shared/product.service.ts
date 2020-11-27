@@ -23,4 +23,7 @@ export class ProductService {
   latestproducts() {
     return this.http.get<any>(this.apiurl + `/admin/latest/product/`)
   }
+  latestblogs() {
+    return this.http.get<any>(this.apiurl + `/blog/recent`)
+  }
 }

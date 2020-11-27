@@ -28,7 +28,30 @@
     </div>
 </section>
 <!-- Product slider end -->
-
+<!-- Product slider -->
+<section class="section-b-space j-box pets-box">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="title1 title5">
+                    <h4>special offer</h4>
+                    <h2 class="title-inner1">Top Selling Products</h2>
+                    <hr role="tournament6">
+                </div>
+                <owl-carousel-o class="product-4 product-m no-arrow" [options]="ProductSliderConfig">
+                    <ng-container *ngFor="let product of products | slice:0:16">
+                        <ng-template carouselSlide>
+                            <div class="product-box">
+                                <app-productbox-one [product]="product"></app-productbox-one>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                </owl-carousel-o>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product slider end -->
 <!-- Parallax banner -->
 <section class="p-0 pet-parallax">
     <div class="full-banner parallax parallax-banner19  text-center p-center" [ngStyle]="{'background-image': 'url(assets/images/parallax/6.jpg)'}">
@@ -67,7 +90,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <!-- <app-blog [blogs]="blogs"></app-blog> -->
+                <app-latestblog [blogs]="blogs"></app-latestblog>
             </div>
         </div>
     </div>
