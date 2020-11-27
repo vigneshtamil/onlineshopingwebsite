@@ -6,6 +6,7 @@ import { BloglistComponent } from './bloglist/bloglist.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DDUKGYComponent } from './ddukgy/ddukgy.component';
 import { OurpagesComponent } from './ourpages.component';
+import { OverallorderlistComponent } from './overallorderlist/overallorderlist.component';
 import { ProductfullviewComponent } from './product/productfullview/productfullview.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { TNSRLMComponent } from './tnsrlm/tnsrlm.component';
@@ -21,10 +22,9 @@ const routes: Routes = [
   {path:'tnsrlm',component:TNSRLMComponent},
   {path:'ddukgy',component:DDUKGYComponent},
   {path:'tnulm',component:TNULMComponent},
-  {path:'privacyandpolicy',component:PrivacyandpolicyComponent}
-  
-  
-  
+  {path:'privacyandpolicy',component:PrivacyandpolicyComponent},
+  {path:'orderlist',component:OverallorderlistComponent}
+
 
 ];
 

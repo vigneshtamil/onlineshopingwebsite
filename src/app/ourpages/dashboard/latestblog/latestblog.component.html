@@ -1,0 +1,22 @@
+<owl-carousel-o [options]="BlogSliderConfig" class="no-arrow">
+    <ng-container *ngFor="let blog of blogs">
+        <ng-template carouselSlide>
+            <div class="col-md-12">
+                <a>
+                    <div class="classic-effect">
+                        <img [src]="ProductService.apiurl + blog.imagepath" class="img-fluid" alt="blog">
+                        <span></span>
+                    </div>
+                </a>
+                <div class="blog-details">
+                    <h4>{{blog.postedon}}</h4>
+                    <a>
+                        <p>{{blog.englishtitle}}</p>
+                    </a>
+                    <hr class="style1">
+                    <h6> {{ 'by:' +blog.postedby}} </h6>
+                </div>
+            </div>
+        </ng-template>
+    </ng-container>
+</owl-carousel-o>

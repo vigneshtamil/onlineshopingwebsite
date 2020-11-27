@@ -1,8 +1,7 @@
 import { Component,OnInit, OnDestroy } from '@angular/core';
 import { ProductSlider } from '../../shared/data/slider';
 import { Product } from '../../shared/classes/product';
-import { ProductService } from '../../shared/services/product.service';
-
+import { ProductService } from '../shared/product.service'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -10,12 +9,18 @@ import { ProductService } from '../../shared/services/product.service';
 })
 export class DashboardComponent implements OnInit {
   public themeLogo: string = 'assets/images/icon/logo-13.png'; // Change Logo
-  public products: Product[] = [];
+  public products:any[] = [];
+  public blogs:any[] = [];
   
   public ProductSliderConfig: any = ProductSlider;
-  constructor(public productService: ProductService) {
-    this.productService.getProducts.subscribe(response => {
-      this.products = response.filter(item => item.type == 'pets');
+  constructor(public ProductService: ProductService,) {
+    this.ProductService.latestproducts().subscribe(res => {
+      this.products =res['latestproductlist'];
+    });
+    this.ProductService.latestblogs().subscribe(res => {
+      console.log(res);
+      
+      this.blogs =res;
     });
    }
 
@@ -73,31 +78,31 @@ public collections2 = [{
   title: 'bowls'
 }];
 // Blog
-public blogs = [{
-  image: 'assets/images/blog/24.jpg',
-  date: '25 January 2018',
-  title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
-  details: 'Lorem ipsum dolor sit consectetur adipiscing elit,Lorem ipsum dolor sit consectetur adipiscing elit',
-  by: 'John Dio'
-}, {
-  image: 'assets/images/blog/25.jpg',
-  date: '26 January 2018',
-  title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
-  details: 'Lorem ipsum dolor sit consectetur adipiscing elit,Lorem ipsum dolor sit consectetur adipiscing elit',
-  by: 'John Dio'
-}, {
-  image: 'assets/images/blog/26.jpg',
-  date: '27 January 2018',
-  title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
-  details: 'Lorem ipsum dolor sit consectetur adipiscing elit,Lorem ipsum dolor sit consectetur adipiscing elit',
-  by: 'John Dio'
-}, {
-  image: 'assets/images/blog/27.jpg',
-  date: '28 January 2018',
-  title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
-  details: 'Lorem ipsum dolor sit consectetur adipiscing elit,Lorem ipsum dolor sit consectetur adipiscing elit',
-  by: 'John Dio'
-}];
+// public blogs = [{
+//   image: 'assets/images/blog/24.jpg',
+//   date: '25 January 2018',
+//   title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
+//   details: 'Lorem ipsum dolor sit consectetur adipiscing elit,Lorem ipsum dolor sit consectetur adipiscing elit',
+//   by: 'John Dio'
+// }, {
+//   image: 'assets/images/blog/25.jpg',
+//   date: '26 January 2018',
+//   title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
+//   details: 'Lorem ipsum dolor sit consectetur adipiscing elit,Lorem ipsum dolor sit consectetur adipiscing elit',
+//   by: 'John Dio'
+// }, {
+//   image: 'assets/images/blog/26.jpg',
+//   date: '27 January 2018',
+//   title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
+//   details: 'Lorem ipsum dolor sit consectetur adipiscing elit,Lorem ipsum dolor sit consectetur adipiscing elit',
+//   by: 'John Dio'
+// }, {
+//   image: 'assets/images/blog/27.jpg',
+//   date: '28 January 2018',
+//   title: 'Lorem ipsum dolor sit consectetur adipiscing elit,',
+//   details: 'Lorem ipsum dolor sit consectetur adipiscing elit,Lorem ipsum dolor sit consectetur adipiscing elit',
+//   by: 'John Dio'
+// }];
 
 ngOnInit(): void {
   // Change color for this layout

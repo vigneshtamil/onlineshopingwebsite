@@ -20,4 +20,13 @@ export class ProductService {
   relatedproducts(filterdata) {
     return this.http.post<any>(this.apiurl + `/admin/relatedproductlist/`,filterdata)
   }
+  latestproducts() {
+    return this.http.get<any>(this.apiurl + `/admin/latest/product/`)
+  }
+  latestblogs() {
+    return this.http.get<any>(this.apiurl + `/blog/recent`)
+  }
+  orderlist(data) {
+    return this.http.post<any>(this.apiurl + `/admin/orderoveralllist`,data)
+  }
 }
