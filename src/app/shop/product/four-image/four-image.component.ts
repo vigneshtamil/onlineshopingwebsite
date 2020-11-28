@@ -11,15 +11,15 @@ import { SizeModalComponent } from "../../../shared/components/modal/size-modal/
 })
 export class FourImageComponent implements OnInit {
 
-  public product: Product = {};
+  public product: Product;
   public counter: number = 1;
   public activeSlide: any = 0;
   public selectedSize: any;
 
   @ViewChild("sizeChart") SizeChart: SizeModalComponent;
-  
+
   constructor(private route: ActivatedRoute, private router: Router,
-    public productService: ProductService) { 
+    public productService: ProductService) {
       this.route.data.subscribe(response => this.product = response.data );
     }
 
@@ -51,7 +51,7 @@ export class FourImageComponent implements OnInit {
   selectSize(size) {
     this.selectedSize = size;
   }
-  
+
   // Increament
   increment() {
     this.counter++ ;

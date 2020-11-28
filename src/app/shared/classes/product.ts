@@ -1,5 +1,6 @@
 // Products
 export interface Product {
+    producttotalrate: any;
     id?: number;
     title?: string;
     description?: string;
