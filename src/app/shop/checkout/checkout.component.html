@@ -9,7 +9,31 @@
                             <div class="checkout-title">
                                 <h3>Billing Details</h3>
                             </div>
-                            <div class="row check-out">
+                            <div class="row">
+                                <div class="dashboard-left" style="width:50%" [class.open]="openDashboard" *ngFor="let item of addressdetails">
+                                    <div class="col-lg-12">
+                                        <div class="collection-mobile-back" (click)="ToggleDashboard()">
+                                            <span class="filter-back">
+                                        <i class="fa fa-angle-left" aria-hidden="true"></i> back
+                                    </span>
+                                        </div>
+                                        <div class="block-content">
+                                            <h6>{{item.addressname}}</h6>
+                                            <p>{{item.addresslineone}},{{item.addresslinetwo}}</p>
+                                            <p>{{item.city}},{{item.state}}</p>
+                                            <label>Phone Number</label>
+                                            <p>{{item.contactnumber}}</p>
+
+                                            <div class="row">
+                                                <input type="radio" [(ngModel)]="addressselection" [value]="item._id" name="payment-group" id="payment-2">
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="row check-out">
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                     <div class="field-label">First Name</div>
                                     <input type="text" name="firstname" [formControl]="checkoutForm.controls['firstname']" value="" placeholder="" autocomplete="off">
@@ -93,8 +117,9 @@
                                         Postalcode is required
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row ">
+                            </div> -->
+
+                            <!-- <div class="row ">
                                 <div class="col-12">
                                     <div class="stripe-section">
                                         <h5>stripe js</h5>
@@ -117,8 +142,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row margin-cls">
+                            </div> -->
+                            <!-- <div class="row margin-cls">
                                 <div class="col-12">
                                     <div class="stripe-section">
                                         <h5>paypal</h5>
@@ -141,7 +166,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+
                         </div>
 
                         <div class="col-lg-6 col-sm-12 col-xs-12">

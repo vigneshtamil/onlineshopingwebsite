@@ -16,6 +16,7 @@ import jwt_decode from "jwt-decode";
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
+  addressselection:any;
 
   public checkoutForm:  FormGroup;
   public products: Product[] = [];
@@ -25,6 +26,8 @@ export class CheckoutComponent implements OnInit {
   totalamount: any;
   localvalue: string;
   decoded: any;
+  nologin: boolean;
+  addressdetails: any;
 
   constructor(private router:ActivatedRoute,
     private route:Router,
@@ -53,6 +56,28 @@ export class CheckoutComponent implements OnInit {
     this.getTotal.subscribe(amount => this.amount = amount);
     this.initConfig();
     this.cartlist()
+    this.localvalue = localStorage.getItem('loginresponse')
+
+
+    if( this.localvalue == null || this.localvalue == '')
+    {
+    this.nologin=true;
+    }
+    else{
+      this.decoded = jwt_decode(this.localvalue);
+      console.log('this.localvalue');
+      console.log(this.localvalue);
+      this.nologin=false;
+      var senddata = {
+        "mobileno": this.decoded.mobileno
+      }
+      this.apiservice.useraddresslist(senddata).subscribe((res) => {
+
+        this.addressdetails = res.useraddresslist
+        console.log(this.addressdetails)
+      })
+    }
+
   }
 
   cartlist() {
@@ -148,12 +173,13 @@ if(res.status == "1")
     var senddata={
 
       "customerid":this.decoded._id,
-      "deleveryaddressid":"5fa8ec6086d0290017ec3b9f",
+      "deleveryaddressid":this.addressselection,
       "paymenttype":"cash",
       "totalamount":this.totalamount,
       "orderproductdetails":this.products
 
   }
+
     this.apiservice.placeorderapi(senddata).subscribe((res)=>{
       console.log(res);
 
@@ -167,6 +193,12 @@ else{
   this.toastrService.error(res.message);
 }
     })
+  }
+
+  public openDashboard: boolean = false;
+
+  ToggleDashboard() {
+    this.openDashboard = !this.openDashboard;
   }
 
 }

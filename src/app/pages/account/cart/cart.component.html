@@ -1,8 +1,15 @@
 <app-breadcrumb [title]="'Cart'" [breadcrumb]="'Cart'"></app-breadcrumb>
 <!-- section start -->
-<section class="cart-section section-b-space">
+
+<h1 *ngIf="nologin">Please login</h1>
+<section class="cart-section section-b-space" *ngIf="!nologin">
     <div class="container">
-        <div class="row">
+        <div class="col-sm-12 empty-cart-cls text-center" *ngIf="cartshow">
+            <img src="assets/images/icon-empty-cart.png" class="img-fluid mb-4">
+            <h3><strong>Your Cart is Empty</strong></h3>
+            <h4>Add something to make me happy :)</h4>
+        </div>
+        <div class="row" *ngIf="profileshow">
             <div class="col-sm-12">
                 <table class="table cart-table table-responsive-xs">
                     <thead>
@@ -15,58 +22,71 @@
                             <th scope="col">total</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody *ngFor="let product of products">
                         <tr>
                             <td>
-                                <a [routerLink]="['/shop/product/left/sidebar/trim-dress']">
-                                    <img src="assets/images/product/fashion/1.jpg" alt="">
+                                <a [routerLink]="['/shop/product/left/sidebar/']">
+                                    <img [src]="'http://208.109.8.9:3005'+product.productimg">
                                 </a>
                             </td>
-                            <td><a [routerLink]="['/shop/product/left/sidebar/trim-dress']">cotton shirt</a>
+                            <td>
+                                <a [routerLink]="['/shop/product/left/sidebar/']">{{ product.productname | titlecase }}</a>
                                 <div class="mobile-cart-content row">
                                     <div class="col-xs-3">
                                         <div class="qty-box">
                                             <div class="input-group">
-                                                <input type="text"  name="quantity" class="form-control input-number" value="1">
+                                                <input type="text" name="quantity" class="form-control input-number" disabled [(ngModel)]="product.qty">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xs-3">
-                                        <h2 class="td-color">$63.00</h2>
+                                        <h2 class="td-color">
+                                            ₹ {{ product.rate }}
+                                        </h2>
                                     </div>
                                     <div class="col-xs-3">
                                         <h2 class="td-color">
-                                            <a [routerLink]="['/shop/product/left/sidebar/trim-dress']" class="icon">
+                                            <a (click)="removeItem(product)" class="icon">
                                                 <i class="ti-close"></i>
                                             </a>
                                         </h2>
                                     </div>
                                 </div>
                             </td>
-                            <td><h2>$63.00</h2></td>
+                            <td>
+                                <h2>
+                                    <!-- {{ product.qty }}* -->
+                                    ₹{{ product.rate }}
+                                    <!-- ={{product.producttotalrate}} -->
+                                </h2>
+                            </td>
                             <td>
                                 <div class="qty-box">
                                     <div class="input-group">
                                         <span class="input-group-prepend">
-                                            <button type="button" class="btn quantity-left-minus" data-type="minus">
-                                                <i class="ti-angle-left"></i>
-                                            </button>
-                                        </span>
-                                        <input type="text" name="quantity" class="form-control input-number" disabled value="1">
+                                      <button type="button" class="btn quantity-left-minus" data-type="minus" (click)="decrement(product)">
+                                          <i class="ti-angle-left"></i>
+                                      </button>
+                                  </span>
+                                        <input type="text" name="quantity" class="form-control input-number" disabled [(ngModel)]="product.qty">
                                         <span class="input-group-prepend">
-                                            <button type="button" class="btn quantity-right-plus"  data-type="plus">
-                                                <i class="ti-angle-right"></i>
-                                            </button>
-                                        </span>
+                                      <button type="button" class="btn quantity-right-plus"  data-type="plus" (click)="increment(product)">
+                                          <i class="ti-angle-right"></i>
+                                      </button>
+                                  </span>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <a [routerLink]="['/shop/product/left/sidebar/trim-dress']" class="icon">
+                                <a href="javascript:void(0)" (click)="removeItem(product)" class="icon">
                                     <i class="ti-close"></i>
                                 </a>
                             </td>
-                            <td><h2 class="td-color">$4539.00</h2></td>
+                            <td>
+                                <h2 class="td-color">
+                                    ₹ {{ product.producttotalrate }}
+                                </h2>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -74,13 +94,15 @@
                     <tfoot>
                         <tr>
                             <td>total price :</td>
-                            <td><h2> $6935.00 </h2></td>
+                            <td>
+                                <h2>₹{{totalamount}}</h2>
+                            </td>
                         </tr>
                     </tfoot>
                 </table>
             </div>
         </div>
-        <div class="row cart-buttons">
+        <div class="row cart-buttons" *ngIf='products.length'>
             <div class="col-6">
                 <a [routerLink]="['/shop/collection/left/sidebar']" class="btn btn-solid">continue shopping</a>
             </div>
@@ -90,4 +112,5 @@
         </div>
     </div>
 </section>
+
 <!--section end-->

@@ -20,7 +20,7 @@ blogpop:[];
   constructor(public blog:BlogService,private route :ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.blog.blogid);
+   
     this.route.queryParams.subscribe(res=>{
       this.id=res.id
     })
@@ -29,7 +29,7 @@ blogpop:[];
     }
     this.blog.blogservice(sendata).subscribe(res=>{
       this.blogdata=res
-      console.log(this.blogdata)
+    
     })
     this.bindddlcategory()
     this.recentblog()
@@ -63,6 +63,8 @@ blogpop:[];
     this.blog.blogrecent().subscribe(res=>{
         if(res){
           this.ddlrecent=res
+          console.log( this.ddlrecent);
+          
           var data={
             "recent":res._id
           }
