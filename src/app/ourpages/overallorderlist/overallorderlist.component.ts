@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../shared/product.service'
 @Component({
   selector: 'app-overallorderlist',
@@ -8,7 +9,7 @@ import { ProductService } from '../shared/product.service'
 export class OverallorderlistComponent implements OnInit {
 public orderlist : any[]=[]
   constructor(
-    public ProductService: ProductService,
+    public ProductService: ProductService,private route: ActivatedRoute, private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -26,5 +27,8 @@ public orderlist : any[]=[]
         
       }
     })
+  }
+  redirectorderdetails(id) {
+    this.router.navigate(['/home1/orderdetails'], { queryParams: { orderid: id} })
   }
 }

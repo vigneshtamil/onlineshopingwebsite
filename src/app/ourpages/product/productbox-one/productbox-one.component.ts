@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {ProductService} from '../../shared/product.service'
+import { AppquickviewComponent } from '../appquickview/appquickview.component';
 @Component({
   selector: 'app-productbox-one',
   templateUrl: './productbox-one.component.html',
@@ -13,6 +14,7 @@ export class ProductboxOneComponent implements OnInit {
   @Input() onHowerChangeImage: boolean = false; // Default False
   @Input() cartModal: boolean = false; // Default False
   @Input() loader: boolean = false;
+  @ViewChild("quickView") QuickView: AppquickviewComponent;
   public ImageSrc : string
   constructor(public ProductService:ProductService,private route: ActivatedRoute, private router: Router,) { }
 

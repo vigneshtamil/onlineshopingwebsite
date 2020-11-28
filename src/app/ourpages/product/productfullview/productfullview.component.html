@@ -35,7 +35,7 @@
                         <h2>{{ productname| titlecase }}</h2>
                     </div>
                     <div class="border-product">
-                        <h6 class="product-title">product kjk details</h6>
+                        <h6 class="product-title">product details</h6>
                         <p>{{ desc }}</p>
                     </div>
                     <div class="single-product-tables border-product detail-section">
@@ -71,11 +71,11 @@
                 <div class="col-lg-4">
                     <div class="product-right product-form-box">
                         <h4>
-                            <del> <i class="fa fa-inr"></i>{{minusamount}}</del>
+                            <del> <i class="fa fa-inr"></i>{{minusamount | number}}</del>
                             <span>{{offer}}% off</span>
                         </h4>
                         <h3>
-                            <i class="fa fa-inr"></i>{{amount}}
+                            <i class="fa fa-inr"></i>{{amount | number}}
                         </h3>
                         <div class="product-description border-product">
                             <h5 class="avalibility" *ngIf="stock!=0"><span>In Stock</span></h5>
@@ -130,137 +130,3 @@
         </div>
     </div>
 </section>
-<!-- Product slider end -->
-<app-breadcrumb [title]="productname" [breadcrumb]="'Product'"></app-breadcrumb>
-<!-- section start -->
-<section class="section-b-space">
-    <div class="collection-wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <owl-carousel-o [options]="ProductDetailsMainSliderConfig" #owlCar class="product-slick">
-                        <ng-container *ngFor="let image of images; index as i">
-                            <ng-template carouselSlide [id]="i">
-                                <div>
-                                    <img [defaultImage]="'assets/images/product/placeholder.jpg'" [lazyLoad]="image.src" class="img-fluid">
-                                </div>
-                            </ng-template>
-                        </ng-container>
-                    </owl-carousel-o>
-                    <div class="row">
-                        <div class="col-12 p-0">
-                            <div class="slider-nav">
-                                <owl-carousel-o [options]="ProductDetailsThumbConfig" class="product-slick">
-                                    <ng-container *ngFor="let image of images; index as i">
-                                        <ng-template carouselSlide [id]="i">
-                                            <div class="owl-thumb" [class.active]="i == activeSlide">
-                                                <img [defaultImage]="'assets/images/product/placeholder.jpg'" [lazyLoad]="image.src" [alt]="image.alt" class="img-fluid" (click)="owlCar.to(activeSlide = i.toString())">
-                                            </div>
-                                        </ng-template>
-                                    </ng-container>
-                                </owl-carousel-o>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="product-right product-description-box">
-                        <h2>{{ productname| titlecase }}</h2>
-                    </div>
-                    <div class="border-product">
-                        <h6 class="product-title">product kjk details</h6>
-                        <p>{{ desc }}</p>
-                    </div>
-                    <div class="single-product-tables border-product detail-section">
-                        <table>
-                            <tbody>
-                                <tr *ngFor="let item of attributes">
-                                    <td>{{item.attributename}}:</td>
-                                    <td>{{item.attributevalue}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Avalibility:</td>
-                                    <td *ngIf="stock!=0">In Stock</td>
-                                    <td *ngIf="stock==0">Out of Stock</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="border-product">
-                        <h6 class="product-title">share it</h6>
-                        <div class="product-icon">
-                            <ul class="product-social">
-                                <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://plus.google.com/discover"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                            <form class="d-inline-block">
-                                <button class="wishlist-btn"><i class="fa fa-heart"></i><span class="title-font">Add To WishList</span></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="product-right product-form-box">
-                        <h4>
-                            <del> <i class="fa fa-inr"></i>{{minusamount}}</del>
-                            <span>{{offer}}% off</span>
-                        </h4>
-                        <h3>
-                            <i class="fa fa-inr"></i>{{amount}}
-                        </h3>
-                        <div class="product-description border-product">
-                            <h5 class="avalibility" *ngIf="stock!=0"><span>In Stock</span></h5>
-                            <h5 class="avalibility" *ngIf="stock==0"><span>Out of Stock</span></h5>
-                            <h6 class="product-title">quantity</h6>
-                            <div class="qty-box">
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                <button type="button" class="btn quantity-left-minus" data-type="minus" (click)="decrement()">
-                                    <i class="ti-angle-left"></i>
-                                </button>
-                            </span>
-                                    <input type="text" name="quantity" class="form-control input-number" [value]="counter" disabled/>
-                                    <span class="input-group-prepend">
-                                <button type="button" class="btn quantity-right-plus" data-type="plus" (click)="increment()">
-                                    <i class="ti-angle-right"></i>
-                                </button>
-                            </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-buttons">
-                            <a href="javascrip:void(0)" class="btn btn-solid">add to cart</a>
-                            <a href="javascrip:void(0)" class="btn btn-solid">buy now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Product slider -->
-<section class="section-b-space j-box pets-box">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="title1 title5">
-                    <h4>special offer</h4>
-                    <h2 class="title-inner1">Related collection</h2>
-                    <hr role="tournament6">
-                </div>
-                <owl-carousel-o class="product-4 product-m no-arrow" [options]="ProductSliderConfig">
-                    <ng-container *ngFor="let product of products | slice:0:16">
-                        <ng-template carouselSlide>
-                            <div class="product-box">
-                                <app-productbox-one [product]="product"></app-productbox-one>
-                            </div>
-                        </ng-template>
-                    </ng-container>
-                </owl-carousel-o>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Product slider end -->
