@@ -39,4 +39,8 @@ export class ProductService {
     return this.http.post<any>(this.apiurl + `/admin/orderoveralllist`,data)
 
   }
+  orderdetails(data) {
+    return this.http.post<any>(this.apiurl + `/admin/overallorderhistorydetail`,data)
+
+  }
 }

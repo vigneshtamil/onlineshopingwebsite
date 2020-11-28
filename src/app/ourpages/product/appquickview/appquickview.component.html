@@ -13,8 +13,8 @@
                 <div class="col-lg-6 rtl-text">
                     <div class="product-right">
                         <h2>{{ product.displayname | titlecase }}</h2>
-                        <h3><i class="fa fa-inr"></i>{{ product.sellingprice }}
-                            <del><span class="money"><i class="fa fa-inr"></i>{{ product.sellingprice -product.mrpprice}}</span></del>
+                        <h3><i class="fa fa-inr"></i>{{ product.sellingprice | number}}
+                            <del><span class="money"><i class="fa fa-inr"></i>{{ product.sellingprice -product.mrpprice| number}}</span></del>
                         </h3>
 
                         <div class="border-product">

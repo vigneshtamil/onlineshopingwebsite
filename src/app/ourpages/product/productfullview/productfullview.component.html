@@ -71,11 +71,11 @@
                 <div class="col-lg-4">
                     <div class="product-right product-form-box">
                         <h4>
-                            <del> <i class="fa fa-inr"></i>{{minusamount}}</del>
+                            <del> <i class="fa fa-inr"></i>{{minusamount | number}}</del>
                             <span>{{offer}}% off</span>
                         </h4>
                         <h3>
-                            <i class="fa fa-inr"></i>{{amount}}
+                            <i class="fa fa-inr"></i>{{amount | number}}
                         </h3>
                         <div class="product-description border-product">
                             <h5 class="avalibility" *ngIf="stock!=0"><span>In Stock</span></h5>
