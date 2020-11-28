@@ -12,19 +12,19 @@ import { SizeModalComponent } from "../../../../shared/components/modal/size-mod
 })
 export class ProductRightSidebarComponent implements OnInit {
 
-  public product: Product = {};
+  public product: Product ;
   public counter: number = 1;
   public activeSlide: any = 0;
   public mobileSidebar: boolean = false;
   public selectedSize: any;
-  
+
   @ViewChild("sizeChart") SizeChart: SizeModalComponent;
 
   public ProductDetailsMainSliderConfig: any = ProductDetailsMainSlider;
   public ProductDetailsThumbConfig: any = ProductDetailsThumbSlider;
 
   constructor(private route: ActivatedRoute, private router: Router,
-    public productService: ProductService) { 
+    public productService: ProductService) {
       this.route.data.subscribe(response => this.product = response.data );
     }
 
@@ -56,7 +56,7 @@ export class ProductRightSidebarComponent implements OnInit {
   selectSize(size) {
     this.selectedSize = size;
   }
-  
+
   // Increament
   increment() {
     this.counter++ ;

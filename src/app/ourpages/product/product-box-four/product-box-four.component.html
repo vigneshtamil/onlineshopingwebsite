@@ -20,10 +20,10 @@
             <a href="javascript:void(0)" title="Add to cart" *ngIf="cartModal">
                 <i class="ti-shopping-cart"></i>
             </a>
-            <a href="javascript:void(0)" title="Add to cart" *ngIf="!cartModal">
+            <a href="javascript:void(0)" (click)="addtocart(products)" title="Add to cart" *ngIf="!cartModal">
                 <i class="ti-shopping-cart"></i>
             </a>
-            <a href="javascript:void(0)" title="Add to Wishlist">
+            <a href="javascript:void(0)" (click)="wishlist(products)" title="Add to Wishlist">
                 <i class="ti-heart" aria-hidden="true"></i>
             </a>
             <a href="javascript:void(0)" title="Quick View">

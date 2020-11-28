@@ -12,7 +12,7 @@ import { SizeModalComponent } from "../../../shared/components/modal/size-modal/
 })
 export class BundleProductComponent implements OnInit {
 
-  public product: Product = {};
+  public product: Product;
   public counter: number = 1;
   public activeSlide: any = 0;
   public selectedSize: any;
@@ -23,7 +23,7 @@ export class BundleProductComponent implements OnInit {
   public ProductDetailsThumbConfig: any = ProductDetailsThumbSlider;
 
   constructor(private route: ActivatedRoute, private router: Router,
-    public productService: ProductService) { 
+    public productService: ProductService) {
       this.route.data.subscribe(response => this.product = response.data );
     }
 
@@ -55,7 +55,7 @@ export class BundleProductComponent implements OnInit {
   selectSize(size) {
     this.selectedSize = size;
   }
-  
+
   // Increament
   increment() {
     this.counter++ ;
