@@ -34,4 +34,10 @@ export class BlogService {
   blgrec(data){
     return this.http.post<any>(environment.apiurl+'/blog/rec',data, httpOptions)
   }
+  blogpopular(){
+    return this.http.get<any>(environment.apiurl+'/blog/popular/list', httpOptions)
+  }
+  blogpop(data:any){
+    return this.http.post<any>(environment.apiurl+'/blog/popular',data, httpOptions)
+  }
 }

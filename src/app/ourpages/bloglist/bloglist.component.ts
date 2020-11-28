@@ -16,6 +16,9 @@ export class BloglistComponent implements OnInit {
   blogviewcount:any
   ddlrecent:[];
   blogrecent:[];
+  ddlpopular:[];
+  blogpop:[];
+  public finished: boolean = false
   constructor(public bloglist: BlogService, private router: Router) { }
   // transform(value) {
   //   return this.sanitized.bypassSecurityTrustHtml(value);
@@ -24,6 +27,7 @@ export class BloglistComponent implements OnInit {
   ngOnInit(): void {
     this.bindddlcategory()
     this.recentblog()
+    this.popularblog()
     
   }
   bindddlcategory() {
@@ -32,7 +36,7 @@ export class BloglistComponent implements OnInit {
         this.ddlcategory = res;
         console.log(this.ddlcategory)
         var senddata = {
-          "category": res._id
+          "category": res[5]._id
         }
         this.bloglist.blogcattopenlist(senddata).subscribe(res => {
           console.log(res);
@@ -48,6 +52,10 @@ export class BloglistComponent implements OnInit {
     }
     this.bloglist.blogcattopenlist(senddata).subscribe(res => {
       console.log(res);
+      if(res.status==2)
+      {
+        alert("No Record found in this Category")
+      }
       this.blogcatlist = res.bloglist
 
     })
@@ -100,4 +108,29 @@ export class BloglistComponent implements OnInit {
 
 })
   }
+  popularblog(){
+    this.bloglist.blogpopular().subscribe(res=>{
+      if(res){
+        this.ddlpopular=res
+        console.log(this.ddlpopular)
+        var dat={
+          "popular":res._id
+        }
+        this.bloglist.blogpop(dat).subscribe(res=>{
+        console.log(res);
+        this.blogpop=res.bloglist
+        })
+      }
+    })
+  }
+  blogpoplist(_id){
+    this.router.navigate(['home1/blog/'],{queryParams:{id:_id}})
+    var dat={
+      "popular":_id
+    }
+    this.bloglist.blogpop(dat).subscribe(res=>{
+      console.log(res);
+      this.blogpop=res.bloglist
+  })
+}
 }

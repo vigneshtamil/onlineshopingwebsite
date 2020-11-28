@@ -16,7 +16,7 @@ export class HeaderOneComponent implements OnInit {
   searchbox:string=''
   public stick: boolean = false;
 
-  constructor(public ProductService:ProductService,private router: Router,) { }
+  constructor(public ProductService:ProductService,private router: Router) { }
 
   ngOnInit(): void {
   }

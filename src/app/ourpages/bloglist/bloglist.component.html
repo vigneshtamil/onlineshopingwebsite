@@ -1,6 +1,6 @@
 <app-breadcrumb [title]="'News and Events'"></app-breadcrumb>
 <!-- section start -->
-<section class="section-b-space  blog-page">
+<section class="section-b-space  blog-page" style="padding-top:25px !important;">
     <div class="container">
         <div class="row">
             <!--Blog List start-->
@@ -18,23 +18,24 @@
                                 <a>
                                     <h2 style="font-size: 22px;
                                     font-weight: 400;
-                                    line-height: inherit;">{{blgcatlist.englishtitle}}</h2>
+                                    line-height: inherit;" (click)="openList(blgcatlist._id)">{{blgcatlist.englishtitle}}</h2>
                                 </a>
                                 <ul class="post-social">
                                     <li>Posted By : Admin Admin </li>
+                                    <li> Category:{{blgcatlist.category}}</li>
                                     <li><i class="fa fa-eye"></i> {{blgcatlist.blogviewcount}} Views</li>
                                     <li><i class="fa fa-calendar"></i> {{blgcatlist.date}}</li>
                                 </ul>
+                                <hr>
                                 <div [innerHTML]="blgcatlist.description | slice:0:430">
 
                                 </div>
-                                <button type="button" class="btn btn-solid btn-sm" style="float:right;margin-top:10px;" (click)="openList(blgcatlist._id)">readmore</button>
-
+                                <button type="button" class="btn btn-solid btn-sm" style="float:right;margin-top:10px;" (click)="openList(blgcatlist._id)">read more</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row blog-media" *ngFor="let blogrec of blogrecent">
+                <!-- <div class="row blog-media" *ngFor="let blogrec of blogrecent">
                     <div class="col-xl-5">
                         <div class="blog-left">
                             <a><img style="width: 100% !important;" src="http://208.109.8.9:3005/{{blogrec.imagepath}}" class="img-fluid" alt="" /></a>
@@ -43,7 +44,7 @@
                     <div class="col-xl-7">
                         <div class="blog-right">
                             <div [routerLink]="'/home1/bloglist'">
-                                <!-- <h6>{{blgcatlist.date}}</h6> -->
+                               
                                 <a>
                                     <h2 style="font-size: 22px;
                                     font-weight: 400;
@@ -62,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div *ngIf="blogcatlist.length==0">
                     <h6>No Blog Found</h6>
                 </div> -->
@@ -73,25 +74,29 @@
             <!--Blog sidebar start-->
             <div class="col-xl-3 col-lg-4 col-md-5">
                 <div class="blog-sidebar">
-                    <form>
-                        <div class="theme-card">
+
+                    <div class="theme-card">
+                        <form>
                             <h4>Category</h4>
                             <ul class="category">
                                 <li>
-                                    <div *ngFor="let category of ddlcategory">
-                                        <h6 (click)="openbloglist(category._id)">{{category.blogcategoryname}}</h6>
+                                    <div style="display:flex;" *ngFor="let category of ddlcategory">
+                                        <i style="color:rgb(250, 92, 92) !important;padding:4px 0;" class="fa fa-arrow-right "></i>
+                                        <h6 style="font-size: 15px;padding: 4px;" (click)="openbloglist(category._id)">{{category.blogcategoryname}} {{category.date}}</h6>
                                     </div>
                                 </li>
                             </ul>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+
 
                     <div class="theme-card">
                         <h4>Recent Blog</h4>
                         <ul class="recent-blog">
                             <li>
-                                <div *ngFor="let recent of ddlrecent">
-                                    <h6 (click)="recentbloglist(recent._id)">{{recent.englishtitle}}</h6>
+                                <div style="display:flex;" *ngFor="let recent of ddlrecent">
+                                    <i style="color:rgb(250, 92, 92) !important;padding:4px 0;" class="fa fa-arrow-right "></i>
+                                    <h6 style="font-size: 15px;padding: 4px;" (click)="recentbloglist(recent._id)"> {{recent.englishtitle}}</h6>
                                 </div>
                             </li>
                             <!-- <li>
@@ -136,6 +141,12 @@
                         <h4>Popular Blog</h4>
                         <ul class="popular-blog">
                             <li>
+                                <div style="display:flex;" *ngFor="let popular of ddlpopular">
+                                    <i style="color:rgb(250, 92, 92) !important;padding:4px 0;" class="fa fa-arrow-right "></i>
+                                    <h6 style="font-size: 15px;padding: 4px;" (click)="blogpoplist(popular._id)"> {{popular.englishtitle}}</h6>
+                                </div>
+                            </li>
+                            <!-- <li>
                                 <div class="media">
                                     <div class="blog-date">
                                         <span>03 </span>
@@ -160,20 +171,7 @@
                                     </div>
                                 </div>
                                 <p>it look like readable English. Many desktop publishing text. </p>
-                            </li>
-                            <li>
-                                <div class="media">
-                                    <div class="blog-date">
-                                        <span>03 </span>
-                                        <span>may</span>
-                                    </div>
-                                    <div class="media-body align-self-center">
-                                        <h6>Injected humour the like</h6>
-                                        <p>0 hits</p>
-                                    </div>
-                                </div>
-                                <p>it look like readable English. Many desktop publishing text. </p>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -182,5 +180,4 @@
         </div>
     </div>
 </section>
-<pre>{{ ddlrecent | json }}</pre>
 <!-- Section ends -->

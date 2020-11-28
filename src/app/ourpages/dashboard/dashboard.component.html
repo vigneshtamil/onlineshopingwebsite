@@ -1,0 +1,98 @@
+<!-- Home slider start-->
+<section class="p-0">
+    <app-appslider [sliders]="sliders" [textClass]="'text-center'" [category]="'pets'" [buttonText]="'shop now'">
+    </app-appslider>
+</section>
+<!-- Home slider End -->
+<!-- Product slider -->
+<section class="section-b-space j-box pets-box">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="title1 title5">
+                    <h4>special offer</h4>
+                    <h2 class="title-inner1">Latest Products</h2>
+                    <hr role="tournament6">
+                </div>
+                <owl-carousel-o class="product-4 product-m no-arrow" [options]="ProductSliderConfig">
+                    <ng-container *ngFor="let product of products | slice:0:16">
+                        <ng-template carouselSlide>
+                            <div class="product-box">
+                                <app-productbox-one [product]="product"></app-productbox-one>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                </owl-carousel-o>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product slider end -->
+<!-- Product slider -->
+<section class="section-b-space j-box pets-box">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="title1 title5">
+                    <h4>special offer</h4>
+                    <h2 class="title-inner1">Top Selling Products</h2>
+                    <hr role="tournament6">
+                </div>
+                <owl-carousel-o class="product-4 product-m no-arrow" [options]="ProductSliderConfig">
+                    <ng-container *ngFor="let product of products | slice:0:16">
+                        <ng-template carouselSlide>
+                            <div class="product-box">
+                                <app-productbox-one [product]="product"></app-productbox-one>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                </owl-carousel-o>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product slider end -->
+<!-- Parallax banner -->
+<section class="p-0 pet-parallax">
+    <div class="full-banner parallax parallax-banner19  text-center p-center" [ngStyle]="{'background-image': 'url(assets/images/parallax/6.jpg)'}">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="banner-contain">
+                        <h4>choose what you love</h4>
+                        <h3>get upto 70% off</h3>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        </p>
+                        <a [routerLink]="['/shop/collection/left/sidebar']" [queryParams]="{ category: 'pets'}" class="btn btn-solid black-btn">
+                           shop now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pet-decor">
+            <img src="assets/images/dog.png" alt="" class="img-fluid">
+        </div>
+    </div>
+</section>
+<!-- Parallax banner end -->
+<!-- blog section start-->
+<section class="section-b-space blog p-t-0 blog_box">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="title1 section-t-space">
+                    <h4>Recent Story</h4>
+                    <h2 class="title-inner1">from the blog</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <app-latestblog [blogs]="blogs"></app-latestblog>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- blog section End -->

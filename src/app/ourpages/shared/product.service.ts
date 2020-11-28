@@ -18,10 +18,25 @@ export class ProductService {
   getfullproductview(filterdata) {
     return this.http.post<any>(this.apiurl + `/admin/getfullproductview/`,filterdata)
   }
+
   addtocartservice(filterdata) {
     return this.http.post<any>(this.apiurl + `/cart/add`,filterdata)
   }
   addtowishservice(filterdata) {
     return this.http.post<any>(this.apiurl + `/wishlist/add`,filterdata)
+  }
+
+  relatedproducts(filterdata) {
+    return this.http.post<any>(this.apiurl + `/admin/relatedproductlist/`,filterdata)
+  }
+  latestproducts() {
+    return this.http.get<any>(this.apiurl + `/admin/latest/product/`)
+  }
+  latestblogs() {
+    return this.http.get<any>(this.apiurl + `/blog/recent`)
+  }
+  orderlist(data) {
+    return this.http.post<any>(this.apiurl + `/admin/orderoveralllist`,data)
+
   }
 }
