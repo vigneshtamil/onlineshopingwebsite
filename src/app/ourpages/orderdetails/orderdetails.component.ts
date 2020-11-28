@@ -7,19 +7,41 @@ import {ProductService} from '../shared/product.service';
   styleUrls: ['./orderdetails.component.scss']
 })
 export class OrderdetailsComponent implements OnInit {
-orderdetails:string[]
+public orderdetails:[]
   constructor(private route: ActivatedRoute, private router: Router,public ProductService:ProductService) { }
+  orderid:string;
+  orderdate:string;
+  totalamount:string;
+  customername:string;
+  addressname:string;
+  addresslineone:string;
+  landmark:string;
+  city:string;
+  state:string;
+  mobileno:string;
+  productlist:[];
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      console.log(params);
       var data={
-        _id: '5fc1e00227765b0e5435e6eb'
+        _id: params.orderid
       }
       this.ProductService.orderdetails(data).subscribe(res=>{
         if(res['status']==1){
           console.log(res);
           this.orderdetails=res
+          this.orderid=res.orderid;
+          this.orderdate=res.orderdate;
+          this.productlist=res.productlist;
+          this.totalamount=res.totalamount;
+          this.customername=res.customername;
+          this.addressname=res.addressname;
+          this.addresslineone=res.addresslineone;
+          this.landmark=res.landmark;
+          this.city=res.city;
+          this.state=res.state;
+          this.mobileno=res.mobileno;
+
         }else{
           console.log(res['message']);          
         }
