@@ -10,7 +10,7 @@ import { OurpagesComponent } from './ourpages/ourpages.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home/pets',
+    redirectTo: 'home1/',
     pathMatch: 'full'
   },
   {
