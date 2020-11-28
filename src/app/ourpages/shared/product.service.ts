@@ -10,6 +10,7 @@ export class ProductService {
   productlist:any[]
   searchproductslist:string=''
   searchsubid:string=''
+  cartItems: any;
   constructor(private http: HttpClient) { }
 
   searchproducts(filterdata) {

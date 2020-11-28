@@ -17,6 +17,7 @@ export class WishlistComponent implements OnInit {
   profileshow: boolean;
   localvalue: string;
   decoded: any;
+  nologin: boolean;
 
   constructor(private router: Router,
     public productService: ProductService,
@@ -26,9 +27,25 @@ export class WishlistComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.localvalue = localStorage.getItem('loginresponse')
+    // this.decoded = jwt_decode(this.localvalue);
+    // this.wishlistservice();
+
+
     this.localvalue = localStorage.getItem('loginresponse')
-    this.decoded = jwt_decode(this.localvalue);
-    this.wishlistservice();
+
+
+    if( this.localvalue == null || this.localvalue == '')
+    {
+    this.nologin=true;
+    }
+    else{
+      this.decoded = jwt_decode(this.localvalue);
+      console.log('this.localvalue');
+      console.log(this.localvalue);
+      this.nologin=false;
+      this.wishlistservice()
+    }
   }
   wishlistservice() {
     var senddata = { "customer":this.decoded._id }

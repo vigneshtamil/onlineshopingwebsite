@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { WishlistComponent } from './account/wishlist/wishlist.component';
-import { CartComponent } from './account/cart/cart.component';
+
 import { DashboardComponent } from './account/dashboard/dashboard.component';
 import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
@@ -35,17 +35,28 @@ import { MasonryGridFourComponent } from './portfolio/masonry-grid-four/masonry-
 import { MasonryFullWidthComponent } from './portfolio/masonry-full-width/masonry-full-width.component';
 import { AddressbookComponent } from './account/addressbook/addressbook.component';
 import { AddresslistComponent } from './account/addresslist/addresslist.component';
+import { ProfilecartComponent } from './account/profilecart/profilecart.component';
+import { ProfilewishlistComponent } from './account/profilewishlist/profilewishlist.component';
 
 
 const routes: Routes = [
+  //ProfilecartComponent
+  {
+    path: 'profilewishlist',
+    component: ProfilewishlistComponent
+  },
+  {
+    path: 'profilecart',
+    component: ProfilecartComponent
+  },
   {
     path: 'wishlist',
     component: WishlistComponent
   },
-  {
-    path: 'cart',
-    component: CartComponent
-  },
+  // {
+  //   path: 'cart',
+  //   component: CartComponent
+  // },
   {
     path: 'addresslist',
     component: AddresslistComponent

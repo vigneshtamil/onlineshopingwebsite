@@ -1,4 +1,4 @@
-<app-breadcrumb [title]="'Address Book'" [breadcrumb]="'Address Book'"></app-breadcrumb>
+<app-breadcrumb [title]="'Profile'" [breadcrumb]="'Profile'"></app-breadcrumb>
 
 <!-- section start -->
 <section class="section-b-space">
@@ -18,12 +18,12 @@
                     </div>
                     <div class="block-content">
                         <ul>
-                            <li><a [routerLink]="[ '/user/profile']">Account Info</a></li>
+                            <li class="active"><a [routerLink]="[ '/user/profile']">Account Info</a></li>
                             <li><a [routerLink]="[ '/user/addressbook']">Address Add</a></li>
-                            <li><a [routerLink]="[ '/user/profilecart']">My Cart</a></li>
                             <li><a href="javascript:void(0)">My Orders</a></li>
-                            <li><a [routerLink]="[ '/user/profilewishlist']">My Wishlist</a></li>
-                            <li class="active"><a [routerLink]="['/user/addresslist']">Address Book</a></li>
+                            <li><a href="javascript:void(0)">My Cart</a></li>
+                            <li><a href="javascript:void(0)">My Wishlist</a></li>
+                            <li><a [routerLink]="['/user/addresslist']">Address Book</a></li>
                             <!-- <li><a href="javascript:void(0)">My Account</a></li> -->
                             <li><a [routerLink]="['/user/changepassword']">Change Password</a></li>
                             <li class="last"><a href="javascript:void(0)">Log Out</a></li>
@@ -46,34 +46,21 @@
                                 <h2>Account Information</h2>
                             </div> -->
                             <div class="row">
-                                <!-- <section class="contact-page register-page section-b-space"> -->
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="dashboard-left" style="width:50%" [class.open]="openDashboard" *ngFor="let item of addressdetails">
-                                            <div class="col-lg-12">
-                                                <div class="collection-mobile-back" (click)="ToggleDashboard()">
-                                                    <span class="filter-back">
-                                                  <i class="fa fa-angle-left" aria-hidden="true"></i> back
-                                              </span>
-                                                </div>
-                                                <div class="block-content">
-                                                    <h6>{{item.addressname}}</h6>
-                                                    <p>{{item.addresslineone}},{{item.addresslinetwo}}</p>
-                                                    <p>{{item.city}},{{item.state}}</p>
-                                                    <label>Phone Number</label>
-                                                    <p>{{item.contactnumber}}</p>
+                                <!-- section end -->
+                                <!-- personal deatail section start -->
+                                <section class="contact-page register-page">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h3>Order</h3>
 
-                                                    <div class="row">
-                                                        <button class="btn btn-solid btm-sm" (click)="addressedit(item)">edit</button>
-                                                        <button class="btn btn-solid btm-sm" (click)="addressremove(item._id)">remove</button>
-                                                    </div>
-
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- </section> -->
+                                </section>
+                                <!-- Section ends -->
+                                <!-- address section start -->
+
                                 <!-- Section ends -->
                             </div>
                             <div>
