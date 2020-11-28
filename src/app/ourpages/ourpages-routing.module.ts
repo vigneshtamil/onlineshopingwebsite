@@ -14,6 +14,7 @@ import { TNULMComponent } from './tnulm/tnulm.component';
 import { PrivacyandpolicyComponent } from './privacyandpolicy/privacyandpolicy.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { FaqComponent } from './faq/faq.component';
+import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 
 const routes: Routes = [
   {path:'',component:DashboardComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path:'tnulm',component:TNULMComponent},
   {path:'privacyandpolicy',component:PrivacyandpolicyComponent},
   {path:'orderlist',component:OverallorderlistComponent},
+  {path:'orderdetails',component:OrderdetailsComponent},
   {path:'contactus',component:ContactusComponent},
   {path:'faq',component:FaqComponent}
   

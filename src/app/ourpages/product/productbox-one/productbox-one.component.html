@@ -31,7 +31,7 @@
             <a href="javascript:void(0)" title="Add to Wishlist">
                 <i class="ti-heart" aria-hidden="true"></i>
             </a>
-            <a href="javascript:void(0)" title="Quick View">
+            <a href="javascript:void(0)" title="Quick View" (click)="QuickView.openModal()">
                 <i class="ti-search" aria-hidden="true"></i>
             </a>
         </div>
@@ -49,3 +49,4 @@
         </div>
     </div>
 </div>
+<app-appquickview [product]="product" #quickView></app-appquickview>

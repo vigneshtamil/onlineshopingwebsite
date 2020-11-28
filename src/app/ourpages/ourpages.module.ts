@@ -30,13 +30,14 @@ import { LatestblogComponent } from './dashboard/latestblog/latestblog.component
 import { OverallorderlistComponent } from './overallorderlist/overallorderlist.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { FaqComponent } from './faq/faq.component';
+import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 
 
 
 @NgModule({
   declarations: [    
 
-    OurpagesComponent, ProductlistComponent, ProductBoxFourComponent, BlogComponent, BloglistComponent, AppgridComponent, AppquickviewComponent, ProductfullviewComponent, DashboardComponent, AppsliderComponent, ProductboxOneComponent, DDUKGYComponent, AboutusbreadcrumbComponent, TNULMComponent, TNSRLMComponent, TermsandbugzComponent, PrivacyandpolicyComponent, SitemapComponent,LatestblogComponent, OverallorderlistComponent, ContactusComponent, FaqComponent
+    OurpagesComponent, ProductlistComponent, ProductBoxFourComponent, BlogComponent, BloglistComponent, AppgridComponent, AppquickviewComponent, ProductfullviewComponent, DashboardComponent, AppsliderComponent, ProductboxOneComponent, DDUKGYComponent, AboutusbreadcrumbComponent, TNULMComponent, TNSRLMComponent, TermsandbugzComponent, PrivacyandpolicyComponent, SitemapComponent,LatestblogComponent, OverallorderlistComponent, ContactusComponent, FaqComponent, OrderdetailsComponent
   ],
   imports: [
     CommonModule,
