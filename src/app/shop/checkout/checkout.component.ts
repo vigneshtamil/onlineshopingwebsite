@@ -6,7 +6,10 @@ import { environment } from '../../../environments/environment';
 import { Product } from "../../shared/classes/product";
 import { ProductService } from "../../shared/services/product.service";
 import { OrderService } from "../../shared/services/order.service";
-
+import { ApiservicesService } from 'src/app/services/apiservices.service';
+import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Router } from '@angular/router';
+import jwt_decode from "jwt-decode";
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -19,10 +22,17 @@ export class CheckoutComponent implements OnInit {
   public payPalConfig ? : IPayPalConfig;
   public payment: string = 'Stripe';
   public amount:  any;
+  totalamount: any;
+  localvalue: string;
+  decoded: any;
 
-  constructor(private fb: FormBuilder,
+  constructor(private router:ActivatedRoute,
+    private route:Router,
+    private fb: FormBuilder,
+    private apiservice: ApiservicesService,
     public productService: ProductService,
-    private orderService: OrderService) { 
+    private orderService: OrderService,
+    private toastrService: ToastrService) {
     this.checkoutForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
       lastname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
@@ -37,11 +47,30 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.localvalue = localStorage.getItem('loginresponse')
+    this.decoded = jwt_decode(this.localvalue);
     this.productService.cartItems.subscribe(response => this.products = response);
     this.getTotal.subscribe(amount => this.amount = amount);
     this.initConfig();
+    this.cartlist()
   }
 
+  cartlist() {
+    var senddata={"customer":this.decoded._id}
+this.apiservice.cartlist(senddata).subscribe((res)=>{
+console.log(res)
+if(res.status == "1")
+{
+  this.products=res.cartlist
+
+ this.totalamount = this.products.map(o => o.producttotalrate).reduce((a, c) => { return a + c });
+
+
+}else{
+
+}
+})
+  }
   public get getTotal(): Observable<number> {
     return this.productService.cartTotalAmount();
   }
@@ -61,7 +90,7 @@ export class CheckoutComponent implements OnInit {
       name: 'Multikart',
       description: 'Online Fashion Store',
       amount: this.amount * 100
-    }) 
+    })
   }
 
   // Paypal Payment Gateway
@@ -112,6 +141,32 @@ export class CheckoutComponent implements OnInit {
             console.log('onClick', data, actions);
         }
     };
+  }
+
+  placeorder()
+  {
+    var senddata={
+
+      "customerid":this.decoded._id,
+      "deleveryaddressid":"5fa8ec6086d0290017ec3b9f",
+      "paymenttype":"cash",
+      "totalamount":this.totalamount,
+      "orderproductdetails":this.products
+
+  }
+    this.apiservice.placeorderapi(senddata).subscribe((res)=>{
+      console.log(res);
+
+if(res.status == "1")
+{
+  this.toastrService.success(res.message);
+  this.route.navigate(['/shop/checkout/success'],
+  {queryParams: {oid: res.orderdatabaseid}});
+}
+else{
+  this.toastrService.error(res.message);
+}
+    })
   }
 
 }

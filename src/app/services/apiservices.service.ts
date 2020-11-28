@@ -14,7 +14,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApiservicesService {
-commenurl:String="http://localhost:3000"
+//commenurl:String="http://localhost:3000"
+commenurl:String="http://208.109.8.9:3005"
   invokeEvent: any;
   constructor(private http: HttpClient,private router:Router) { }
   private handleError<T>(operation = "operation", result?: T) {
@@ -110,4 +111,51 @@ commenurl:String="http://localhost:3000"
       );
   }
 
+
+  cartlist(data: any): Observable<any> {
+    return this.http.post<any>(this.commenurl+'/cart/list', data, httpOptions)
+      .pipe(
+        tap((c: any) => console.log(`sucessfully....`)),
+        catchError(this.handleError<any>("falid......"))
+      );
+  }
+  wishlistservice(data: any): Observable<any> {
+    return this.http.post<any>(this.commenurl+'/wishlist/list', data, httpOptions)
+      .pipe(
+        tap((c: any) => console.log(`sucessfully....`)),
+        catchError(this.handleError<any>("falid......"))
+      );
+  }
+
+  cartdelete(data: any): Observable<any> {
+    return this.http.post<any>(this.commenurl+'/cartproduct/delete', data, httpOptions)
+      .pipe(
+        tap((c: any) => console.log(`sucessfully....`)),
+        catchError(this.handleError<any>("falid......"))
+      );
+  }
+
+  wishlistdelete(data: any): Observable<any> {
+    return this.http.post<any>(this.commenurl+'/wishlistproduct/delete', data, httpOptions)
+      .pipe(
+        tap((c: any) => console.log(`sucessfully....`)),
+        catchError(this.handleError<any>("falid......"))
+      );
+  }
+  cartqtyaddservice(data: any): Observable<any> {
+    return this.http.post<any>(this.commenurl+'/cartqty/add', data, httpOptions)
+      .pipe(
+        tap((c: any) => console.log(`sucessfully....`)),
+        catchError(this.handleError<any>("falid......"))
+      );
+  }
+  addtocartservice(filterdata) {
+    return this.http.post<any>(this.commenurl + `/cart/add`,filterdata)
+  }
+  placeorderapi(filterdata) {
+    return this.http.post<any>(this.commenurl + `/order/add`,filterdata)
+  }
+  orderdetails(filterdata) {
+    return this.http.post<any>(this.commenurl + `/admin/overallorderhistorydetail`,filterdata)
+  }
 }

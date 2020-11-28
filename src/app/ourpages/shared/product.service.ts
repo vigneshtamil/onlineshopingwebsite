@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductService {
   apiurl:String=environment.apiurl
+//  apiurl:String='http://localhost:3000'
   productlist:any[]
   searchproductslist:string=''
   searchsubid:string=''
@@ -16,5 +17,11 @@ export class ProductService {
   }
   getfullproductview(filterdata) {
     return this.http.post<any>(this.apiurl + `/admin/getfullproductview/`,filterdata)
+  }
+  addtocartservice(filterdata) {
+    return this.http.post<any>(this.apiurl + `/cart/add`,filterdata)
+  }
+  addtowishservice(filterdata) {
+    return this.http.post<any>(this.apiurl + `/wishlist/add`,filterdata)
   }
 }

@@ -37,7 +37,7 @@ console.log(res)
       //  this.apiservice.callMethodOfSecondComponent();
        // alert(res.token)
 
-      //  window.location.reload();
+        window.location.reload();
       } else {
         this.toastrService.error(res.message);
       }
