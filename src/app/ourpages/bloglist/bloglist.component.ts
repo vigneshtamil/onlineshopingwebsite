@@ -52,17 +52,13 @@ export class BloglistComponent implements OnInit {
     }
     this.bloglist.blogcattopenlist(senddata).subscribe(res => {
       console.log(res);
-      if(res.status==2)
-      {
-        alert("No Record found in this Category")
-      }
       this.blogcatlist = res.bloglist
 
     })
   }
   openList(_id){
     if(_id==''){
-      alert("No record Found")
+      
     }
     else{
       this.bloglist.blogid=_id
