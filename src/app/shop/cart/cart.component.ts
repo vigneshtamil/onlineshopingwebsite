@@ -37,6 +37,9 @@ totalamount:number;
 
     if( this.localvalue == null || this.localvalue == '')
     {
+      if (this.localvalue == null || this.localvalue == '') {
+        alert("Please login...")
+      }
     this.nologin=true;
     }
     else{

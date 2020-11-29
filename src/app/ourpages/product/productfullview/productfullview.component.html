@@ -63,7 +63,7 @@
                                 <li><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                             <form class="d-inline-block">
-                                <button class="wishlist-btn"><i class="fa fa-heart"></i><span class="title-font">Add To WishList</span></button>
+                                <button class="wishlist-btn" (click)="wishlist(product)"><i class="fa fa-heart"></i><span class="title-font">Add To WishList</span></button>
                             </form>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                             </div>
                         </div>
                         <div class="product-buttons">
-                            <a href="javascrip:void(0)" class="btn btn-solid">add to cart</a>
+                            <a (click)="addtocart(product)" class="btn btn-solid">add to cart</a>
                             <a href="javascrip:void(0)" class="btn btn-solid">buy now</a>
                         </div>
                     </div>
