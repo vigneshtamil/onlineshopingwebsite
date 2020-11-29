@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { ShopComponent } from './shop/shop.component';
 import { PagesComponent } from './pages/pages.component';
 import { ElementsComponent } from './elements/elements.component';
-import { OurpagesModule } from './ourpages/ourpages.module';
 import { OurpagesComponent } from './ourpages/ourpages.component';
 
 const routes: Routes = [
@@ -38,7 +37,7 @@ const routes: Routes = [
     loadChildren: () => import('./elements/elements.module').then(m => m.ElementsModule) },
   {
     path: '**', // Navigate to Home Page if not found any page
-    redirectTo: 'home/fashion',
+    redirectTo: 'home1',
   },
 ];
 

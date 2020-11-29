@@ -38,16 +38,12 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "node_modules/font-awesome/scss/font-awesome.scss",
                             "src/assets/scss/app.scss",
                             "src/styles.scss"
                         ],
                         "scripts": [
-                            "node_modules/isotope-layout/dist/isotope.pkgd.min.js",
-
-                            "node_modules/popper.js/dist/umd/popper.min.js"
-
+                            "node_modules/isotope-layout/dist/isotope.pkgd.min.js"
                         ]
                     },
                     "configurations": {
