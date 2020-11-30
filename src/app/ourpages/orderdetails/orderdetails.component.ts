@@ -27,6 +27,8 @@ public orderdetails:[]
         _id: params.orderid
       }
       this.ProductService.orderdetails(data).subscribe(res=>{
+        console.log(res);
+        
         if(res['status']==1){
 
           this.orderdetails=res
