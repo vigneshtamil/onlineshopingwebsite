@@ -26,7 +26,7 @@ export class SuccessComponent implements OnInit, AfterViewInit {
       .subscribe(params => {
         this.dborderid = params['oid'];
       });
-      console.log(this.dborderid);
+
 
 
     var senddata = {
@@ -34,7 +34,7 @@ export class SuccessComponent implements OnInit, AfterViewInit {
     }
 
     this.apiservice.orderdetails(senddata).subscribe((res) => {
-      console.log(res);
+
 
       if (res.status == "1") {
         this.orderDetails = res;

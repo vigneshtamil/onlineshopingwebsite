@@ -5,6 +5,7 @@ import { Product } from "../../shared/classes/product";
 import { ApiservicesService } from 'src/app/services/apiservices.service';
 import { ToastrService } from 'ngx-toastr';
 import jwt_decode from "jwt-decode";
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -27,33 +28,42 @@ totalamount:number;
     private toastrService: ToastrService
 
     ) {
-    this.productService.cartItems.subscribe(response => this.products = response);
+
+  //  this.productService.cartItems.subscribe(response => this.products = response);
+  }
+  name(name: any) {
+    alert()
   }
 
   ngOnInit(): void {
-
     this.localvalue = localStorage.getItem('loginresponse')
 
 
     if( this.localvalue == null || this.localvalue == '')
     {
+      if (this.localvalue == null || this.localvalue == '') {
+        alert("Please login...")
+      }
     this.nologin=true;
     }
     else{
       this.decoded = jwt_decode(this.localvalue);
-      console.log('this.localvalue');
-      console.log(this.localvalue);
+
       this.nologin=false;
       this.cartlist()
     }
   }
+  invokeMyMethode() {
+    throw new Error('Method not implemented.');
+  }
+
 
   cartlist() {
 
     //var senddata={"customer":"5fa8ebfd86d0290017ec3b9e"}
     var senddata={"customer":this.decoded._id}
 this.apiservice.cartlist(senddata).subscribe((res)=>{
-console.log(res)
+
 if(res.status == "1")
 {
   this.cartshow = false;
@@ -63,7 +73,7 @@ if(res.status == "1")
 
 
 }else{
-  this.cartshow = false;
+  this.cartshow = true;
   this.profileshow = false;
 }
 })
@@ -122,23 +132,46 @@ else{
   }
 
   public removeItem(product: any) {
-       // this.productService.removeCartItem(product);
-   var senddata={
-    "customer":this.decoded._id,
-    "_id":product._id
-}
-this.apiservice.cartdelete(senddata).subscribe((res)=>{
-if(res.status == "1")
-{
-  this.toastrService.success(res.message);
-  this.cartlist()
+Swal.fire({
+  title: 'Are you sure want to remove?',
+  text: 'You will not be able to recover this file!',
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, keep it'
+}).then((result) => {
+  if (result.value) {
+    var senddata={
+      "customer":this.decoded._id,
+      "_id":product._id
+  }
+  this.apiservice.cartdelete(senddata).subscribe((res)=>{
+  if(res.status == "1")
+  {
+    this.toastrService.success(res.message);
+    this.cartlist()
+    Swal.fire(
+      'Deleted!',
+      'Your imaginary file has been deleted.',
+      'success'
+    )
 
-}
-else{
-  this.toastrService.error(res.message);
-}
+  }
+  else{
+    this.toastrService.error(res.message);
+  }
+  })
+  } else if (result.dismiss === Swal.DismissReason.cancel) {
+    Swal.fire(
+      'Cancelled',
+      'Your imaginary file is safe :)',
+      'error'
+    )
+  }
 })
   }
+
+
 
 
 

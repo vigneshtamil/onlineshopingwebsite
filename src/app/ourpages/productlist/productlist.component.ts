@@ -47,7 +47,7 @@ export class ProductlistComponent implements OnInit {
       this.category = params.category ? params.category : null;
       this.sortBy = params.sortBy ? params.sortBy : 'ascending';
 
-      
+
 
     })
 
@@ -74,12 +74,12 @@ export class ProductlistComponent implements OnInit {
       if (res['status'] = 'success') {
         this.products = res['result'];
         this.ProductService.productlist = res['result'];
-        console.log(this.products);
+
         this.all_products = this.products
         this.addItems();
 
       } else {
-        console.log(res);
+
       }
 
     })
@@ -87,7 +87,7 @@ export class ProductlistComponent implements OnInit {
 
 
   addItems() {
-    
+
     if (this.all_products.length == this.products.length) {
       this.finished = true;
       return

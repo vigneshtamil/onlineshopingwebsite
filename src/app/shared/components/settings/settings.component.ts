@@ -15,10 +15,10 @@ import jwt_decode from "jwt-decode";
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-  decoded:any;
-  cartlistcount:any;
-cartshow:boolean = false;
-cartproductlist:any;
+  decoded: any;
+  cartlistcount: any = 0
+  cartshow: boolean = false;
+  cartproductlist: any;
   localvalue: string;
   profileshow: boolean = false;
   public products: Product[] = [];
@@ -51,11 +51,11 @@ cartproductlist:any;
     currency: 'USD',
     price: 1 // price of usd
   }]
-  wishprofileshow: boolean=false
+  wishprofileshow: boolean = false
   wishproducts: any;
   totalamount: any;
   totalwishamount: any;
-  wishlistcount: any;
+  wishlistcount: any = 0;
   whishlistempty: boolean;
   cartempty: boolean;
 
@@ -66,23 +66,25 @@ cartproductlist:any;
     private apiservice: ApiservicesService,
     private toastrService: ToastrService) {
 
-   // this.productService.cartItems.subscribe(response => this.products = response);
+    // this.productService.cartItems.subscribe(response => this.products = response);
   }
 
   ngOnInit(): void {
 
     this.localvalue = localStorage.getItem('loginresponse')
-console.log(this.localvalue);
+
 
     if (this.localvalue == null) {
       this.profileshow = false;
+
+
     }
     else {
-      this.cartli=true;
-      this.wishlistli=true;
+      this.cartli = true;
+      this.wishlistli = true;
       this.profileshow = true;
       this.decoded = jwt_decode(this.localvalue);
-      console.log(this.decoded);
+
       this.cartlist()
       this.whishlist()
 
@@ -90,47 +92,59 @@ console.log(this.localvalue);
 
   }
   cartlist() {
-    var senddata={"customer":this.decoded._id}
-this.apiservice.cartlist(senddata).subscribe((res)=>{
-console.log(res)
-if(res.status == "1")
-{
-  this.cartshow = true;
- // this.profileshow = true;
-  this.products=res.cartlist
-this.cartlistcount= this.products.length
-  this.totalamount = this.products.map(o => o.producttotalrate).reduce((a, c) => { return a + c });
-this.cartempty=false;
+    var senddata = { "customer": this.decoded._id }
+    this.apiservice.cartlist(senddata).subscribe((res) => {
 
-}else{
-  this.cartshow = false;
-  this.cartempty=true;
-}
-})
+      if (res.status == "1") {
+        this.cartshow = true;
+        // this.profileshow = true;
+        this.products = res.cartlist
+        this.cartlistcount = this.products.length
+        this.totalamount = this.products.map(o => o.producttotalrate).reduce((a, c) => { return a + c });
+        this.cartempty = false;
+
+      } else {
+        this.cartshow = false;
+        this.cartempty = true;
+      }
+    })
   }
 
-  whishlist()
-  {
-var senddata={"customer":this.decoded._id}
-this.apiservice.wishlistservice(senddata).subscribe((res)=>{
-console.log(res)
-if(res.status == "1")
-{
+  whishlist() {
+    var senddata = { "customer": this.decoded._id }
+    this.apiservice.wishlistservice(senddata).subscribe((res) => {
 
-  this.wishprofileshow = true;
-  this.wishproducts=res.whishlist;
-  this.whishlistempty=false;
- this.wishlistcount= this.wishproducts.length;
+      if (res.status == "1") {
 
-}else{
-  this.wishprofileshow = false;
-  this.whishlistempty=true;
-}
-})
+        this.wishprofileshow = true;
+        this.wishproducts = res.whishlist;
+        this.whishlistempty = false;
+        this.wishlistcount = this.wishproducts.length;
+
+      } else {
+        this.wishprofileshow = false;
+        this.whishlistempty = true;
+      }
+    })
   }
+  cartclick() {
+    if (this.localvalue == null) {
+      alert("please login...")
+    }
+    else {
 
+      this.router.navigate(['/shop/cart'])
+    }
+  }
+  wishlistclick() {
+    if (this.localvalue == null) {
+      alert("please login...")
+    }
+    else {
 
-
+      this.router.navigate(['/shop/wishlist'])
+    }
+  }
 
   searchToggle() {
     this.search = !this.search;
@@ -147,53 +161,51 @@ if(res.status == "1")
   }
 
   removecartItem(product: any) {
-   // this.productService.removeCartItem(product);
-   var senddata={
-    "customer":this.decoded._id,
-    "_id":product._id
-}
-this.apiservice.cartdelete(senddata).subscribe((res)=>{
-if(res.status == "1")
-{
-  this.toastrService.success(res.message);
-  this.cartlist()
-  this.whishlist()
-}
-else{
-  this.toastrService.error(res.message);
-}
-})
+    // this.productService.removeCartItem(product);
+    var senddata = {
+      "customer": this.decoded._id,
+      "_id": product._id
+    }
+    this.apiservice.cartdelete(senddata).subscribe((res) => {
+      if (res.status == "1") {
+        this.toastrService.success(res.message);
+        this.cartlist()
+        this.whishlist()
+      }
+      else {
+        this.toastrService.error(res.message);
+      }
+    })
 
   }
 
 
 
   removewishlistItem(product: any) {
-   // this.productService.removeCartItem(product);
-   var senddata={
-    "customer":this.decoded._id,
-    "_id":product._id
-}
-this.apiservice.wishlistdelete(senddata).subscribe((res)=>{
-if(res.status == "1")
-{
-  this.toastrService.success(res.message);
-  this.cartlist()
-  this.whishlist()
+    // this.productService.removeCartItem(product);
+    var senddata = {
+      "customer": this.decoded._id,
+      "_id": product._id
+    }
+    this.apiservice.wishlistdelete(senddata).subscribe((res) => {
+      if (res.status == "1") {
+        this.toastrService.success(res.message);
+        this.cartlist()
+        this.whishlist()
 
-}
-else{
-  this.toastrService.error(res.message);
-}
-})
+      }
+      else {
+        this.toastrService.error(res.message);
+      }
+    })
   }
 
   changeCurrency(currency: any) {
     this.productService.Currency = currency
   }
   looutfn() {
-    this.cartli=false;
-      this.wishlistli=false;
+    this.cartli = false;
+    this.wishlistli = false;
     this.profileshow = false;
     localStorage.removeItem("loginresponse");
     this.router.navigate(['/user/login'])

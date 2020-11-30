@@ -30,12 +30,14 @@ import { FaqComponent } from './faq/faq.component';
 import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 import { ReviewComponent } from './review/review.component';
 
+
 @NgModule({
-  declarations: [    
+  declarations: [
 
     OurpagesComponent, ProductlistComponent, ProductBoxFourComponent, BlogComponent, BloglistComponent, AppgridComponent, AppquickviewComponent, ProductfullviewComponent, DashboardComponent, AppsliderComponent, ProductboxOneComponent, DDUKGYComponent, AboutusbreadcrumbComponent, TNULMComponent, TNSRLMComponent, TermsandbugzComponent, PrivacyandpolicyComponent, SitemapComponent,LatestblogComponent, OverallorderlistComponent, ContactusComponent, FaqComponent, OrderdetailsComponent, ReviewComponent
   ],
   imports: [
+
     CommonModule,
     NgxPayPalModule,
     Ng5SliderModule,

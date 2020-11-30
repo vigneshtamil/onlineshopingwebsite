@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ProductService } from '../../shared/product.service'
 import { AppquickviewComponent } from '../appquickview/appquickview.component';
+import jwt_decode from "jwt-decode";
 @Component({
   selector: 'app-productbox-four',
   templateUrl: './product-box-four.component.html',
@@ -15,18 +16,38 @@ export class ProductBoxFourComponent implements OnInit {
   @Input() cartModal: boolean = false;
 
   @ViewChild("quickView") QuickView: AppquickviewComponent;
+  localvalue: string;
+  nologin: boolean;
+  decoded: any;
   constructor(public ProductService: ProductService, private route: ActivatedRoute, private router: Router,
     private toastrService: ToastrService) { }
   public ImageSrc: string
   ngOnInit(): void {
+    this.localvalue = localStorage.getItem('loginresponse')
 
+
+    if( this.localvalue == null || this.localvalue == '')
+    {
+    this.nologin=true;
+    }
+    else{
+      this.decoded = jwt_decode(this.localvalue);
+
+      this.nologin=false;
+
+    }
   }
   openfullview(productid, id) {
     this.router.navigate(['/home1/productfullview'], { queryParams: { productid: productid, productinwardid: id } })
   }
   addtocart(products) {
+    if (this.localvalue == null || this.localvalue == '') {
+
+      alert("Please login...")
+      return false;
+    }
     var senddata = {
-      "customer": "5fa8ebfd86d0290017ec3b9e",
+      "customer": this.decoded._id,
       "productdetails": [
         {
           "productid": products.productid,
@@ -36,7 +57,7 @@ export class ProductBoxFourComponent implements OnInit {
       ]
     }
     this.ProductService.addtocartservice(senddata).subscribe((res) => {
-      console.log(res);
+
       if (res.status == "1") {
         this.toastrService.success(res.message);
         window.location.reload();
@@ -47,8 +68,13 @@ export class ProductBoxFourComponent implements OnInit {
     })
   }
   wishlist(products) {
+    if (this.localvalue == null || this.localvalue == '') {
+
+      alert("Please login...")
+      return false;
+    }
     var senddata = {
-      "customer": "5fa8ebfd86d0290017ec3b9e",
+      "customer":  this.decoded._id,
       "productdetails": [
         {
           "productid": products.productid,
@@ -58,7 +84,7 @@ export class ProductBoxFourComponent implements OnInit {
       ]
     }
     this.ProductService.addtowishservice(senddata).subscribe((res) => {
-      console.log(res);
+
       if (res.status == "1") {
         this.toastrService.success(res.message);
         window.location.reload();

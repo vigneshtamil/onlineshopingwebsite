@@ -64,7 +64,6 @@
                             </ul>
                             <form class="d-inline-block">
                                 <button class="wishlist-btn"><i class="fa fa-heart"></i><span class="title-font">Add To WishList</span></button>
-                                <button class="wishlist-btn" (click)="openreview(productid._id)"><i class="fa fa-heart"></i><span class="title-font">review</span></button>
                             </form>
                         </div>
                     </div>
@@ -99,7 +98,7 @@
                             </div>
                         </div>
                         <div class="product-buttons">
-                            <a href="javascrip:void(0)" class="btn btn-solid">add to cart</a>
+                            <a (click)="addtocart(products) " class="btn btn-solid">add to cart</a>
                             <a href="javascrip:void(0)" class="btn btn-solid">buy now</a>
                         </div>
                     </div>

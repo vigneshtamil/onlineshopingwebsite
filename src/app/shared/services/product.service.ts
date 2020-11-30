@@ -16,10 +16,13 @@ const state = {
   providedIn: 'root'
 })
 export class ProductService {
+  [x: string]: any;
 
   public Currency = { name: 'Dollar', currency: 'USD', price: 1 } // Default Currency
   public OpenCart: boolean = false;
   public Products
+  currentData: any;
+
   constructor(private http: HttpClient,
     private toastrService: ToastrService) { }
 

@@ -55,7 +55,7 @@ export function app() {
   server.set('view engine', 'html');
   server.set('views', distFolder);
 
-  
+
   // Example Express Rest API endpoints
   // app.get('/api/**', (req, res) => { });
   // Serve static files from /browser
@@ -65,10 +65,10 @@ export function app() {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
-    res.render(indexHtml, { req, 
-      providers: [{ 
+    res.render(indexHtml, { req,
+      providers: [{
         provide: APP_BASE_HREF,
-        useValue: req.baseUrl 
+        useValue: req.baseUrl
       }]
     });
   });
@@ -82,7 +82,7 @@ function run() {
   // Start up the Node server
   const server = app();
   server.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
+
   });
 }
 

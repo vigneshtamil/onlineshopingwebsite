@@ -45,7 +45,7 @@ this .otpformgrp();
     if(this.commonform.value.password == this.commonform.value.conpassword )
     {
       this.apiservice.register(this.commonform.value).subscribe((res)=>{
-        console.log(res);
+
         if(res.status=="1")
         {
           this.mobnumber=res.mobileno
@@ -74,7 +74,7 @@ this .otpformgrp();
       "otp":this.otpform.value.otpinput
     }
     this.apiservice.otpverify(senddata).subscribe((res)=>{
-      console.log(res);
+
       if (res.status == "1") {
         this.toastrService.success(res.message);
       } else {

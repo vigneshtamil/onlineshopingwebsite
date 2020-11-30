@@ -22,7 +22,8 @@ export class WishlistComponent implements OnInit {
   constructor(private router: Router,
     public productService: ProductService,
     private apiservice: ApiservicesService,
-    private toastrService: ToastrService) {
+    private toastrService: ToastrService,
+    ) {
    // this.productService.wishlistItems.subscribe(response => this.products = response);
   }
 
@@ -37,12 +38,12 @@ export class WishlistComponent implements OnInit {
 
     if( this.localvalue == null || this.localvalue == '')
     {
+      this.router.navigate(['/home1'])
     this.nologin=true;
     }
     else{
       this.decoded = jwt_decode(this.localvalue);
-      console.log('this.localvalue');
-      console.log(this.localvalue);
+
       this.nologin=false;
       this.wishlistservice()
     }
@@ -50,7 +51,7 @@ export class WishlistComponent implements OnInit {
   wishlistservice() {
     var senddata = { "customer":this.decoded._id }
     this.apiservice.wishlistservice(senddata).subscribe((res) => {
-      console.log(res)
+
       if (res.status == "1") {
         this.cartshow = false;
         this.profileshow = true;
@@ -86,7 +87,7 @@ export class WishlistComponent implements OnInit {
       ]
     }
     this.apiservice.addtocartservice(senddata).subscribe((res) => {
-      console.log(res);
+
       if (res.status == "1") {
         this.toastrService.success(res.message);
         window.location.reload();

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ProductService } from 'src/app/ourpages/shared/product.service';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
 import jwt_decode from "jwt-decode";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -24,7 +25,8 @@ totalamount:number;
   constructor(
     public productService: ProductService,
     private apiservice: ApiservicesService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router
 
     ) {
    // this.productService.cartItems.subscribe(response => this.products = response);
@@ -37,12 +39,12 @@ totalamount:number;
 
     if( this.localvalue == null || this.localvalue == '')
     {
+      this.router.navigate(['/home1'])
     this.nologin=true;
     }
     else{
       this.decoded = jwt_decode(this.localvalue);
-      console.log('this.localvalue');
-      console.log(this.localvalue);
+
       this.nologin=false;
       this.cartlist()
     }
@@ -53,7 +55,7 @@ totalamount:number;
     //var senddata={"customer":"5fa8ebfd86d0290017ec3b9e"}
     var senddata={"customer":this.decoded._id}
 this.apiservice.cartlist(senddata).subscribe((res)=>{
-console.log(res)
+
 if(res.status == "1")
 {
   this.cartshow = false;
