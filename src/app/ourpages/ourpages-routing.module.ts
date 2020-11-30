@@ -15,6 +15,7 @@ import { PrivacyandpolicyComponent } from './privacyandpolicy/privacyandpolicy.c
 import { ContactusComponent } from './contactus/contactus.component';
 import { FaqComponent } from './faq/faq.component';
 import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
+import { ReviewComponent } from './review/review.component';
 
 const routes: Routes = [
   {path:'',component:DashboardComponent},
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path:'orderlist',component:OverallorderlistComponent},
   {path:'orderdetails',component:OrderdetailsComponent},
   {path:'contactus',component:ContactusComponent},
-  {path:'faq',component:FaqComponent}
+  {path:'faq',component:FaqComponent},
+  {path:'review',component:ReviewComponent}
   
   
 

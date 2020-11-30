@@ -69,11 +69,6 @@ export class BloglistComponent implements OnInit {
       }
       this.bloglist.blogview(send).subscribe(res=>{
         this.blogviewcount=res
-        if(res.status == "1")
-        {
-         
-        }
-
       })
     }
   }

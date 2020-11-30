@@ -11,6 +11,7 @@ export class ProductService {
   searchproductslist:string=''
   searchsubid:string=''
   cartItems: any;
+  reviewid:any
   constructor(private http: HttpClient) { }
 
   searchproducts(filterdata) {

@@ -26,6 +26,7 @@ export class ProductfullviewComponent implements OnInit {
   offer:string;
   amount:string;
   images:any[]
+  productid:any;
   // =[
   //   {src:'assets/images/product/placeholder.jpg',alt:'name'},
   //   {src:'assets/images/product/placeholder.jpg',alt:'name'},
@@ -42,7 +43,7 @@ export class ProductfullviewComponent implements OnInit {
  async bindproduct(filedata){
     await this.ProductService.getfullproductview(filedata).subscribe(res=>{
     console.log(res);
-    
+    this.productid=res.res['result'][0].productid;
     this.productname=res['result'][0].displayname;
     this.desc=res['result'][0].description;
     this.attributes=res['result'][0].attributes;
@@ -67,5 +68,9 @@ export class ProductfullviewComponent implements OnInit {
   // Decrement
   decrement() {
     if (this.counter > 1) this.counter-- ;
+  }
+  openreview(_id){
+    this.ProductService.reviewid=_id
+    this.router.navigate(['home1/review/'],{queryParams:{id:_id}})
   }
 }
