@@ -65,8 +65,7 @@ export class CheckoutComponent implements OnInit {
     }
     else{
       this.decoded = jwt_decode(this.localvalue);
-      console.log('this.localvalue');
-      console.log(this.localvalue);
+
       this.nologin=false;
       var senddata = {
         "mobileno": this.decoded.mobileno
@@ -74,7 +73,7 @@ export class CheckoutComponent implements OnInit {
       this.apiservice.useraddresslist(senddata).subscribe((res) => {
 
         this.addressdetails = res.useraddresslist
-        console.log(this.addressdetails)
+
       })
     }
 
@@ -83,7 +82,7 @@ export class CheckoutComponent implements OnInit {
   cartlist() {
     var senddata={"customer":this.decoded._id}
 this.apiservice.cartlist(senddata).subscribe((res)=>{
-console.log(res)
+
 if(res.status == "1")
 {
   this.products=res.cartlist
@@ -181,7 +180,7 @@ if(res.status == "1")
   }
 
     this.apiservice.placeorderapi(senddata).subscribe((res)=>{
-      console.log(res);
+
 
 if(res.status == "1")
 {

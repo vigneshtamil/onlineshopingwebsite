@@ -37,8 +37,7 @@ export class ProductboxOneComponent implements OnInit {
     }
     else{
       this.decoded = jwt_decode(this.localvalue);
-      console.log('this.localvalue');
-      console.log(this.localvalue);
+
       this.nologin=false;
 
     }
@@ -78,7 +77,7 @@ export class ProductboxOneComponent implements OnInit {
       ]
     }
     this.ProductService.addtocartservice(senddata).subscribe((res) => {
-      console.log(res);
+
       if (res.status == "1") {
         this.toastrService.success(res.message);
         window.location.reload();
@@ -105,7 +104,7 @@ export class ProductboxOneComponent implements OnInit {
       ]
     }
     this.ProductService.addtowishservice(senddata).subscribe((res) => {
-      console.log(res);
+
       if (res.status == "1") {
         this.toastrService.success(res.message);
         window.location.reload();

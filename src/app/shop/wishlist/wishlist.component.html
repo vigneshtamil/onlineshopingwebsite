@@ -1,3 +1,4 @@
+<app-breadcrumb [title]="'Wishlist'" [breadcrumb]="'Wishlist'"></app-breadcrumb>
 <!-- <app-breadcrumb [title]="'Wishlist'" [breadcrumb]="'Wishlist'"></app-breadcrumb> -->
 <h2 *ngIf="nologin">Please Login</h2>
 <!--section start-->
@@ -67,10 +68,10 @@
 
                             </td>
                             <td>
-                                <a href="javascript:void(0)" (click)="removeItem(product)" class="icon mr-3">
+                                <a (click)="removeItem(product)" class="icon mr-3">
                                     <i class="ti-close"></i>
                                 </a>
-                                <a href="javascript:void(0)" (click)="addToCart(product)" class="cart">
+                                <a (click)="addToCart(product)" class="cart">
                                     <i class="ti-shopping-cart"></i>
                                 </a>
                             </td>
@@ -82,8 +83,8 @@
         </div>
         <div class="row wishlist-buttons" *ngIf='profileshow'>
             <div class="col-12">
-                <a class="btn btn-solid">continue shopping</a>
-                <a [routerLink]="['/shop/checkout']" class="btn btn-solid">check out</a>
+                <a class="btn btn-solid" [routerLink]="['/home1']">continue shopping</a>
+                <a [routerLink]="['/shop/cart']" class="btn btn-solid">cart</a>
             </div>
         </div>
     </div>

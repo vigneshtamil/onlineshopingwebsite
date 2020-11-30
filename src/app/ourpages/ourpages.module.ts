@@ -34,12 +34,14 @@ import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 
 
 
+
 @NgModule({
-  declarations: [    
+  declarations: [
 
     OurpagesComponent, ProductlistComponent, ProductBoxFourComponent, BlogComponent, BloglistComponent, AppgridComponent, AppquickviewComponent, ProductfullviewComponent, DashboardComponent, AppsliderComponent, ProductboxOneComponent, DDUKGYComponent, AboutusbreadcrumbComponent, TNULMComponent, TNSRLMComponent, TermsandbugzComponent, PrivacyandpolicyComponent, SitemapComponent,LatestblogComponent, OverallorderlistComponent, ContactusComponent, FaqComponent, OrderdetailsComponent
   ],
   imports: [
+
     CommonModule,
     NgxPayPalModule,
     Ng5SliderModule,

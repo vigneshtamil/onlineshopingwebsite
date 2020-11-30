@@ -14,8 +14,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApiservicesService {
-//commenurl:String="http://localhost:3000"
-commenurl:String="http://208.109.8.9:3005"
+commenurl:String="http://localhost:3000"
+//commenurl:String="http://208.109.8.9:3005"
   invokeEvent: any;
   constructor(private http: HttpClient,private router:Router) { }
   private handleError<T>(operation = "operation", result?: T) {
@@ -104,7 +104,7 @@ commenurl:String="http://208.109.8.9:3005"
       );
   }
   addressremove(data: any): Observable<any> {
-    return this.http.post<any>(this.commenurl+'/user/addresslist', data, httpOptions)
+    return this.http.post<any>(this.commenurl+'/user/delete', data, httpOptions)
       .pipe(
         tap((c: any) => console.log(`sucessfully....`)),
         catchError(this.handleError<any>("falid......"))
@@ -157,5 +157,9 @@ commenurl:String="http://208.109.8.9:3005"
   }
   orderdetails(filterdata) {
     return this.http.post<any>(this.commenurl + `/admin/overallorderhistorydetail`,filterdata)
+  }
+
+  userprofiledetails(filterdata) {
+    return this.http.post<any>(this.commenurl + `/user/angular/detail`,filterdata)
   }
 }

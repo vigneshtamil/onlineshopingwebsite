@@ -5,6 +5,7 @@ import { Product } from "../../shared/classes/product";
 import { ApiservicesService } from 'src/app/services/apiservices.service';
 import { ToastrService } from 'ngx-toastr';
 import jwt_decode from "jwt-decode";
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',
@@ -35,29 +36,27 @@ export class WishlistComponent implements OnInit {
     this.localvalue = localStorage.getItem('loginresponse')
 
 
-    if( this.localvalue == null || this.localvalue == '')
-    {
-    this.nologin=true;
+    if (this.localvalue == null || this.localvalue == '') {
+      this.nologin = true;
     }
-    else{
+    else {
       this.decoded = jwt_decode(this.localvalue);
-      console.log('this.localvalue');
-      console.log(this.localvalue);
-      this.nologin=false;
+
+      this.nologin = false;
       this.wishlistservice()
     }
   }
   wishlistservice() {
-    var senddata = { "customer":this.decoded._id }
+    var senddata = { "customer": this.decoded._id }
     this.apiservice.wishlistservice(senddata).subscribe((res) => {
-      console.log(res)
+
       if (res.status == "1") {
         this.cartshow = false;
         this.profileshow = true;
         this.products = res.whishlist
 
       } else {
-        this.cartshow = false;
+        this.cartshow = true;
         this.profileshow = false;
       }
     })
@@ -86,7 +85,7 @@ export class WishlistComponent implements OnInit {
       ]
     }
     this.apiservice.addtocartservice(senddata).subscribe((res) => {
-      console.log(res);
+
       if (res.status == "1") {
         this.toastrService.success(res.message);
         window.location.reload();
@@ -106,21 +105,47 @@ export class WishlistComponent implements OnInit {
   }
 
   removeItem(product: any) {
-    var senddata = {
-      "customer": this.decoded._id,
-      "_id": product._id
-    }
-    this.apiservice.wishlistdelete(senddata).subscribe((res) => {
-      if (res.status == "1") {
-        this.toastrService.success(res.message);
 
-        this.wishlistservice()
-
-      }
-      else {
-        this.toastrService.error(res.message);
+    Swal.fire({
+      title: 'Are you sure want to remove?',
+      text: 'You will not be able to recover this file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+        var senddata = {
+          "customer": this.decoded._id,
+          "_id": product._id
+        }
+        this.apiservice.wishlistdelete(senddata).subscribe((res) => {
+          if (res.status == "1") {
+            this.toastrService.success(res.message);
+            this.wishlistservice()
+            Swal.fire(
+              'Deleted!',
+              'Your imaginary file has been deleted.',
+              'success'
+            )
+          }
+          else {
+            this.toastrService.error(res.message);
+          }
+        })
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
       }
     })
   }
+
+
+
+
+
 
 }

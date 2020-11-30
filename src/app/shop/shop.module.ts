@@ -45,7 +45,7 @@ import { SuccessComponent } from './checkout/success/success.component';
 
 @NgModule({
   declarations: [
-    ProductLeftSidebarComponent, 
+    ProductLeftSidebarComponent,
     ProductRightSidebarComponent,
     ProductNoSidebarComponent,
     ThreeColumnComponent,
@@ -80,6 +80,8 @@ import { SuccessComponent } from './checkout/success/success.component';
     InfiniteScrollModule,
     SharedModule,
     ShopRoutingModule
-  ]
+  ],
+  exports : [CartComponent]
+
 })
 export class ShopModule { }

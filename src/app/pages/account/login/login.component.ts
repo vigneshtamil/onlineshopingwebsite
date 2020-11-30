@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     this.apiservice.login(this.commonform.value).subscribe((res) => {
-      console.log(res)
+
       if (res.status == "1") {
         this.toastrService.success(res.message);
         this.formbuildergrp();
-console.log(res)
+
         localStorage.setItem('loginresponse', res.token);
       //  this.apiservice.callMethodOfSecondComponent();
        // alert(res.token)

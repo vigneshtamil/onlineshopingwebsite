@@ -31,8 +31,8 @@
         </li> -->
         <li class="onhover-div mobile-cart">
             <div>
-                <a [routerLink]="['/shop/wishlist']">
-                    <img src="assets/images/icon/wislist.png" [routerLink]="['/shop/wishlist']" class="img-fluid" alt="" style="height: 23px;width: 23px;">
+                <a (click)="wishlistclick()">
+                    <img src="assets/images/icon/wislist.png" class="img-fluid" alt="" style="height: 23px;width: 23px;">
                     <i class="ti-shopping-cart"></i>
                 </a>
             </div>
@@ -79,7 +79,7 @@
 
         <li class="onhover-div mobile-cart">
             <div>
-                <a [routerLink]="['/shop/cart']">
+                <a (click)="cartclick()">
                     <img src="assets/images/icon/cart.png" class="img-fluid" alt="" style="height: 23px;width: 23px;">
                     <i class="ti-shopping-cart"></i>
                 </a>

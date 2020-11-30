@@ -28,18 +28,18 @@ export class BloglistComponent implements OnInit {
     this.bindddlcategory()
     this.recentblog()
     this.popularblog()
-    
+
   }
   bindddlcategory() {
     this.bloglist.blogcatlistservice().subscribe(res => {
       if (res) {
         this.ddlcategory = res;
-        console.log(this.ddlcategory)
+
         var senddata = {
           "category": res[5]._id
         }
         this.bloglist.blogcattopenlist(senddata).subscribe(res => {
-          console.log(res);
+
           this.blogcatlist = res.bloglist
 
         })
@@ -51,14 +51,14 @@ export class BloglistComponent implements OnInit {
       "category": _id
     }
     this.bloglist.blogcattopenlist(senddata).subscribe(res => {
-      console.log(res);
+
       this.blogcatlist = res.bloglist
 
     })
   }
   openList(_id){
     if(_id==''){
-      
+
     }
     else{
       this.bloglist.blogid=_id
@@ -71,7 +71,7 @@ export class BloglistComponent implements OnInit {
         this.blogviewcount=res
         if(res.status == "1")
         {
-         
+
         }
 
       })
@@ -81,16 +81,16 @@ export class BloglistComponent implements OnInit {
     this.bloglist.blogrecent().subscribe(res=>{
         if(res){
           this.ddlrecent=res
-          console.log(this.ddlrecent)
+
           var data={
             "recent":res._id
           }
           this.bloglist.blgrec(data).subscribe(res => {
-            console.log(res);
+
             this.blogrecent = res.bloglist
-  
+
           })
-        } 
+        }
     })
   }
   recentbloglist(_id){
@@ -99,7 +99,7 @@ export class BloglistComponent implements OnInit {
       "recent":_id
     }
     this.bloglist.blgrec(data).subscribe(res => {
-      console.log(res);
+
       this.blogrecent = res.bloglist
 
 })
@@ -108,12 +108,12 @@ export class BloglistComponent implements OnInit {
     this.bloglist.blogpopular().subscribe(res=>{
       if(res){
         this.ddlpopular=res
-        console.log(this.ddlpopular)
+
         var dat={
           "popular":res._id
         }
         this.bloglist.blogpop(dat).subscribe(res=>{
-        console.log(res);
+
         this.blogpop=res.bloglist
         })
       }
@@ -125,7 +125,7 @@ export class BloglistComponent implements OnInit {
       "popular":_id
     }
     this.bloglist.blogpop(dat).subscribe(res=>{
-      console.log(res);
+
       this.blogpop=res.bloglist
   })
 }

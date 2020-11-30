@@ -31,6 +31,8 @@ export class ProductfullviewComponent implements OnInit {
   localvalue: string;
   nologin: boolean;
   decoded: any;
+  productids: any;
+
   // =[
   //   {src:'assets/images/product/placeholder.jpg',alt:'name'},
   //   {src:'assets/images/product/placeholder.jpg',alt:'name'},
@@ -40,8 +42,9 @@ export class ProductfullviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      console.log(params);
+
       this.bindproduct(params)
+      this.productids=params
     });
     this.localvalue = localStorage.getItem('loginresponse')
 
@@ -52,15 +55,14 @@ export class ProductfullviewComponent implements OnInit {
     }
     else {
       this.decoded = jwt_decode(this.localvalue);
-      console.log('this.localvalue');
-      console.log(this.localvalue);
+
       this.nologin = false;
 
     }
   }
   async bindproduct(filedata) {
     await this.ProductService.getfullproductview(filedata).subscribe(res => {
-      console.log(res);
+
 
       this.productname = res['result'][0].displayname;
       this.desc = res['result'][0].description;
@@ -99,14 +101,14 @@ export class ProductfullviewComponent implements OnInit {
       "customer": this.decoded._id,
       "productdetails": [
         {
-          "productid": products.productid,
-          "productinwardid": products._id,
+          "productid":  this.productids.productid,
+          "productinwardid":  this.productids.productinwardid,
           "qty": this.counter
         }
       ]
     }
     this.ProductService.addtocartservice(senddata).subscribe((res) => {
-      console.log(res);
+
       if (res.status == "1") {
         this.toastrService.success(res.message);
         window.location.reload();
@@ -126,14 +128,14 @@ export class ProductfullviewComponent implements OnInit {
       "customer": this.decoded._id,
       "productdetails": [
         {
-          "productid": products.productid,
-          "productinwardid": products._id,
+          "productid":  this.productids.productid,
+          "productinwardid":  this.productids.productinwardid,
           "qty": 1
         }
       ]
     }
     this.ProductService.addtowishservice(senddata).subscribe((res) => {
-      console.log(res);
+
       if (res.status == "1") {
         this.toastrService.success(res.message);
         window.location.reload();

@@ -11,15 +11,15 @@ export class DashboardComponent implements OnInit {
   public themeLogo: string = 'assets/images/icon/logo-13.png'; // Change Logo
   public products:any[] = [];
   public blogs:any[] = [];
-  
+
   public ProductSliderConfig: any = ProductSlider;
   constructor(public ProductService: ProductService,) {
     this.ProductService.latestproducts().subscribe(res => {
       this.products =res['latestproductlist'];
     });
     this.ProductService.latestblogs().subscribe(res => {
-      console.log(res);
-      
+
+
       this.blogs =res;
     });
    }
@@ -49,13 +49,13 @@ export class DashboardComponent implements OnInit {
   }, {
     image: 'assets/images/logos/15.png',
   }, {
-    image: 'assets/images/logos/16.png',        
+    image: 'assets/images/logos/16.png',
 }]
 // Collection banner
 public collections1 = [{
   image: 'assets/images/collection/pets/1.jpg',
   title: 'Clothes'
-}, 
+},
 {
   image: 'assets/images/collection/pets/2.jpg',
   title: 'Groom'

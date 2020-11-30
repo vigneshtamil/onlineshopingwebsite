@@ -28,7 +28,7 @@ public orderdetails:[]
       }
       this.ProductService.orderdetails(data).subscribe(res=>{
         if(res['status']==1){
-          console.log(res);
+
           this.orderdetails=res
           this.orderid=res.orderid;
           this.orderdate=res.orderdate;
@@ -43,7 +43,7 @@ public orderdetails:[]
           this.mobileno=res.mobileno;
 
         }else{
-          console.log(res['message']);          
+
         }
       })
     });

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
 import jwt_decode from "jwt-decode";
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -13,21 +15,52 @@ export class ProfileComponent implements OnInit {
   commonform: FormGroup;
   addressform:FormGroup;
   decoded:any;
+  usrdetails: any;
   constructor(
     private formBuilder: FormBuilder,
     private apiservice: ApiservicesService,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService,
+    private router: Router) { }
 
   ngOnInit(): void {
    // alert()
-    this.localvalue = localStorage.getItem('loginresponse')
-    this.decoded = jwt_decode(this.localvalue);
-    console.log(this.decoded)
-    console.log(this.localvalue)
-    this.formbuildergrp();
-    this.addressformgroup()
+   this.localvalue = localStorage.getItem('loginresponse')
+    if( this.localvalue == null || this.localvalue == '')
+    {
+      if (this.localvalue == null || this.localvalue == '') {
+        this.router.navigate(['/home1'])
+      }
+
+    }
+    else{
+      this.localvalue = localStorage.getItem('loginresponse')
+      this.decoded = jwt_decode(this.localvalue);
+      this.formbuildergrp();
+      this.addressformgroup();
+      this.userdetails()
+    }
 
   }
+userdetails(){
+console.log(this.decoded);
+var senddata = {
+  "mobileno":this.decoded.mobileno
+}
+this.apiservice.userprofiledetails(senddata).subscribe((res)=>{
+
+
+
+console.log(this.usrdetails);
+this.commonform.patchValue({
+  usrname: res[0].customername,
+  mobileno:res[0].mobileno,
+  email:res[0].email,
+  gender:res[0].gender,
+})
+})
+
+}
+
   formbuildergrp() {
     this.commonform = this.formBuilder.group({
       usrname: ['', [Validators.required]],
@@ -48,35 +81,70 @@ addressformgroup(){
     state: ['', [Validators.required]],
     county: ['', [Validators.required]],
     pincode: ['', [Validators.required]],
-    mobileno: "8925091019",
+    mobileno: this.decoded.mobileno,
   });
 }
 
   onSubmit() {
+if(this.commonform.invalid)
+{
+  this.toastrService.error("Plese fill form...");
+return false;
+}
+
     var senddata = [
       {
         "gender": this.commonform.value.gender,
-        "mobileno": this.commonform.value.mobileno,
+        "mobileno": this.decoded.mobileno,
         "email": this.commonform.value.email,
         "imagepath": "image",
         "usrname": this.commonform.value.usrname,
       }
 
     ]
-    this.apiservice.profileupdate(senddata).subscribe((res) => {
-      console.log(res)
-      if (res.status == 1) {
-        this.toastrService.success(res.message);
-        this.formbuildergrp();
-      } else {
-        this.toastrService.error(res.message);
+
+    Swal.fire({
+      title: 'Are you sure want to remove?',
+      text: 'You will not be able to recover this file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+
+      if (result.value) {
+
+        this.apiservice.profileupdate(senddata).subscribe((res) => {
+
+          if (res.status == 1) {
+            this.toastrService.success(res.message);
+            this.formbuildergrp();
+            this.ngOnInit()
+            Swal.fire(
+              'Saved!',
+              'Your imaginary file has been saved.',
+              'success'
+            )
+          } else {
+            this.toastrService.error(res.message);
+          }
+        })
+
+      }
+      else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
       }
     })
+
   }
   onAddressSubmit()
   {
 this.apiservice.addressupdate(this.addressform.value).subscribe((res)=>{
-  console.log(res)
+
   if (res.status == 1) {
     this.toastrService.success(res.message);
     this.addressformgroup();
@@ -90,4 +158,21 @@ this.apiservice.addressupdate(this.addressform.value).subscribe((res)=>{
   ToggleDashboard() {
     this.openDashboard = !this.openDashboard;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

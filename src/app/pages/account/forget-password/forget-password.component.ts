@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
 import jwt_decode from "jwt-decode";
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-forget-password',
   templateUrl: './forget-password.component.html',
@@ -12,38 +14,56 @@ export class ForgetPasswordComponent implements OnInit {
   decoded: any;
   localvalue: string;
   constructor(private formBuilder: FormBuilder,
-    private apiservice:ApiservicesService) { }
+    private apiservice:ApiservicesService,
+    private toastrService: ToastrService,
+    private router: Router) { }
 
   ngOnInit(): void {
 
     this.localvalue = localStorage.getItem('loginresponse')
     this.decoded = jwt_decode(this.localvalue);
-    console.log(this.decoded)
-    this.formbuildergrp();
+
+    if( this.localvalue == null || this.localvalue == '')
+    {
+      this.router.navigate(['/home1'])
+
+    }
+    else{
+      this.decoded = jwt_decode(this.localvalue);
+
+      this.formbuildergrp();
+    }
+
   }
 
   formbuildergrp()
   {
     this.commonform = this.formBuilder.group({
-      mobileno: ['', [Validators.required]],
+      mobileno: this.decoded.mobileno,
       oldpassword: ['', [Validators.required]],
-      newpassword: ['', [Validators.required]]
+      newpassword: ['', [Validators.required]],
+      conpassword: ['', [Validators.required]]
     });
   }
   onSubmit()
   {
-this.apiservice.forgetpassword(this.commonform .value).subscribe((res)=>{
-  console.log(res);
 
-  if(res.status == "1")
-  {
-alert(res.message);
-  }
-  else{
-    alert(res.message);
-   }
+    if(this.commonform .value.newpassword == this.commonform .value.conpassword)
+    {
+      this.apiservice.forgetpassword(this.commonform .value).subscribe((res)=>{
+        if(res.status == "1")
+        {
+          this.toastrService.success(res.message);
+        }
+        else{
+          this.toastrService.error(res.message);
+         }
+      })
+    }
+    else{
+      this.toastrService.error("password does not match...");
+    }
 
-})
   }
 
   public openDashboard: boolean = false;

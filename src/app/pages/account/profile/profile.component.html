@@ -26,7 +26,7 @@
                             <li><a [routerLink]="['/user/addresslist']">Address Book</a></li>
                             <!-- <li><a href="javascript:void(0)">My Account</a></li> -->
                             <li><a [routerLink]="['/user/changepassword']">Change Password</a></li>
-                            <li class="last"><a href="javascript:void(0)">Log Out</a></li>
+                            <!-- <li class="last"><a href="javascript:void(0)">Log Out</a></li> -->
                         </ul>
                     </div>
                 </div>
@@ -61,11 +61,16 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="mobileno">Mobile Number</label>
-                                                            <input type="text" formControlName="mobileno" class="form-control" id="mobileno" placeholder="Enter Mobile Number" required="">
+                                                            <input type="text" formControlName="mobileno" class="form-control" id="mobileno" placeholder="Enter Mobile Number" readonly required="">
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6 select_input">
                                                             <label for="gender">Gender</label>
-                                                            <input type="text" formControlName="gender" class="form-control" id="gender" placeholder="Enter your Gender" required="">
+                                                            <!-- <input type="text" formControlName="gender" class="form-control" id="gender" placeholder="Enter your Gender" required=""> -->
+                                                            <select class="form-control" formControlName="gender" size="1">
+                                                        <option selected="selected">Select Gender</option>
+                                                         <option value="male">Male</option>
+                                                         <option value="female">Female</option>
+                                                       </select>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="email">Email</label>

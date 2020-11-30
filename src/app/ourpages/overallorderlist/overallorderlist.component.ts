@@ -23,8 +23,8 @@ public orderlist : any[]=[]
       if(res['status']='1'){
         this.orderlist=res['orderlist']
       }else{
-        console.log(res['meaasge']);
-        
+
+
       }
     })
   }
