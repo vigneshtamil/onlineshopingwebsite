@@ -51,8 +51,8 @@ export class ProductBoxFourComponent implements OnInit {
       "productdetails": [
         {
           "productid": products.productid,
-          "productinwardid": products._id,
-          "productinwarddetailsid":products.productinwarddetailsid,
+          "productinwardid": products.productinwardid,
+          "productinwarddetailsid":products._id,
           "qty": 1
         }
       ]
@@ -69,6 +69,8 @@ export class ProductBoxFourComponent implements OnInit {
     })
   }
   wishlist(products) {
+    console.log(products);
+
     if (this.localvalue == null || this.localvalue == '') {
 
       alert("Please login...")
@@ -79,8 +81,8 @@ export class ProductBoxFourComponent implements OnInit {
       "productdetails": [
         {
           "productid": products.productid,
-          "productinwardid": products._id,
-          "productinwarddetailsid":products.productinwarddetailsid,
+          "productinwardid": products.productinwardid,
+          "productinwarddetailsid":products._id,
           "qty": 1
         }
       ]

@@ -94,7 +94,7 @@ import { RevieworderComponent } from './revieworder/revieworder.component';
 
   ],
   imports: [
-  
+
     CommonModule,
     GalleryModule.forRoot(),
     SharedModule,

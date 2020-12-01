@@ -71,8 +71,8 @@ export class ProductboxOneComponent implements OnInit {
       "productdetails": [
         {
           "productid": products.productid,
-          "productinwardid": products._id,
-          "productinwarddetailsid":products.productinwarddetailsid,
+          "productinwardid": products.productinwardid,
+          "productinwarddetailsid":products._id,
           "qty": 1
         }
       ]
@@ -99,8 +99,8 @@ export class ProductboxOneComponent implements OnInit {
       "productdetails": [
         {
           "productid": products.productid,
-          "productinwardid": products._id,
-          "productinwarddetailsid":products.productinwarddetailsid,
+          "productinwardid": products.productinwardid,
+          "productinwarddetailsid":products._id,
           "qty": 1
         }
       ]

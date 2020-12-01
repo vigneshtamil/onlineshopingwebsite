@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {ProductService} from '../../ourpages/shared/product.service';
 import { Product } from '../../shared/classes/product';
+
 @Component({
   selector: 'app-orderdetail',
   templateUrl: './orderdetail.component.html',
@@ -32,10 +33,10 @@ public orderdetails:[]
   modelpopupproduct:any;
   selectedValue: number = 0;
 
-  
+
 
   ngOnInit(): void {
-   
+
     this.uploadForm = this.formBuilder.group({
       _id:[''],
       title: ['', [Validators.required]],
@@ -49,7 +50,7 @@ public orderdetails:[]
       }
       this.ProductService.orderdetails(data).subscribe(res=>{
         console.log(res);
-        
+
         if(res['status']==1){
           this.orderdetails=res
           this.orderid=res.orderid;

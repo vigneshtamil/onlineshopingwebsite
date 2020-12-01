@@ -108,8 +108,8 @@ export class ProductfullviewComponent implements OnInit {
       "productdetails": [
         {
           "productid":  this.productids.productid,
-          "productinwardid":  this.productids.productinwardid,
-          "productinwarddetailsid":products.productinwarddetailsid,
+          "productinwardid": products.productinwardid,
+          "productinwarddetailsid":products._id,
           "qty": this.counter
         }
       ]
@@ -136,8 +136,8 @@ export class ProductfullviewComponent implements OnInit {
       "productdetails": [
         {
           "productid":  this.productids.productid,
-          "productinwardid":  this.productids.productinwardid,
-          "productinwarddetailsid":products.productinwarddetailsid,
+          "productinwardid": products.productinwardid,
+          "productinwarddetailsid":products._id,
           "qty": 1
         }
       ]
