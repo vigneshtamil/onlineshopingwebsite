@@ -81,8 +81,8 @@ export class WishlistComponent implements OnInit {
         {
           "productid": product.productid,
           "productinwardid": product.productinwardid,
-          "productinwarddetailsid":product.productinwarddetailsid
-          
+          "productinwarddetailsid":product._id,
+
         }
       ]
     }

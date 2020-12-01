@@ -47,7 +47,7 @@ import { ProfilecartComponent } from './account/profilecart/profilecart.componen
 import { OrderlistComponent } from './orderlist/orderlist.component';
 import { OrderdetailComponent } from './orderdetail/orderdetail.component';
 import { RevieworderComponent } from './revieworder/revieworder.component';
-import {StarRatingModule} from 'angular-star-rating';
+
 @NgModule({
   declarations: [
 
@@ -94,7 +94,7 @@ import {StarRatingModule} from 'angular-star-rating';
 
   ],
   imports: [
-    StarRatingModule.forRoot(),
+
     CommonModule,
     GalleryModule.forRoot(),
     SharedModule,
