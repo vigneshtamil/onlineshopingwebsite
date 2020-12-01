@@ -175,10 +175,12 @@
                 </ul>
                 <div class="row">
                     <div class="col-sm-12">
+
                         <ul class="list-inline rating-list" *ngFor="let star of stars; let i= index" style="display: inline-block">
                             <li (click)="countStar(star)" id="{{'starId'+i}}" [ngClass]="{'selected': (star <= selectedValue)}" (mouseover)="addClass(star)" (mouseout)="removeClass(star)"> ★
                             </li>
                         </ul>
+
                     </div>
                 </div>
                 <div class="row">
@@ -198,49 +200,9 @@
                     </div>
                 </div>
             </div>
-            <div class="row container">
-                <div style="text-align:center">
-                    <!-- <star-rating-comp [starType]="'icon'"></star-rating-comp> -->
-                </div>
-            </div>
-            <!-- <div class="row container">
-                <div class="col-md-6">
-                    <div class="form-gorup">
-                        <label>Title :<span class="text-danger">*</span></label>
-                        <input type="text" formControlName="englishtitle" autocomplete="OFF" name="englishtitle" class="form-control" [ngClass]="{'is-invalid': formsubmit && formData.englishtitle.errors}">
-                        <div *ngIf="formsubmit && formData.englishtitle.errors" class="invalid-tooltip">
-                            <span *ngIf="formData.englishtitle.errors.required">title  is requierd</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-gorup">
-                        <label>Description:<span class="text-danger">*</span></label>
-                        <input type="text" formcontolname="description" autocomplete="OFF" name="description" class="form-control" [ngClass]="{'is-invalid': formsubmit && formData.description.errors}">
-                        <div *ngIf="formsubmit && formData.description.errors" class="invalid-tooltip">
-                            <span *ngIf="formData.description.errors.required">description  is requierd</span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- <div class="row container">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="img-container">
-                                <div class="form-group">
-                                    <label>Product image : <span class="text-danger">*</span></label>
-                                    <input class="form-control" accept="image/*" type="file" (change)="fileChangeEvent($event)" />
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div> -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-                <button class="btn btn-primary" type="submit">Save</button>
+                <button type="button" (click)="formsubmit()" (click)="modal.close('Close click')" class="btn btn-primary">Save</button>
             </div>
         </form>
     </div>

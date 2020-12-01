@@ -49,6 +49,8 @@ export class ProductService {
   }
   orderdetails(data) {
     return this.http.post<any>(this.apiurl + `/admin/overallorderhistorydetail`, data)
-
+  }
+  reviewadd(data){
+    return this.http.post<any>(this.apiurl + `/admin/order/review`, data)
   }
 }

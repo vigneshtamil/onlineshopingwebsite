@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {ProductService} from '../../ourpages/shared/product.service';
 import { Product } from '../../shared/classes/product';
-import { StarRatingComponent } from 'ng-starrating';
 @Component({
   selector: 'app-orderdetail',
   templateUrl: './orderdetail.component.html',
@@ -14,6 +13,7 @@ import { StarRatingComponent } from 'ng-starrating';
 export class OrderdetailComponent implements OnInit {
   stars: number[] = [1, 2, 3, 4, 5];
 public orderdetails:[]
+  toastr: any;
   constructor(private route: ActivatedRoute, private router: Router,public ProductService:ProductService,    private modalService: NgbModal,
     private formBuilder: FormBuilder, private httpClient: HttpClient) { }
   orderid:string;
@@ -40,6 +40,7 @@ public orderdetails:[]
       _id:[''],
       title: ['', [Validators.required]],
       description:[''],
+      starrte:['']
       // ordernumber:['']
     });
     this.route.queryParams.subscribe(params => {
@@ -115,27 +116,30 @@ public orderdetails:[]
     return this.uploadForm.controls;
   }
   formsubmit() {
-    // var date = new Date()
-    // let year = date.getFullYear();
-    // let month = date.getMonth();
-    // let day = date.getDay();
-    // let hours = date.getHours();
-    // let minutes = date.getMinutes();
-    // let seconds = date.getSeconds();
-    // let finaldate = (year + '-' + month + '-' + day + '-' + hours + '-' + minutes + '-' + seconds)
-    // const formData: FormData = new FormData();
-    // formData.append('_id',this.uploadForm.value._id);
-    // formData.append('agentimage', this.fileToUpload, finaldate );
-    // formData.append('englishtitle',  this.uploadForm.value.englishtitle);
-    // formData.append('description',  this.uploadForm.value.description);
-    // this.apiservice.reviewadd(formData).subscribe(res => {
-    //   if (res['status'] == 'success') {
-    //     this.modalService.dismissAll()
-    //     this.ngOnInit();
-    //    }
-    //    else {
-    //     this.toastr.error(res['message'])
-    //   }
-    // })
+    var date = new Date()
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    let day = date.getDay();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    let finaldate = (year + '-' + month + '-' + day + '-' + hours + '-' + minutes + '-' + seconds)
+    const formData: FormData = new FormData();
+    formData.append('_id',this.uploadForm.value._id);
+    formData.append('orderid',this.uploadForm.value.orderid);
+    formData.append('title',  this.uploadForm.value.title);
+    formData.append('description',  this.uploadForm.value.description);
+    formData.append('defectiveimg',this.fileToUpload);
+    this.ProductService.reviewadd(formData).subscribe(res => {
+      if (res['status'] ==1) {
+        // this.toastr.success(res.message, 'Sucess....')
+        this.modalService.dismissAll()
+        this.uploadForm.reset();
+        this.ngOnInit();
+       }
+       else {
+        // this.toastr.error(res['message'])
+      }
+    })
   }
 }
