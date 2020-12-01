@@ -52,6 +52,7 @@ export class ProductBoxFourComponent implements OnInit {
         {
           "productid": products.productid,
           "productinwardid": products._id,
+          "productinwarddetailsid":products.productinwarddetailsid,
           "qty": 1
         }
       ]
@@ -79,6 +80,7 @@ export class ProductBoxFourComponent implements OnInit {
         {
           "productid": products.productid,
           "productinwardid": products._id,
+          "productinwarddetailsid":products.productinwarddetailsid,
           "qty": 1
         }
       ]

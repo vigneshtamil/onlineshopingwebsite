@@ -1,5 +1,4 @@
-<app-breadcrumb [title]="'Profile'" [breadcrumb]="'Profile'"></app-breadcrumb>
-
+<app-breadcrumb [title]="'orders'" [breadcrumb]="'orderlist'"></app-breadcrumb>
 <!-- section start -->
 <section class="section-b-space">
     <div class="container">
@@ -18,9 +17,9 @@
                     </div>
                     <div class="block-content">
                         <ul>
-                            <li class="active"><a [routerLink]="[ '/user/profile']">Account Info</a></li>
+                            <li><a [routerLink]="[ '/user/profile']">Account Info</a></li>
                             <li><a [routerLink]="[ '/user/addressbook']">Address Add</a></li>
-                            <li><a [routerLink]="[ '/user/orderlist']">My Orders</a></li>
+                            <li class="active"><a [routerLink]="[ '/user/orderlist']">My Orders</a></li>
                             <li><a [routerLink]="[ '/user/profilecart']">My Cart</a></li>
                             <li><a [routerLink]="[ '/user/profilewishlist']">My Wishlist</a></li>
                             <li><a [routerLink]="['/user/addresslist']">Address Book</a></li>
@@ -60,7 +59,32 @@
                                 </section>
                                 <!-- Section ends -->
                                 <!-- address section start -->
-
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-border">
+                                                <thead>
+                                                    <th>Sno</th>
+                                                    <th>Order ID</th>
+                                                    <th>Order Date</th>
+                                                    <th>Order Status</th>
+                                                    <th>Payment Type</th>
+                                                    <th>Total</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let or of orderlist;let i=index" (click)="redirectorderdetails(or._id)">
+                                                        <td>{{i+1}}</td>
+                                                        <td>{{or.orderid}}</td>
+                                                        <td>{{or.orderdate}}</td>
+                                                        <td>{{or.orderstatus}}</td>
+                                                        <td>{{or.paymenttype}}</td>
+                                                        <td><i class="fa fa-inr"></i>{{or.totalamount}}&nbsp; For {{or.producttotalcount}} Item(s)</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!-- Section ends -->
                             </div>
                             <div>

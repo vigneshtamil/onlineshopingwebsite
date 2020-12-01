@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../shared/product.service'
+import { ProductService } from '../../ourpages/shared/product.service'
 import jwt_decode from "jwt-decode";
 @Component({
-  selector: 'app-overallorderlist',
-  templateUrl: './overallorderlist.component.html',
-  styleUrls: ['./overallorderlist.component.scss']
+  selector: 'app-orderlist',
+  templateUrl: './orderlist.component.html',
+  styleUrls: ['./orderlist.component.scss']
 })
-export class OverallorderlistComponent implements OnInit {
+export class OrderlistComponent implements OnInit {
 public orderlist : any[]=[]
   localvalue: string;
   decoded: any;
@@ -16,23 +16,16 @@ public orderlist : any[]=[]
   ) { }
 
   ngOnInit(): void {
-
     this.localvalue = localStorage.getItem('loginresponse')
-
-
     if (this.localvalue == null || this.localvalue == '') {
   alert("Please login")
     }
     else {
       this.decoded = jwt_decode(this.localvalue);
-
-   
-      this.getorderlist()
+   this.getorderlist()
     }
-    
   }
   getorderlist() {
-
     var data = {
       customerid:  this.decoded._id
     }
@@ -40,12 +33,17 @@ public orderlist : any[]=[]
       if(res['status']='1'){
         this.orderlist=res['orderlist']
       }else{
-
-
       }
     })
   }
   redirectorderdetails(id) {
-    this.router.navigate(['/home1/orderdetails'], { queryParams: { orderid: id} })
+    this.router.navigate(['/user/orderdetail'], { queryParams: { orderid: id} })
   }
+  public openDashboard: boolean = false;
+
+  ToggleDashboard() {
+    this.openDashboard = !this.openDashboard;
+  }
+
 }
+

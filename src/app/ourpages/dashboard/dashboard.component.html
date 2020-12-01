@@ -1,6 +1,6 @@
 <!-- Home slider start-->
 <section class="p-0">
-    <app-appslider [sliders]="sliders" [textClass]="'text-center'" [category]="'pets'" [buttonText]="'shop now'">
+    <app-appslider [textClass]="'text-center'">
     </app-appslider>
 </section>
 <!-- Home slider End -->
@@ -54,11 +54,11 @@
 <!-- Product slider end -->
 <!-- Parallax banner -->
 <section class="p-0 pet-parallax">
-    <div class="full-banner parallax parallax-banner19  text-center p-center" [ngStyle]="{'background-image': 'url(assets/images/parallax/6.jpg)'}">
+    <div class="full-banner parallax parallax-banner19  text-center p-center" [ngStyle]="{'background-image': 'url(assets/images/salemmathi/salematibanner.jpg)'}">
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="banner-contain">
+                    <!-- <div class="banner-contain">
                         <h4>choose what you love</h4>
                         <h3>get upto 70% off</h3>
                         <p>
@@ -67,13 +67,13 @@
                         <a [routerLink]="['/shop/collection/left/sidebar']" [queryParams]="{ category: 'pets'}" class="btn btn-solid black-btn">
                            shop now
                         </a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
-        <div class="pet-decor">
+        <!-- <div class="pet-decor">
             <img src="assets/images/dog.png" alt="" class="img-fluid">
-        </div>
+        </div> -->
     </div>
 </section>
 <!-- Parallax banner end -->
@@ -90,7 +90,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <app-latestblog [blogs]="blogs"></app-latestblog>
+                <app-latestblog [blogs]="blogs" [routerLink]="['/home1/bloglist']"></app-latestblog>
             </div>
         </div>
     </div>

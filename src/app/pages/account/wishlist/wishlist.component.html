@@ -9,7 +9,7 @@
             <h4>Explore more shortlist some items.</h4>
         </div>
         <div class="row" *ngIf='profileshow'>
-            <div class="col-sm-12">
+            <div class="col-sm-3">
                 <table class="table cart-table table-responsive-xs">
                     <thead>
                         <tr class="table-head">
@@ -53,7 +53,7 @@
                             </td>
                             <td>
                                 <h2>
-                                    ₹ {{product.rate }}
+                                    <i class="fa fa-inr"></i> {{product.rate | currency:"INR":""}}
                                 </h2>
                             </td>
                             <td *ngIf="product.exsistingqty == 0">
@@ -81,7 +81,7 @@
             </div>
         </div>
         <div class="row wishlist-buttons" *ngIf='profileshow'>
-            <div class="col-12">
+            <div class="col-9">
                 <a class="btn btn-solid">continue shopping</a>
                 <a [routerLink]="['/shop/checkout']" class="btn btn-solid">check out</a>
             </div>

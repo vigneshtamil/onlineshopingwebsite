@@ -65,7 +65,6 @@ export class ProductfullviewComponent implements OnInit {
  async bindproduct(filedata){
     await this.ProductService.getfullproductview(filedata).subscribe(res=>{
     console.log(res);
-    this.productids=res.res['result'][0].productid;
     this.productname=res['result'][0].displayname;
     this.desc=res['result'][0].description;
     this.attributes=res['result'][0].attributes;
@@ -110,6 +109,7 @@ export class ProductfullviewComponent implements OnInit {
         {
           "productid":  this.productids.productid,
           "productinwardid":  this.productids.productinwardid,
+          "productinwarddetailsid":products.productinwarddetailsid,
           "qty": this.counter
         }
       ]
@@ -137,6 +137,7 @@ export class ProductfullviewComponent implements OnInit {
         {
           "productid":  this.productids.productid,
           "productinwardid":  this.productids.productinwardid,
+          "productinwarddetailsid":products.productinwarddetailsid,
           "qty": 1
         }
       ]

@@ -37,6 +37,9 @@ import { AddressbookComponent } from './account/addressbook/addressbook.componen
 import { AddresslistComponent } from './account/addresslist/addresslist.component';
 import { ProfilecartComponent } from './account/profilecart/profilecart.component';
 import { ProfilewishlistComponent } from './account/profilewishlist/profilewishlist.component';
+import { OrderlistComponent } from './orderlist/orderlist.component';
+import { RevieworderComponent } from './revieworder/revieworder.component';
+import { OrderdetailComponent } from './orderdetail/orderdetail.component';
 
 
 const routes: Routes = [
@@ -186,6 +189,18 @@ const routes: Routes = [
   {
     path: 'portfolio/masonry/full-width',
     component: MasonryFullWidthComponent
+  },
+  {
+    path: 'orderlist',
+    component: OrderlistComponent
+  },
+  {
+    path: 'orderdetail',
+    component: OrderdetailComponent
+  },
+  {
+    path: 'revieworder',
+    component: RevieworderComponent
   }
 ];
 

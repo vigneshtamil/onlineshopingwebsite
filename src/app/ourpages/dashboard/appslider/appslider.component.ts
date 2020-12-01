@@ -6,7 +6,11 @@ import { HomeSlider } from '../../../shared/data/slider';
   styleUrls: ['./appslider.component.scss']
 })
 export class AppsliderComponent implements OnInit {
-  @Input() sliders: any[];
+ sliders: any[]=[
+   {
+     "image":"assets/images/salemmathi/salematibanner.jpg"
+   }
+ ]
   @Input() class: string;
   @Input() textClass: string;
   @Input() category: string;

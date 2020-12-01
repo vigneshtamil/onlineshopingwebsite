@@ -1,0 +1,249 @@
+<app-breadcrumb [title]="'orders'" [breadcrumb]="'orderlist'">
+
+
+
+
+
+</app-breadcrumb>
+
+
+
+
+<!-- section start -->
+<section class="section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="account-sidebar" (click)="ToggleDashboard()">
+                    <a hre="javascript:void(0)" class="popup-btn">
+                        my account
+                    </a>
+                </div>
+                <div class="dashboard-left" [class.open]="openDashboard">
+                    <div class="collection-mobile-back" (click)="ToggleDashboard()">
+                        <span class="filter-back">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i> back
+                        </span>
+                    </div>
+                    <div class="block-content">
+                        <ul>
+                            <li><a [routerLink]="[ '/user/profile']">Account Info</a></li>
+                            <li><a [routerLink]="[ '/user/addressbook']">Address Add</a></li>
+                            <li class="active"><a [routerLink]="[ '/user/orderlist']">My Orders</a></li>
+                            <li><a [routerLink]="[ '/user/profilecart']">My Cart</a></li>
+                            <li><a [routerLink]="[ '/user/profilewishlist']">My Wishlist</a></li>
+                            <li><a [routerLink]="['/user/addresslist']">Address Book</a></li>
+                            <!-- <li><a href="javascript:void(0)">My Account</a></li> -->
+                            <li><a [routerLink]="['/user/changepassword']">Change Password</a></li>
+                            <!-- <li class="last"><a href="javascript:void(0)">Log Out</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="dashboard-right">
+                    <div class="dashboard">
+                        <!-- <div class="page-title">
+                            <h2>My Dashboard</h2>
+                        </div> -->
+                        <!-- <div class="welcome-msg">
+                            <p>Hello, MARK JECNO !</p>
+                            <p>From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.</p>
+                        </div> -->
+                        <div class="box-account box-info">
+                            <!-- <div class="box-head">
+                                <h2>Account Information</h2>
+                            </div> -->
+                            <div class="row">
+                                <!-- section end -->
+                                <!-- personal deatail section start -->
+                                <section class="contact-page register-page">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h3>Order</h3>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- Section ends -->
+                                <!-- address section start -->
+                                <div class="container">
+                                    <div class="card mb-1">
+                                        <div class="card-body">
+                                            <h4 class="card-title">{{orderid}} <button [routerLink]="['/user/orderlist']" routerLinkActive="router-link-active" class="btn btn-sm btn-default float-right">Back to List</button></h4>
+                                            <hr class="style3">
+                                            <p>Was placed on {{orderdate}} </p>
+
+                                        </div>
+                                        <table class="table table-bordered text-center">
+                                            <thead>
+                                                <th>Product</th>
+                                                <th>Total</th>
+                                                <th>Review</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let pr of productlist">
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <img [src]="ProductService.apiurl + pr.productimg" style="height: 75px;" class="img-fluid img-thumbnail text-center  avatar-md" alt="">
+                                                            </div>
+                                                            <div class="col-md-9">
+                                                                <h5>{{pr.productname}}</h5>
+                                                                <p>{{pr.qty}}X{{pr.rate}}</p>
+                                                            </div>
+                                                        </div>
+
+                                                    </td>
+                                                    <td>{{pr.producttotalrate}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm float-right mt-0 btn-primary" (click)="openModal(content,pr)">review</button>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td>
+                                                        <p class="float-right">Total</p>
+                                                    </td>
+                                                    <td>{{totalamount}}</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                        <div class="row">
+                                            <div class="col-md-8"></div>
+                                            <div class="col-md-4 ">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">{{customername}}</h4>
+                                                        <div class="row">
+                                                            <div class="col-md-8">
+                                                                <p>{{addressname}},{{addresslineone}}</p>
+                                                                <p>{{landmark}},{{city}}</p>
+                                                                <p>{{state}}</p>
+                                                                <span>Phone Number</span>
+                                                                <p>{{mobileno}}</p>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Section ends -->
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <div class="card-header bg-white">
+    <h4 class="card-title">
+    </h4>
+</div> -->
+
+<ng-template #content role="document" let-modal>
+    <div class="modal-header">
+
+    </div>
+    <div class="modal-body">
+        <!-- <input type="file" accept="image/*" #file (change)="fileChangeEvent($event)"> -->
+        <form [formGroup]="uploadForm" (ngSubmit)="formsubmit()">
+            <div class="theme-card">
+                <h4>Product details</h4>
+                <ul class="recent-blog">
+                    <li>
+                        <div class="media" style="display:flex;">
+                            <img class="img-fluid" [src]="ProductService.apiurl + modelpopupproduct.productimg" style="height: 75px;" class="img-fluid img-thumbnail text-center  avatar-md" alt=""><br>
+                            <div class="media-body align-self-center">
+                                <h6 style="font-size: 15px;padding: 4px;">Title: {{modelpopupproduct.productname}}</h6>
+                                <p style="font-size: 15px;padding: 4px;">Price: {{modelpopupproduct.rate}}</p>
+                            </div><br>
+                        </div>
+                    </li>
+                </ul>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="list-inline rating-list" *ngFor="let star of stars; let i= index" style="display: inline-block">
+                            <li (click)="countStar(star)" id="{{'starId'+i}}" [ngClass]="{'selected': (star <= selectedValue)}" (mouseover)="addClass(star)" (mouseout)="removeClass(star)"> ★
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-gorup">
+                            <label style="font-size: 15px;padding: 4px;">Title :</label>
+                            <input type="text" name="title" formControlName="title" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-gorup">
+                            <label style="font-size: 15px;padding: 4px;">Description :</label>
+                            <textarea type="text" name="description" formControlName="description" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row container">
+                <div style="text-align:center">
+                    <!-- <star-rating-comp [starType]="'icon'"></star-rating-comp> -->
+                </div>
+            </div>
+            <!-- <div class="row container">
+                <div class="col-md-6">
+                    <div class="form-gorup">
+                        <label>Title :<span class="text-danger">*</span></label>
+                        <input type="text" formControlName="englishtitle" autocomplete="OFF" name="englishtitle" class="form-control" [ngClass]="{'is-invalid': formsubmit && formData.englishtitle.errors}">
+                        <div *ngIf="formsubmit && formData.englishtitle.errors" class="invalid-tooltip">
+                            <span *ngIf="formData.englishtitle.errors.required">title  is requierd</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-gorup">
+                        <label>Description:<span class="text-danger">*</span></label>
+                        <input type="text" formcontolname="description" autocomplete="OFF" name="description" class="form-control" [ngClass]="{'is-invalid': formsubmit && formData.description.errors}">
+                        <div *ngIf="formsubmit && formData.description.errors" class="invalid-tooltip">
+                            <span *ngIf="formData.description.errors.required">description  is requierd</span>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="row container">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="img-container">
+                                <div class="form-group">
+                                    <label>Product image : <span class="text-danger">*</span></label>
+                                    <input class="form-control" accept="image/*" type="file" (change)="fileChangeEvent($event)" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div> -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+
+
+</ng-template>

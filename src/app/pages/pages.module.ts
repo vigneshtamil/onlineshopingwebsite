@@ -44,7 +44,10 @@ import { AddresslistComponent } from './account/addresslist/addresslist.componen
 import { ProfileorderComponent } from './account/profileorder/profileorder.component';
 import { ProfilewishlistComponent } from './account/profilewishlist/profilewishlist.component';
 import { ProfilecartComponent } from './account/profilecart/profilecart.component';
-
+import { OrderlistComponent } from './orderlist/orderlist.component';
+import { OrderdetailComponent } from './orderdetail/orderdetail.component';
+import { RevieworderComponent } from './revieworder/revieworder.component';
+import {StarRatingModule} from 'angular-star-rating';
 @NgModule({
   declarations: [
 
@@ -85,9 +88,13 @@ import { ProfilecartComponent } from './account/profilecart/profilecart.componen
     ProfileorderComponent,
     ProfilewishlistComponent,
     ProfilecartComponent,
+    OrderlistComponent,
+    OrderdetailComponent,
+    RevieworderComponent,
 
   ],
   imports: [
+    StarRatingModule.forRoot(),
     CommonModule,
     GalleryModule.forRoot(),
     SharedModule,

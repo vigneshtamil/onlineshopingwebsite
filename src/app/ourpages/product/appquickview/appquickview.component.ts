@@ -90,6 +90,7 @@ export class AppquickviewComponent implements OnInit {
         {
           "productid": products.productid,
           "productinwardid": products._id,
+          "productinwarddetailsid":products.productinwarddetailsid,
           "qty": this.counter
         }
       ]
