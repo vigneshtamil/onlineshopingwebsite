@@ -5,6 +5,7 @@ import { ProductService } from '../../shared/product.service';
 import { ProductSlider } from '../../../shared/data/slider';
 import { ToastrService } from 'ngx-toastr';
 import jwt_decode from "jwt-decode";
+import { timestamp } from 'rxjs/operators';
 @Component({
   selector: 'app-productfullview',
   templateUrl: './productfullview.component.html',
@@ -12,6 +13,7 @@ import jwt_decode from "jwt-decode";
 })
 export class ProductfullviewComponent implements OnInit {
   public product = {};
+  reviews:[];
   public products: any[] = [];
   public counter: number = 1;
   public activeSlide: any = 0;
@@ -33,10 +35,16 @@ export class ProductfullviewComponent implements OnInit {
   nologin: boolean;
   decoded: any;
   productids: any;
+
   mrppricefinalprice: any;
   selpr:number;
   mrpr:number;
   producyquty:number;
+
+
+  title:string;
+  raring:string;
+  descr:string;
 
   // =[
   //   {src:'assets/images/product/placeholder.jpg',alt:'name'},
@@ -44,29 +52,23 @@ export class ProductfullviewComponent implements OnInit {
   //   {src:'assets/images/product/placeholder.jpg',alt:'name'},
   //  ]
   constructor(private toastrService: ToastrService, private route: ActivatedRoute, private router: Router, public ProductService: ProductService) { }
-
   ngOnInit(): void {
-    this.loadlist()
     this.route.queryParams.subscribe(params => {
-
       this.bindproduct(params)
+      this.reviewlist(params);
       this.productids=params
     });
     this.localvalue = localStorage.getItem('loginresponse')
-
-
     if (this.localvalue == null || this.localvalue == '') {
-
       this.nologin = true;
     }
     else {
       this.decoded = jwt_decode(this.localvalue);
-
       this.nologin = false;
-
     }
   }
  async bindproduct(filedata){
+
     this.ProductService.getfullproductview(filedata).subscribe(res => {
        this.producyquty=res.result[0].qty;
      console.log(res);
@@ -94,6 +96,24 @@ export class ProductfullviewComponent implements OnInit {
 
      this.products = res['relatedproductlist'];
    })
+
+    await this.ProductService.getfullproductview(filedata).subscribe(res=>{
+    console.log(res);
+    this.productname=res['result'][0].displayname;
+    this.desc=res['result'][0].description;
+    this.attributes=res['result'][0].attributes;
+    this.stock=res['result'][0].availableqty;
+    this.minusamount=(res['result'][0].mrpprice-res['result'][0].sellingprice).toString();
+    this.offer='0';
+    this.amount=res['result'][0].sellingprice;
+    this.images=[
+      {src:this.ProductService.apiurl+res['result'][0].img1,alt:'name'},
+      {src:this.ProductService.apiurl+res['result'][0].img2,alt:'name'},
+      {src:this.ProductService.apiurl+res['result'][0].img3,alt:'name'},
+     ]
+     this.products=res['relatedproductlist']
+    })
+
   }
   increment() {
 
@@ -108,25 +128,15 @@ export class ProductfullviewComponent implements OnInit {
     }
 
   }
-
   // Decrement
   decrement() {
     if (this.counter > 1) this.counter--;
   }
-
-  openreview(_id){
-    this.ProductService.reviewid=_id
-    this.router.navigate(['home1/review/'],{queryParams:{id:_id}})
-  }
-
   addtocart(products) {
-
     if (this.localvalue == null || this.localvalue == '') {
-
       alert("Please login...")
       return false;
     }
-
     var senddata = {
       "customer": this.decoded._id,
       "productdetails": [
@@ -139,7 +149,6 @@ export class ProductfullviewComponent implements OnInit {
       ]
     }
     this.ProductService.addtocartservice(senddata).subscribe((res) => {
-
       if (res.status == "1") {
         this.toastrService.success(res.message);
         window.location.reload();
@@ -151,7 +160,6 @@ export class ProductfullviewComponent implements OnInit {
   }
   wishlist(products) {
     if (this.localvalue == null || this.localvalue == '') {
-
       alert("Please login...")
       return false;
     }
@@ -167,7 +175,6 @@ export class ProductfullviewComponent implements OnInit {
       ]
     }
     this.ProductService.addtowishservice(senddata).subscribe((res) => {
-
       if (res.status == "1") {
         this.toastrService.success(res.message);
         window.location.reload();
@@ -177,10 +184,11 @@ export class ProductfullviewComponent implements OnInit {
       }
     })
   }
-  loadlist(){
-    this.ProductService.getreview().subscribe((res)=>{
-        console.log(res);
-        this.ddlreview=res
-    })
-  }
+reviewlist(reviewdata){
+this.ProductService.list(reviewdata).subscribe(res=>{
+  this.title=res['result'][0].title;
+  this.descr=res['result'][0].description;
+  this.raring=res['result'][0].starrte;
+})
+ }
 }

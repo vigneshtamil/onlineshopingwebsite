@@ -36,11 +36,8 @@ public orderdetails:[]
   orderarr:[];
   ngOnInit(): void {
     this.uploadForm = this.formBuilder.group({
-      _id:[''],
       title: ['', [Validators.required]],
       description:[''],
-      starrte:[''],
-      orderid:this.orderid
       // ordernumber:['']
     });
     this.route.queryParams.subscribe(params => {
@@ -50,7 +47,7 @@ public orderdetails:[]
       this.ProductService.orderdetails(data).subscribe(res=>{
        this.orderfinalid=res._id
         console.log(res);
-        if(res['status']==1){
+        if(res['status']=="1"){
           this.orderdetails=res
           this.orderid=res.orderid;
           this.orderdate=res.orderdate;
@@ -122,7 +119,6 @@ public orderdetails:[]
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
     let finaldate = (year + '-' + month + '-' + day + '-' + hours + '-' + minutes + '-' + seconds)
-  
     this.submitted = true;
     var sendata={
       "orderid":this.orderfinalid,
@@ -131,16 +127,15 @@ public orderdetails:[]
       "description":this.uploadForm.value.description,
       "starrte": this.selectedValue
     }
-
     this.ProductService.reviewadd(sendata).subscribe(res => {
-      if (res['status'] ==1) {
+      if (res['status'] =="success") {
         this.modalService.dismissAll()
         this.uploadForm.reset();
-        console.log("success")
+        alert("Review added successfully")
         this.ngOnInit();
        }
        else {
-        console.log("failed")
+        alert("Review Not added successfully")
       }
     })
   }
