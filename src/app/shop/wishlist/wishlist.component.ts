@@ -124,6 +124,7 @@ export class WishlistComponent implements OnInit {
         this.apiservice.wishlistdelete(senddata).subscribe((res) => {
           if (res.status == "1") {
             this.toastrService.success(res.message);
+            window.location.reload();
             this.wishlistservice()
             Swal.fire(
               'Deleted!',
