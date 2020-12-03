@@ -56,7 +56,7 @@ export class ProductService {
   reviewadd(data){
     return this.http.post<any>(this.apiurl + `/admin/order/review`, data)
   }
-  getreview(){
-    return this.http.get<any>(environment.apiurl+'/blog/recent', httpOptions)
+  list(data){
+    return this.http.post<any>(this.apiurl + `/admin/order/listreview`, data)
   }
 }

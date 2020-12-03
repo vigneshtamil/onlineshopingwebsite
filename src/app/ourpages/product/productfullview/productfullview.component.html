@@ -64,6 +64,24 @@
                                 </ul>
                                 <form class="d-inline-block">
                                     <button class="wishlist-btn" (click)="wishlist(product)"><i class="fa fa-heart"></i><span class="title-font">Add To WishList</span></button>
+                                    <div class="theme-card">
+                                        <h4>Review</h4>
+                                        <ul class="recent-blog">
+                                            <li>
+                                                <div class="media" style="display:flex;">
+                                                    <div *ngIf="">
+                                                        <!-- <img class="img-fluid" src="http://208.109.8.9:3005/{{review.defectiveimage}}" alt="Generic Image Placeholder"><br> -->
+                                                        <div class="media-body align-self-center">
+                                                            <p style="font-size: 15px;padding: 4px;">{{raring}}</p>
+                                                            <h2 style="font-size: 15px;padding: 4px;">{{ title }}</h2>
+                                                            <h6 style="font-size: 15px;padding: 4px;">{{descr}}</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
                                 </form>
                             </div>
                             <!-- <div class="row">
