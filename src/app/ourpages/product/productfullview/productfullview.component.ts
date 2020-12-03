@@ -20,7 +20,7 @@ export class ProductfullviewComponent implements OnInit {
   description: string = 'Use the sample job postings below to help write your job description and improve your job posting results. Then when youre ready, post your job on Monster to reach the right talent – act now and save 20% when you buy a 60-day job ad!'
   public ProductDetailsMainSliderConfig: any = ProductDetailsMainSlider;
   public ProductDetailsThumbConfig: any = ProductDetailsThumbSlider;
-
+  ddlreview:[];
   productname: string;
   desc: string;
   attributes: string;
@@ -43,6 +43,7 @@ export class ProductfullviewComponent implements OnInit {
   constructor(private toastrService: ToastrService, private route: ActivatedRoute, private router: Router, public ProductService: ProductService) { }
 
   ngOnInit(): void {
+    this.loadlist()
     this.route.queryParams.subscribe(params => {
 
       this.bindproduct(params)
@@ -151,6 +152,12 @@ export class ProductfullviewComponent implements OnInit {
       else {
         this.toastrService.error(res.message);
       }
+    })
+  }
+  loadlist(){
+    this.ProductService.getreview().subscribe((res)=>{
+        console.log(res);
+        this.ddlreview=res
     })
   }
 }

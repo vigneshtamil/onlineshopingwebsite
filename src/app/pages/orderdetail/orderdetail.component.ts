@@ -4,8 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {ProductService} from '../../ourpages/shared/product.service';
-import { Product } from '../../shared/classes/product';
-
 @Component({
   selector: 'app-orderdetail',
   templateUrl: './orderdetail.component.html',
@@ -15,9 +13,12 @@ export class OrderdetailComponent implements OnInit {
   stars: number[] = [1, 2, 3, 4, 5];
 public orderdetails:[]
   toastr: any;
+  submitted = false;
+  productorderid: any;
   constructor(private route: ActivatedRoute, private router: Router,public ProductService:ProductService,    private modalService: NgbModal,
     private formBuilder: FormBuilder, private httpClient: HttpClient) { }
   orderid:string;
+  orderfinalid:string;
   fileToUpload: File = null;
   orderdate:string;
   totalamount:string;
@@ -32,16 +33,14 @@ public orderdetails:[]
   uploadForm: FormGroup;
   modelpopupproduct:any;
   selectedValue: number = 0;
-
-
-
+  orderarr:[];
   ngOnInit(): void {
-
     this.uploadForm = this.formBuilder.group({
       _id:[''],
       title: ['', [Validators.required]],
       description:[''],
-      starrte:['']
+      starrte:[''],
+      orderid:this.orderid
       // ordernumber:['']
     });
     this.route.queryParams.subscribe(params => {
@@ -49,8 +48,8 @@ public orderdetails:[]
         _id: params.orderid
       }
       this.ProductService.orderdetails(data).subscribe(res=>{
+       this.orderfinalid=res._id
         console.log(res);
-
         if(res['status']==1){
           this.orderdetails=res
           this.orderid=res.orderid;
@@ -64,9 +63,7 @@ public orderdetails:[]
           this.city=res.city;
           this.state=res.state;
           this.mobileno=res.mobileno;
-
         }else{
-
         }
       })
     });
@@ -90,13 +87,13 @@ public orderdetails:[]
     }
  }
   public openDashboard: boolean = false;
-
   ToggleDashboard() {
     this.openDashboard = !this.openDashboard;
   }
   openModal(content: any,Productdetails:any) {
     this.modelpopupproduct="";
     this.modelpopupproduct=Productdetails;
+    this.productorderid=Productdetails._id;
     console.log(Productdetails);
     this.modalService.open(content, { size: 'xl', windowClass: 'modal-holder', backdrop: 'static', keyboard: false });
   }
@@ -125,21 +122,25 @@ public orderdetails:[]
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
     let finaldate = (year + '-' + month + '-' + day + '-' + hours + '-' + minutes + '-' + seconds)
-    const formData: FormData = new FormData();
-    formData.append('_id',this.uploadForm.value._id);
-    formData.append('orderid',this.uploadForm.value.orderid);
-    formData.append('title',  this.uploadForm.value.title);
-    formData.append('description',  this.uploadForm.value.description);
-    formData.append('defectiveimg',this.fileToUpload);
-    this.ProductService.reviewadd(formData).subscribe(res => {
+  
+    this.submitted = true;
+    var sendata={
+      "orderid":this.orderfinalid,
+      "_id": this.productorderid,
+      "title":this.uploadForm.value.title,
+      "description":this.uploadForm.value.description,
+      "starrte": this.selectedValue
+    }
+
+    this.ProductService.reviewadd(sendata).subscribe(res => {
       if (res['status'] ==1) {
-        // this.toastr.success(res.message, 'Sucess....')
         this.modalService.dismissAll()
         this.uploadForm.reset();
+        console.log("success")
         this.ngOnInit();
        }
        else {
-        // this.toastr.error(res['message'])
+        console.log("failed")
       }
     })
   }

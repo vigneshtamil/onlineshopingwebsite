@@ -63,8 +63,6 @@ blogpop:[];
     this.blog.blogrecent().subscribe(res=>{
         if(res){
           this.ddlrecent=res
-
-
           var data={
             "recent":res._id
           }

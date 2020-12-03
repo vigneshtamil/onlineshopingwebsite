@@ -1,14 +1,5 @@
 <app-breadcrumb [title]="'orders'" [breadcrumb]="'orderlist'">
-
-
-
-
-
 </app-breadcrumb>
-
-
-
-
 <!-- section start -->
 <section class="section-b-space">
     <div class="container">
@@ -155,7 +146,6 @@
 
 <ng-template #content role="document" let-modal>
     <div class="modal-header">
-
     </div>
     <div class="modal-body">
         <!-- <input type="file" accept="image/*" #file (change)="fileChangeEvent($event)"> -->
@@ -175,12 +165,10 @@
                 </ul>
                 <div class="row">
                     <div class="col-sm-12">
-
                         <ul class="list-inline rating-list" *ngFor="let star of stars; let i= index" style="display: inline-block">
                             <li (click)="countStar(star)" id="{{'starId'+i}}" [ngClass]="{'selected': (star <= selectedValue)}" (mouseover)="addClass(star)" (mouseout)="removeClass(star)"> ★
                             </li>
                         </ul>
-
                     </div>
                 </div>
                 <div class="row">
