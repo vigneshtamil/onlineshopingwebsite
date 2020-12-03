@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, tap, map } from "rxjs/operators";
+import { environment } from 'src/environments/environment';
 import {
   HttpClient,
   HttpHeaders,
@@ -14,8 +15,9 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApiservicesService {
+  commenurl: String = environment.apiurl
 //commenurl:String="http://localhost:3000"
-commenurl:String="http://208.109.8.9:3005"
+//commenurl:String="http://208.109.8.9:3005"
   invokeEvent: any;
   constructor(private http: HttpClient,private router:Router) { }
   private handleError<T>(operation = "operation", result?: T) {

@@ -26,14 +26,17 @@ export class ProductfullviewComponent implements OnInit {
   attributes: string;
   stock: number;
   minusamount: string;
-  offer: string;
+  offer: number;
   amount: string;
   images: any[]
   localvalue: string;
   nologin: boolean;
   decoded: any;
   productids: any;
-
+  mrppricefinalprice: any;
+  selpr:number;
+  mrpr:number;
+  producyquty:number;
 
   // =[
   //   {src:'assets/images/product/placeholder.jpg',alt:'name'},
@@ -64,26 +67,46 @@ export class ProductfullviewComponent implements OnInit {
     }
   }
  async bindproduct(filedata){
-    await this.ProductService.getfullproductview(filedata).subscribe(res=>{
-    console.log(res);
-    this.productname=res['result'][0].displayname;
-    this.desc=res['result'][0].description;
-    this.attributes=res['result'][0].attributes;
-    this.stock=res['result'][0].availableqty;
-    this.minusamount=(res['result'][0].mrpprice-res['result'][0].sellingprice).toString();
-    this.offer='0';
-    this.amount=res['result'][0].sellingprice;
-    this.images=[
-      {src:this.ProductService.apiurl+res['result'][0].img1,alt:'name'},
-      {src:this.ProductService.apiurl+res['result'][0].img2,alt:'name'},
-      {src:this.ProductService.apiurl+res['result'][0].img3,alt:'name'},
-     ]
+    this.ProductService.getfullproductview(filedata).subscribe(res => {
+       this.producyquty=res.result[0].qty;
+     console.log(res);
+     this.productname = res['result'][0].displayname;
+     this.desc = res['result'][0].description;
+     this.attributes = res['result'][0].attributes;
+     this.stock = res['result'][0].availableqty;
+     this.minusamount = (res['result'][0].mrpprice - res['result'][0].sellingprice).toString();
+     this.mrppricefinalprice = res.result[0].mrpprice[0];
 
-     this.products=res['relatedproductlist']
-    })
+     this.selpr = Number(res['result'][0].sellingprice);
+     this.mrpr = Number(res.result[0].mrpprice[0]);
+
+     var multi=this.selpr * 100
+
+     this.offer =Number((100 - ((multi) /  this.mrpr)));
+
+
+     this.amount = res['result'][0].sellingprice;
+     this.images = [
+       { src: this.ProductService.apiurl + res['result'][0].img1, alt: 'name' },
+       { src: this.ProductService.apiurl + res['result'][0].img2, alt: 'name' },
+       { src: this.ProductService.apiurl + res['result'][0].img3, alt: 'name' },
+     ];
+
+     this.products = res['relatedproductlist'];
+   })
   }
   increment() {
-    this.counter++;
+
+
+    if(this.counter < this.producyquty)
+    {
+      this.counter++;
+
+    }
+    else{
+      alert("No Stock");
+    }
+
   }
 
   // Decrement
