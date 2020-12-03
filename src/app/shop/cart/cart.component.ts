@@ -149,6 +149,7 @@ Swal.fire({
   if(res.status == "1")
   {
     this.toastrService.success(res.message);
+    window.location.reload();
     this.cartlist()
     Swal.fire(
       'Deleted!',

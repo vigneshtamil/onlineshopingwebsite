@@ -8,9 +8,9 @@ import {ProductlistComponent} from '../../../ourpages/productlist/productlist.co
   styleUrls: ['./header-one.component.scss']
 })
 export class HeaderOneComponent implements OnInit {
-  
+
   @Input() class: string;
-  @Input() themeLogo: string = 'assets/images/icon/logo.png'; // Default Logo
+  @Input() themeLogo: string = 'assets/images/icon/Salem Mathi Logo 5.png'; // Default Logo
   @Input() topbar: boolean = true; // Default True
   @Input() sticky: boolean = false; // Default false
   searchbox:string=''
@@ -25,7 +25,7 @@ export class HeaderOneComponent implements OnInit {
   @HostListener("window:scroll", [])
   onWindowScroll() {
     let number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-  	if (number >= 150 && window.innerWidth > 400) { 
+  	if (number >= 150 && window.innerWidth > 400) {
   	  this.stick = true;
   	} else {
   	  this.stick = false;
