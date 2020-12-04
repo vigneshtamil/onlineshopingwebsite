@@ -104,7 +104,13 @@ export class ProductfullviewComponent implements OnInit {
     this.attributes=res['result'][0].attributes;
     this.stock=res['result'][0].availableqty;
     this.minusamount=(res['result'][0].mrpprice-res['result'][0].sellingprice).toString();
-    this.offer='0';
+
+    this.selpr = Number(res['result'][0].sellingprice);
+    this.mrpr = Number(res.result[0].mrpprice[0]);
+
+    var multi=this.selpr * 100
+
+    this.offer =Number((100 - ((multi) /  this.mrpr)));
     this.amount=res['result'][0].sellingprice;
     this.images=[
       {src:this.ProductService.apiurl+res['result'][0].img1,alt:'name'},
