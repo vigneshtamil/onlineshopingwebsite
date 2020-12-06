@@ -1,0 +1,11 @@
+{
+    "apps": [{
+        "script": "server.js",
+        "watch": true,
+        "ignore_watch": ["node_modules", "public/appfiles", "public/images", "public"],
+        "watch_options": {
+            "followSymlinks": false
+        },
+        "name": "sweb"
+    }]
+}
