@@ -9,15 +9,15 @@ import { OurpagesComponent } from './ourpages/ourpages.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'index',
+    redirectTo: 'home1',
     pathMatch: 'full'
   },
-  // {
-  //   path: 'home',
-  //   loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
-  // },
   {
-    path: 'index',
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+  },
+  {
+    path: 'home1',
     component: OurpagesComponent,
     loadChildren: () => import('./ourpages/ourpages.module').then(m => m.OurpagesModule)
   },
