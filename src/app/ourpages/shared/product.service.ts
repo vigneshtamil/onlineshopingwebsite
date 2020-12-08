@@ -53,10 +53,11 @@ export class ProductService {
   orderdetails(data) {
     return this.http.post<any>(this.apiurl + `/admin/overallorderhistorydetail`, data)
   }
+  reviewlist(data){
+    return this.http.post<any>(this.apiurl + `/admin/productwisereviewlist`, data)
+  }
   reviewadd(data){
-    return this.http.post<any>(this.apiurl + `/admin/order/review`, data)
+    return this.http.post<any>(this.apiurl + `/admin/reviews`, data)
   }
-  list(data){
-    return this.http.post<any>(this.apiurl + `/admin/order/listreview`, data)
-  }
+
 }
