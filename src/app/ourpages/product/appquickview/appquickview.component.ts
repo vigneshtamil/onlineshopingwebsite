@@ -22,21 +22,15 @@ export class AppquickviewComponent implements OnInit {
   decoded: any;
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
   private router: Router, private modalService: NgbModal,public ProductService:ProductService,private toastrService: ToastrService) { }
-
   ngOnInit(): void {
     this.localvalue = localStorage.getItem('loginresponse')
-
-
     if( this.localvalue == null || this.localvalue == '')
     {
     this.nologin=true;
     }
     else{
       this.decoded = jwt_decode(this.localvalue);
-
-
       this.nologin=false;
-
     }
   }
   openModal() {
@@ -54,7 +48,6 @@ export class AppquickviewComponent implements OnInit {
       });
     }
   }
-
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

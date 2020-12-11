@@ -6,7 +6,7 @@
         </div>
         <div class="front">
             <a (click)="openfullview(product.productid,product._id)">
-                <img [defaultImage]="product.img1 ? product.img1 : 'assets/images/product/placeholder.jpg'" [lazyLoad]="ProductService.apiurl+product.img1" class="img-fluid lazy-loading" />
+                <img [lazyLoad]="ProductService.apiurl+product.img1 ? ProductService.apiurl+product.img1 :'assets/images/product/default/download.png'" class="img-fluid lazy-loading" />
             </a>
 
         </div>

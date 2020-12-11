@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <owl-carousel-o [options]="ProductDetailsMainSliderConfig" #owlCar class="product-slick">
-                        <ng-container *ngFor="let image of images; index as i">
+                        <ng-container *ngFor="let image of images; index as i" style="max-height: 350px;">
                             <ng-template carouselSlide [id]="i">
                                 <div>
                                     <img [defaultImage]="'assets/images/product/placeholder.jpg'" [lazyLoad]="image.src" class="img-fluid">
@@ -66,13 +66,15 @@
                                     <button class="wishlist-btn" (click)="wishlist(product)"><i class="fa fa-heart"></i><span class="title-font">Add To WishList</span></button>
                                     <div class="theme-card">
                                         <h4>Review</h4>
-                                        <hr>
+                                        <div *ngFor="let name of ddlname">
+                                            <h4>{{name.customername}}</h4>
+                                        </div>
                                         <div *ngFor="let review of ddlreview">
                                             <h4>{{review.reviewtitle}}</h4>
                                             <h4>{{review.reviewdescription}}</h4>
-                                            <h4>{{review.starrating}}</h4>
+                                            <h4>Rating:{{review.starrating}}</h4>
                                         </div>
-                                        <div class="product-infinitescroll">
+                                        <!-- <div class="product-infinitescroll">
                                             <div class="theme-paggination-block">
                                                 <div class="container-fluid p-0">
                                                     <div class="row">
@@ -85,7 +87,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <ul class="recent-blog">
                                             <li>
                                                 <div class="media" style="display:flex;">

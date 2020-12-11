@@ -42,6 +42,7 @@ export class ProductfullviewComponent implements OnInit {
   title: string;
   raring: string;
   descr: string;
+  ddlname:[];
   // =[
   //   {src:'assets/images/product/placeholder.jpg',alt:'name'},
   //   {src:'assets/images/product/placeholder.jpg',alt:'name'},
@@ -60,14 +61,13 @@ export class ProductfullviewComponent implements OnInit {
     }
     else {
       this.decoded = jwt_decode(this.localvalue);
-      console.log(this.localvalue);
       this.nologin = false;
+   this.ddlname=this.decoded['result']
     }
   }
   async bindproduct(filedata) {
     this.ProductService.getfullproductview(filedata).subscribe(res => {
       this.producyquty = res.result[0].qty;
-      console.log(res);
       this.productname = res['result'][0].displayname;
       this.desc = res['result'][0].description;
       this.attributes = res['result'][0].attributes;
@@ -89,7 +89,6 @@ export class ProductfullviewComponent implements OnInit {
     })
 
     await this.ProductService.getfullproductview(filedata).subscribe(res => {
-      console.log(res);
       this.productname = res['result'][0].displayname;
       this.desc = res['result'][0].description;
       this.attributes = res['result'][0].attributes;
@@ -153,6 +152,7 @@ export class ProductfullviewComponent implements OnInit {
     }
     var senddata = {
       "customer": this.decoded._id,
+
       "productdetails": [
         {
           "productid": this.productids.productid,
@@ -175,10 +175,9 @@ export class ProductfullviewComponent implements OnInit {
   reviewlist(reviewdata) {
     let data = {
       productinwarddetailid: reviewdata.productinwardid,
-      productid: reviewdata.productid,
+      productid: reviewdata.productid
     }
     this.ProductService.reviewlist(data).subscribe(res =>{
-      console.log(res);
     this.ddlreview=res['result']
     })
   }

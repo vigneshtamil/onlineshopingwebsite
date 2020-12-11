@@ -7,7 +7,9 @@ export const environment = {
   defaultauth: 'fackbackend',
    //apiurl: 'https://api.salemmathi.com:3030',
 
+  // apiurl: 'http://localhost:3069',
    apiurl: 'http://208.109.8.9:3069',
+
 
 };
 
