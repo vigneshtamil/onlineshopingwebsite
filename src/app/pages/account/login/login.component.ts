@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private apiservice: ApiservicesService,
     private toastrService: ToastrService,
-
-    ) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     this.formbuildergrp();
@@ -36,8 +36,9 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('loginresponse', res.token);
       //  this.apiservice.callMethodOfSecondComponent();
        // alert(res.token)
-
-        window.location.reload();
+       this.router.navigate(['/home1']);
+      //  window.location.reload();
+        this.router.navigate(['/home1']);
       } else {
         this.toastrService.error(res.message);
       }

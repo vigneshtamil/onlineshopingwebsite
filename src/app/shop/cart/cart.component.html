@@ -26,7 +26,7 @@
                         <tr>
                             <td>
                                 <a [routerLink]="['/shop/product/left/sidebar/']">
-                                    <img [src]="'http://208.109.8.9:3005'+product.productimg">
+                                    <img [src]="imageurl+product.productimg">
                                 </a>
                             </td>
                             <td>
@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="col-xs-3">
                                         <h2 class="td-color">
-                                            ₹ {{ product.rate }}
+                                          ₹ {{product.selleingprice | currency:"INR":""}}
                                         </h2>
                                     </div>
                                     <div class="col-xs-3">
@@ -56,7 +56,7 @@
                             <td>
                                 <h2>
                                     <!-- {{ product.qty }}* -->
-                                    ₹{{ product.rate }}
+                                    ₹ {{product.selleingprice | currency:"INR":""}}
                                     <!-- ={{product.producttotalrate}} -->
                                 </h2>
                             </td>

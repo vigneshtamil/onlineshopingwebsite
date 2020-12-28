@@ -27,7 +27,7 @@
                         <tr *ngFor="let product of products">
                             <td style="min-width: 110px !important;">
                                 <a [routerLink]="['/shop/product/left/sidebar/']">
-                                    <img [src]="'http://208.109.8.9:3005'+product.productimg">
+                                    <img [src]="imageurl+product.productimg">
                                 </a>
                             </td>
                             <td>

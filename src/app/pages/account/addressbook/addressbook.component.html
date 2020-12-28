@@ -69,29 +69,31 @@
 
                                                         <div class="col-md-6">
                                                             <label for="email">Addresslinetwo</label>
-                                                            <input type="text" formControlName="addresslinetwo" class="form-control" id="zip-code" placeholder="address line two" required="">
+                                                            <input type="text" formControlName="addresslinetwo" class="form-control" id="zip-code" placeholder="address line two">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="email">Landmark</label>
-                                                            <input type="text" formControlName="landmark" class="form-control" id="zip-code" placeholder="landmark" required="">
+                                                            <input type="text" formControlName="landmark" class="form-control" id="zip-code" placeholder="landmark">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="email">City</label>
-                                                            <input type="text" formControlName="city" class="form-control" id="zip-code" placeholder="city" required="">
+                                                            <input type="text" formControlName="city" [(ngModel)]="txtcity" value="salem" class="form-control" id="zip-code" placeholder="city" required="">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="email">State</label>
-                                                            <input type="text" formControlName="state" class="form-control" id="zip-code" placeholder="state" required="">
+                                                            <input type="text" formControlName="state" [(ngModel)]="txtstate" value="Tamilnadu" class="form-control" id="zip-code" placeholder="state" required="">
                                                         </div>
 
                                                         <div class="col-md-6 select_input">
                                                             <label for="review">Country *</label>
-                                                            <select formControlName="county" class="form-control" size="1">
+                                                            <!-- <select formControlName="county" class="form-control" size="1">
                               <option value="India">India</option>
                               <option value="UAE">UAE</option>
                               <option value="U.K">U.K</option>
                               <option value="US">US</option>
-                          </select>
+                          </select> -->
+                                                            <input type="text" formControlName="county" [(ngModel)]="txtcountry" class="form-control" id="zip-code" placeholder="Country" required="">
+
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="email">Pincode</label>

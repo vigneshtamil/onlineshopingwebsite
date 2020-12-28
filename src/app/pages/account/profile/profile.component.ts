@@ -104,11 +104,11 @@ return false;
     ]
 
     Swal.fire({
-      title: 'Are you sure want to remove?',
+      title: 'Are you sure want to save?',
       text: 'You will not be able to recover this file!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonText: 'Yes, save it!',
       cancelButtonText: 'No, keep it'
     }).then((result) => {
 

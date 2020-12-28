@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-
+imageurl:any;
   nologin:boolean = false;
 totalamount:number;
   public products;
@@ -29,6 +29,7 @@ totalamount:number;
     private router: Router
 
     ) {
+      this.imageurl=this.apiservice.commenurl;
    // this.productService.cartItems.subscribe(response => this.products = response);
   }
 

@@ -10,8 +10,7 @@ import jwt_decode from "jwt-decode";
   styleUrls: ['./wishlist.component.scss']
 })
 export class WishlistComponent implements OnInit {
-
-
+imageurl:any;
   public products;
   cartshow: boolean;
   profileshow: boolean;
@@ -24,6 +23,7 @@ export class WishlistComponent implements OnInit {
     private apiservice: ApiservicesService,
     private toastrService: ToastrService,
     ) {
+  this.imageurl=this.apiservice.commenurl;
    // this.productService.wishlistItems.subscribe(response => this.products = response);
   }
 

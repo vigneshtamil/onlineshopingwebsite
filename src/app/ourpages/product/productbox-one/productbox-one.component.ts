@@ -17,7 +17,7 @@ export class ProductboxOneComponent implements OnInit {
   @Input() cartModal: boolean = false; // Default False
   @Input() loader: boolean = false;
   @ViewChild("quickView") QuickView: AppquickviewComponent;
-  public ImageSrc : string
+  public ImageSrc : string;
   localvalue: string;
   nologin: boolean;
   decoded: any;
