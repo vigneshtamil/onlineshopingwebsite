@@ -37,5 +37,14 @@ export class HeaderOneComponent implements OnInit {
     this.router.navigate(['home1/product'], { queryParams: { serach: this.ProductService.searchproductslist,subid:this.ProductService.searchsubid }});
     // this.ProductlistComponent.ngOnInit(){ queryParams: { serach: this.searchbox,subid:'' } }
   }
+// downloadapp(){
+//     const link = document.createElement('a');
+//     link.setAttribute('target', '_blank');
+//     link.setAttribute('href', 'salemmathi.com/mobileapp/');
+//     link.setAttribute('download', `salemmathi.apk`);
+//     document.body.appendChild(link);
+//     link.click();
+//     link.remove();
+// }
 
 }
