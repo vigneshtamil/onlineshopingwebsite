@@ -14,11 +14,12 @@ export class SuccessComponent implements OnInit, AfterViewInit {
   orderDetails: any;
   dborderid: any;
   date: Date;
+  imageurl: String;
  // public orderDetails;
 
   constructor(public route: ActivatedRoute, public productService: ProductService,
     private apiservice: ApiservicesService,
-    private orderService: OrderService) { }
+    private orderService: OrderService) {  this.imageurl=this.apiservice.commenurl}
 
   ngOnInit(): void {
     this.route

@@ -71,7 +71,7 @@ export class ProductfullviewComponent implements OnInit {
 
     this.ProductService.getfullproductview(filedata).subscribe(res => {
        this.producyquty=res.result[0].qty;
-     console.log(res);
+
      this.productname = res['result'][0].displayname;
      this.desc = res['result'][0].description;
      this.attributes = res['result'][0].attributes;

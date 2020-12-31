@@ -178,18 +178,19 @@
                                     </div>
                                     <ul class="qty" *ngIf='products.length'>
                                         <li *ngFor="let product of products">
-                                            <img style="width:100px" [src]="'http://208.109.8.9:3005'+product.productimg"> {{ product.productname }} {{ product.rate }} × {{ product.qty }}
+                                            <img style="width:100px" [src]="imageurl+product.productimg"> {{ product.productname }} {{ product.selleingprice | currency:'INR':true }} × {{ product.qty }}
                                             <span>
-                                              ₹ {{ product.producttotalrate }}
+                                               {{ product.producttotalrate | currency:'INR':true }}
                                             </span>
                                         </li>
+                                        <pre>{{ products | json }}</pre>
                                     </ul>
                                     <ul class="qty" *ngIf='!products.length'>
                                         <li class="empty-checkout"> There are no products in cart </li>
                                     </ul>
                                     <ul class="sub-total">
                                         <li>
-                                            Total <span class="count">₹{{ totalamount}}</span>
+                                            Total <span class="count">{{ totalamount  | currency:'INR':true }}</span>
                                         </li>
                                         <!-- <li *ngIf='products.length'>
                                             Shipping
@@ -205,14 +206,14 @@
                                             </div>
                                         </li> -->
                                     </ul>
-                                    <ul class="total">
+                                    <!-- <ul class="total">
                                         <li>Total <span class="count">	₹{{ totalamount}}</span></li>
-                                    </ul>
+                                    </ul> -->
 
                                 </div>
 
                                 <div class="payment-box" *ngIf='products.length'>
-                                    <div class="upper-box">
+                                    <!-- <div class="upper-box">
                                         <div class="payment-options">
                                             <ul>
                                                 <li>
@@ -222,15 +223,10 @@
                                                             <span class="small-text">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</span></label>
                                                     </div>
                                                 </li>
-                                                <!-- <li>
-                                                    <div class="radio-option paypal">
-                                                        <input type="radio" [(ngModel)]="payment" [value]="'Paypal'" name="payment-group" id="payment-3">
-                                                        <label for="payment-3">PayPal<span class="image"><img src="assets/images/paypal.png" alt="" /></span></label>
-                                                    </div>
-                                                </li> -->
+
                                             </ul>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="text-right">
                                         <button type="submit" class="btn-solid btn" (click)="placeorder()" *ngIf="payment == 'Stripe'">
                                            Place Order
