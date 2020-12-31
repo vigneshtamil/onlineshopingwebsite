@@ -1,30 +1,30 @@
-<app-breadcrumb [title]="'Profile'" [breadcrumb]="'Profile'"></app-breadcrumb>
+<app-breadcrumb [title]="'My Cart'" [breadcrumb]="'My Cart'"></app-breadcrumb>
 
 <!-- section start -->
 <section class="section-b-space">
     <div class="container">
         <div class="row">
             <div class="col-lg-2">
-                <div class="account-sidebar" (click)="ToggleDashboard()">
+                <!-- <div class="account-sidebar" (click)="ToggleDashboard()">
                     <a hre="javascript:void(0)" class="popup-btn">
-                        my account
+                        My Account
                     </a>
-                </div>
+                </div> -->
                 <div class="dashboard-left" [class.open]="openDashboard">
                     <div class="collection-mobile-back" (click)="ToggleDashboard()">
                         <span class="filter-back">
-                            <i class="fa fa-angle-left" aria-hidden="true"></i> back
+                            <i class="fa fa-angle-left" aria-hidden="true"></i> Back
                         </span>
                     </div>
                     <div class="block-content">
-                        <h3 style="padding-top:15px;">My Account</h3>
-                        <hr>
+                        <!-- <h3 style="padding-top:15px;">My Account</h3>
+                        <hr> -->
 
                         <ul>
                             <li><a [routerLink]="[ '/user/profile']">Account Info</a></li>
                             <li><a [routerLink]="[ '/user/addressbook']">Address Add</a></li>
-                            <li><a [routerLink]="[ '/user/orderlist']">My Orders</a></li>
                             <li class="active"><a [routerLink]="[ '/user/profilecart']">My Cart</a></li>
+                            <li><a [routerLink]="[ '/user/orderlist']">My Orders</a></li>
                             <li><a [routerLink]="[ '/user/profilewishlist']">My Wishlist</a></li>
                             <li><a [routerLink]="['/user/addresslist']">Address Book</a></li>
                             <!-- <li><a href="javascript:void(0)">My Account</a></li> -->

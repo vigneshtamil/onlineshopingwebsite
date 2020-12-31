@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h3 *ngIf="createform">create account</h3>
+                <h3 *ngIf="createform">Create Account</h3>
 
                 <div class="theme-card">
                     <form *ngIf="createform" class="theme-form" [formGroup]="commonform" (ngSubmit)="onSubmit()">
@@ -12,7 +12,7 @@
                             <div class="col-6">
                                 <div class="row">
                                     <label for="fname">Name</label>
-                                    <input type="text" formControlName="customername" class="form-control" id="fname" placeholder="First Name" required="">
+                                    <input type="text" formControlName="customername" class="form-control custominput" id="fname" placeholder="First Name" required="">
                                 </div>
                                 <!-- <div class="col-md-6">
                                 <label for="review">Last Name</label>
@@ -21,17 +21,17 @@
                                 <div class="row">
                                     <label for="mobileno">Mobile Number</label>
 
-                                    <input type="text" formControlName="mobileno" [(ngModel)]="usrmobilenumber" class="form-control" id="mobileno" placeholder="mobile number" required="">
+                                    <input type="text" formControlName="mobileno" [(ngModel)]="usrmobilenumber" class="form-control custominput" id="mobileno" placeholder="mobile number" required="">
 
-                                    <input type="text" minlength="10" maxlength="10" formControlName="mobileno" class="form-control" id="mobileno" placeholder="mobile number" required="">
+                                    <input type="text" minlength="10" maxlength="10" formControlName="mobileno" class="form-control custominput" id="mobileno" placeholder="mobile number" required="">
                                 </div>
                                 <div class="row">
                                     <label for="review">Password</label>
-                                    <input type="password" formControlName="password" class="form-control" id="review" placeholder="Enter your password" required="">
+                                    <input type="password" formControlName="password" class="form-control custominput" id="review" placeholder="Enter your password" required="">
                                 </div>
                                 <div class="row">
                                     <label for="review">Confirm Password</label>
-                                    <input type="password" formControlName="conpassword" class="form-control" id="review" placeholder="Enter your confirm password" required="">
+                                    <input type="password" formControlName="conpassword" class="form-control custominput" id="review" placeholder="Enter your confirm password" required="">
                                 </div>
                                 <button type="submit" class="btn btn-solid">create Account</button>
                             </div>
@@ -44,7 +44,7 @@
                         <div class="form-row">
                             <div class="col-md-6">
                                 <label for="mobileno">Enter Otp</label>
-                                <input type="text" formControlName="otpinput" class="form-control" id="mobileno" placeholder="enter a otp" required="">
+                                <input type="text" formControlName="otpinput" class="form-control custominput" id="mobileno" placeholder="enter a otp" required="">
                             </div>
                         </div>
                         <div class="form-row">

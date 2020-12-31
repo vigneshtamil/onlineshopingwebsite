@@ -1,4 +1,9 @@
 <app-breadcrumb [title]="'Profile'" [breadcrumb]="'Profile'"></app-breadcrumb>
+<style>
+    .addinput {
+        padding: 10px 25px !important;
+    }
+</style>
 
 <!-- section start -->
 <section class="section-b-space">
@@ -57,16 +62,16 @@
                                                     <div class="form-row">
                                                         <div class="col-md-6">
                                                             <label for="name">First Name</label>
-                                                            <input type="text" formControlName="usrname" class="form-control" id="name" placeholder="Enter Your name" required="">
+                                                            <input type="text" formControlName="usrname" class="form-control addinput" id="name" placeholder="Enter Your name" required="">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="mobileno">Mobile Number</label>
-                                                            <input type="text" formControlName="mobileno" class="form-control" id="mobileno" placeholder="Enter Mobile Number" readonly required="">
+                                                            <input type="text" formControlName="mobileno" class="form-control addinput" id="mobileno" placeholder="Enter Mobile Number" readonly required="">
                                                         </div>
                                                         <div class="col-md-6 select_input">
                                                             <label for="gender">Gender</label>
                                                             <!-- <input type="text" formControlName="gender" class="form-control" id="gender" placeholder="Enter your Gender" required=""> -->
-                                                            <select class="form-control" formControlName="gender" size="1">
+                                                            <select class="form-control addinput" formControlName="gender" size="1">
                                                         <option selected="selected">Select Gender</option>
                                                          <option value="male">Male</option>
                                                          <option value="female">Female</option>
@@ -74,9 +79,9 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="email">Email</label>
-                                                            <input type="text" formControlName="email" class="form-control" id="email" placeholder="Email" required="">
+                                                            <input type="text" formControlName="email" class="form-control addinput" id="email" placeholder="Email" required="">
                                                         </div>
-                                                        <button class="btn btn-sm btn-solid" type="submit">Save setting</button>
+                                                        <p class="text-center"><button class="btn btn-sm btn-solid" type="submit">Save Profile</button></p>
 
                                                     </div>
                                                 </form>
