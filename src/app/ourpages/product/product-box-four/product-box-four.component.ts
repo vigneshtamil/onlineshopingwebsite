@@ -24,17 +24,13 @@ export class ProductBoxFourComponent implements OnInit {
   public ImageSrc: string
   ngOnInit(): void {
     this.localvalue = localStorage.getItem('loginresponse')
-
-
     if( this.localvalue == null || this.localvalue == '')
     {
     this.nologin=true;
     }
     else{
       this.decoded = jwt_decode(this.localvalue);
-
       this.nologin=false;
-
     }
   }
   openfullview(productid, id) {

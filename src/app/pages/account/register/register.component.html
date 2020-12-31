@@ -20,7 +20,10 @@
                             </div> -->
                                 <div class="row">
                                     <label for="mobileno">Mobile Number</label>
+
                                     <input type="text" formControlName="mobileno" [(ngModel)]="usrmobilenumber" class="form-control" id="mobileno" placeholder="mobile number" required="">
+
+                                    <input type="text" minlength="10" maxlength="10" formControlName="mobileno" class="form-control" id="mobileno" placeholder="mobile number" required="">
                                 </div>
                                 <div class="row">
                                     <label for="review">Password</label>

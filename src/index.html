@@ -9,6 +9,44 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <style>
+        .sticky-button-right {
+            position: fixed;
+            right: -30px;
+            top: 60%;
+            transform: translateY(-50%) rotate(-90deg);
+            z-index: 9999;
+            background: linear-gradient(to bottom right, #6A1B9A 0%, #6a1b9aad 100%);
+            color: #fff;
+            padding: 8px 15px;
+            border: 2px solid #fff;
+            transition: all 0.3s;
+        }
+        
+        .sticky-button-right:hover {
+            color: #fff;
+        }
+        /* sticky button */
+        /* @media (max-width: 575.98px) {
+            .sticky-button-right {
+                position: fixed;
+                right: 0 !important;
+                top: auto !important;
+                transform: none !important;
+                z-index: 9999;
+                width: 100% !important;
+                bottom: 0 !important;
+                background: linear-gradient(to bottom right, #6A1B9A 0%, #6a1b9aad 100%);
+                color: #fff;
+                padding: 8px 15px;
+                border: 2px solid #fff;
+                transition: all .3s;
+                display: block;
+                text-align: center;
+                color: #fff;
+            }
+        } */
+    </style>
 
 </head>
 
@@ -33,6 +71,10 @@
     </div>
     <!-- facebook chat section end -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- <div class="sticky-button-right text-center">
+        <a href="#" data-toggle="modal" data-target="#feedback-dialog" style="color:#fff;text-align:center;" rel="noopener"> <i class="fa fa-android"></i> Feedback</a>
+
+    </div> -->
 </body>
 
 </html>

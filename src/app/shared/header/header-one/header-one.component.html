@@ -7,14 +7,14 @@
                     <div class="header-contact">
                         <ul>
                             <li>Welcome to salemmathi.com</li>
-                            <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
+                            <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: +91-744 856 5339</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-6 text-right ">
                     <ul class="header-dropdown">
                         <li class="onhover-dropdown mobile-account">
-                            <i class="fa fa-user" aria-hidden="true"></i> About us
+                            About us
                             <ul class="onhover-show-div">
                                 <li>
                                     <a href="/home1/ddukgy" data-lng="en">
@@ -39,14 +39,17 @@
                         <li [routerLink]="'/home1/contactus'" class="compare">
                             Contacts Us
                         </li>
-                        <li [routerLink]="'/home1/faq'" class="compare">
+                        <!-- <li [routerLink]="'/home1/faq'" class="compare">
                             FAQ
-                        </li>
+                        </li> -->
                         <li class="mobile-wishlist d-sm-none d-block">
                             <a [routerLink]="['/shop/wishlist']"><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a>
                         </li>
-                        <li class="onhover-dropdown mobile-account d-sm-none d-block">
-                            <i class="fa fa-user" aria-hidden="true"></i> My Account
+                        <li class="mobile-account">
+                            <i class="ti-android" style="color: green;"></i>Download App
+                        </li>
+                        <!-- <li class="onhover-dropdown mobile-account d-sm-none d-block">
+                            <i class="fa fa-user" aria-hidden="true"></i>  My Account
                             <ul class="onhover-show-div">
                                 <li>
                                     <a href="/user/login">
@@ -54,12 +57,12 @@
                 </a>
                                 </li>
                                 <li>
-                                    <a href="/home1/tnsrlm">
+                                    <a href="/home1/logout">
                   Logout
                 </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                     <!-- <ul class="header-dropdown">
                         <li class="compare">
@@ -91,7 +94,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <div class="main-menu">
+                <div class="main-menu" style="height: 80px;">
                     <div class="menu-left">
                         <app-left-menu></app-left-menu>
                         <div class="brand-logo">
