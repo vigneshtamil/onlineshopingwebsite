@@ -21,6 +21,7 @@ totalamount:number;
   wishproducts: any;
   localvalue: string;
   decoded: any;
+  imageurl: String;
 
   constructor(
     public productService: ProductService,
@@ -29,6 +30,7 @@ totalamount:number;
 
     ) {
 
+      this.imageurl=this.apiservice.commenurl
   //  this.productService.cartItems.subscribe(response => this.products = response);
   }
   name(name: any) {

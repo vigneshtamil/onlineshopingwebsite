@@ -19,11 +19,13 @@ export class WishlistComponent implements OnInit {
   localvalue: string;
   decoded: any;
   nologin: boolean;
+  imageurl: String;
 
   constructor(private router: Router,
     public productService: ProductService,
     private apiservice: ApiservicesService,
     private toastrService: ToastrService) {
+      this.imageurl=this.apiservice.commenurl
     this.productService.wishlistItems.subscribe(response => this.products = response);
   }
 
@@ -119,7 +121,7 @@ export class WishlistComponent implements OnInit {
       if (result.value) {
         var senddata = {
           "customer": this.decoded._id,
-          "_id": product._id
+          "_id": product.productinwardiddetails
         }
         this.apiservice.wishlistdelete(senddata).subscribe((res) => {
           if (res.status == "1") {

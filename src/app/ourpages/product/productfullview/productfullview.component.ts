@@ -67,6 +67,56 @@ export class ProductfullviewComponent implements OnInit {
   }
   async bindproduct(filedata) {
     this.ProductService.getfullproductview(filedata).subscribe(res => {
+
+       this.producyquty=res.result[0].qty;
+
+     this.productname = res['result'][0].displayname;
+     this.desc = res['result'][0].description;
+     this.attributes = res['result'][0].attributes;
+     this.stock = res['result'][0].availableqty;
+     this.minusamount = (res['result'][0].mrpprice - res['result'][0].sellingprice).toString();
+     this.mrppricefinalprice = res.result[0].mrpprice[0];
+
+     this.selpr = Number(res['result'][0].sellingprice);
+     this.mrpr = Number(res.result[0].mrpprice[0]);
+
+     var multi=this.selpr * 100
+
+     this.offer =Number((100 - ((multi) /  this.mrpr)));
+
+
+     this.amount = res['result'][0].sellingprice;
+     this.images = [
+       { src: this.ProductService.apiurl + res['result'][0].img1, alt: 'name' },
+       { src: this.ProductService.apiurl + res['result'][0].img2, alt: 'name' },
+       { src: this.ProductService.apiurl + res['result'][0].img3, alt: 'name' },
+     ];
+
+     this.products = res['relatedproductlist'];
+   })
+
+    await this.ProductService.getfullproductview(filedata).subscribe(res=>{
+    console.log(res);
+    this.productname=res['result'][0].displayname;
+    this.desc=res['result'][0].description;
+    this.attributes=res['result'][0].attributes;
+    this.stock=res['result'][0].availableqty;
+    this.minusamount=(res['result'][0].mrpprice-res['result'][0].sellingprice).toString();
+
+    this.selpr = Number(res['result'][0].sellingprice);
+    this.mrpr = Number(res.result[0].mrpprice[0]);
+
+    var multi=this.selpr * 100
+
+    this.offer =Number((100 - ((multi) /  this.mrpr)));
+    this.amount=res['result'][0].sellingprice;
+    this.images=[
+      {src:this.ProductService.apiurl+res['result'][0].img1,alt:'name'},
+      {src:this.ProductService.apiurl+res['result'][0].img2,alt:'name'},
+      {src:this.ProductService.apiurl+res['result'][0].img3,alt:'name'},
+     ]
+     this.products=res['relatedproductlist']
+
       this.producyquty = res.result[0].qty;
       this.productname = res['result'][0].displayname;
       this.desc = res['result'][0].description;
@@ -86,6 +136,7 @@ export class ProductfullviewComponent implements OnInit {
       ];
 
       this.products = res['relatedproductlist'];
+
     })
 
     await this.ProductService.getfullproductview(filedata).subscribe(res => {

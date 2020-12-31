@@ -15,6 +15,7 @@ import jwt_decode from "jwt-decode";
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
+  afterlogin:boolean=true;
   decoded: any;
   cartlistcount: any = 0
   cartshow: boolean = false;
@@ -58,14 +59,17 @@ export class SettingsComponent implements OnInit {
   wishlistcount: any = 0;
   whishlistempty: boolean;
   cartempty: boolean;
+  imageurl: ApiservicesService;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
+
     private translate: TranslateService,
     private router: Router,
     public productService: ProductService,
     private apiservice: ApiservicesService,
     private toastrService: ToastrService) {
 
+      this.imageurl=this.apiservice
     // this.productService.cartItems.subscribe(response => this.products = response);
   }
 
@@ -84,6 +88,7 @@ export class SettingsComponent implements OnInit {
       this.wishlistli = true;
       this.profileshow = true;
       this.decoded = jwt_decode(this.localvalue);
+this.afterlogin=false;
 
       this.cartlist()
       this.whishlist()
@@ -185,7 +190,7 @@ export class SettingsComponent implements OnInit {
     // this.productService.removeCartItem(product);
     var senddata = {
       "customer": this.decoded._id,
-      "_id": product._id
+      "_id": product.productinwardiddetails
     }
     this.apiservice.wishlistdelete(senddata).subscribe((res) => {
       if (res.status == "1") {

@@ -28,6 +28,7 @@ export class CheckoutComponent implements OnInit {
   decoded: any;
   nologin: boolean;
   addressdetails: any;
+  imageurl: String;
 
   constructor(private router:ActivatedRoute,
     private route:Router,
@@ -36,6 +37,8 @@ export class CheckoutComponent implements OnInit {
     public productService: ProductService,
     private orderService: OrderService,
     private toastrService: ToastrService) {
+
+      this.imageurl=this.apiservice.commenurl
     this.checkoutForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
       lastname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],

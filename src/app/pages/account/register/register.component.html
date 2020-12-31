@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3 *ngIf="createform">create account</h3>
-                <h3 *ngIf="otpformif">create account</h3>
+
                 <div class="theme-card">
                     <form *ngIf="createform" class="theme-form" [formGroup]="commonform" (ngSubmit)="onSubmit()">
                         <div class="form-row">
@@ -20,6 +20,9 @@
                             </div> -->
                                 <div class="row">
                                     <label for="mobileno">Mobile Number</label>
+
+                                    <input type="text" formControlName="mobileno" [(ngModel)]="usrmobilenumber" class="form-control" id="mobileno" placeholder="mobile number" required="">
+
                                     <input type="text" minlength="10" maxlength="10" formControlName="mobileno" class="form-control" id="mobileno" placeholder="mobile number" required="">
                                 </div>
                                 <div class="row">

@@ -76,10 +76,11 @@
                                             </thead>
                                             <tbody>
                                                 <tr *ngFor="let pr of productlist">
+
                                                     <td>
                                                         <div class="row">
                                                             <div class="col-md-3">
-                                                                <img [src]="ProductService.apiurl + pr.productimg" style="height: 75px;" class="img-fluid img-thumbnail text-center  avatar-md" alt="">
+                                                                <img [src]="ProductService.apiurl + pr.imagepath" style="height: 75px;" class="img-fluid img-thumbnail text-center  avatar-md" alt="">
                                                             </div>
                                                             <div class="col-md-9">
                                                                 <h5>{{pr.productname}}</h5>

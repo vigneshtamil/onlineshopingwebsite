@@ -11,7 +11,9 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./addressbook.component.scss']
 })
 export class AddressbookComponent implements OnInit {
-
+  txtcity:string="salem";
+  txtstate:string="Tamilnadu";
+  txtcountry:string="India";
   addressform: FormGroup;
   localvalue: string;
   decoded: any;
@@ -73,8 +75,8 @@ this.addressform.patchValue({
       addressname: ['', [Validators.required]],
       contactnumber: ['', [Validators.required]],
       addresslineone: ['', [Validators.required]],
-      addresslinetwo: ['', [Validators.required]],
-      landmark: ['', [Validators.required]],
+      addresslinetwo: [''],
+      landmark: [''],
       city: ['', [Validators.required]],
       state: ['', [Validators.required]],
       county: ['', [Validators.required]],
@@ -94,11 +96,11 @@ this.addressform.patchValue({
 return false;
       }
     Swal.fire({
-      title: 'Are you sure want to remove?',
+      title: 'Are you sure want to save?',
       text: 'You will not be able to recover this file!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonText: 'Yes, save it!',
       cancelButtonText: 'No, keep it'
     }).then((result) => {
 

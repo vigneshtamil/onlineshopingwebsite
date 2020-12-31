@@ -74,10 +74,8 @@ export class ProductlistComponent implements OnInit {
       if (res['status'] = 'success') {
         this.products = res['result'];
         this.ProductService.productlist = res['result'];
-
         this.all_products = this.products
         this.addItems();
-
       } else {
 
       }

@@ -32,7 +32,6 @@
                 </div>
                 <div class="col-lg-8">
                     <h4>{{ productname| titlecase }}</h4>
-
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6">
@@ -69,8 +68,43 @@
                                                 <button class="wishlist-btn" (click)="wishlist(product)"><i class="fa fa-heart"></i><span class="title-font">Add To WishList</span></button>
 
                                             </form>
-                                        </div>
-                                        <!-- <div class="row">
+                                            <div class="border-product">
+                                                <h6 class="product-title">product details</h6>
+                                                <p>{{ desc }}</p>
+                                            </div>
+                                            <div class="single-product-tables border-product detail-section">
+                                                <table>
+                                                    <tbody>
+                                                        <tr *ngFor="let item of attributes">
+
+                                                            <td>{{item.name}}:</td>
+                                                            <td>{{item.attributevalue}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Avalibility:</td>
+                                                            <td *ngIf="stock!=0">In Stock</td>
+                                                            <td *ngIf="stock==0">Out of Stock</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="border-product">
+                                                <h6 class="product-title">share it</h6>
+                                                <div class="product-icon">
+                                                    <ul class="product-social">
+                                                        <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                                        <li><a href="https://plus.google.com/discover"><i class="fa fa-google-plus"></i></a></li>
+                                                        <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                                        <li><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
+                                                    </ul>
+                                                    <form class="d-inline-block">
+                                                        <button class="wishlist-btn" (click)="wishlist(product)"><i class="fa fa-heart"></i><span class="title-font">Add To WishList</span></button>
+                                                        <div class="theme-card">
+                                                            <h4>Review</h4>
+                                                            <div *ngFor="let name of ddlname">
+                                                                <h4>{{name.customername}}</h4>
+                                                            </div>
+                                                            <!-- <div class="row">
                                 <div class="col-lg-4">
                                     <h6 class="product-title">Review:</h6>
                                     <div style="display:flex;" *ngFor="let review of ddlreview">
@@ -78,87 +112,85 @@
                                     </div>
                                 </div>
                             </div> -->
-                                    </div>
-                                </div>
-                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="product-right product-form-box">
+                                                    <h3>
+                                                        <i class="fa fa-inr"></i>{{amount | number}} <del> <i class="fa fa-inr"></i>{{mrppricefinalprice | number}}</del>
+                                                    </h3>
+                                                    <h4> <span>{{offer | number}}% off</span> </h4>
 
-                            <div class="col-lg-6">
-                                <div class="product-right product-form-box">
-                                    <h3>
-                                        <i class="fa fa-inr"></i>{{amount | number}} <del> <i class="fa fa-inr"></i>{{mrppricefinalprice | number}}</del>
-
-                                    </h3>
-                                    <h4> <span>{{offer | number}}% off</span> </h4>
-
-                                    <div class="product-description border-product">
-                                        <h5 class="avalibility" *ngIf="stock!=0"><span>In Stock</span></h5>
-                                        <h5 class="avalibility" *ngIf="stock==0"><span>Out of Stock</span></h5>
-                                        <div *ngIf="stock!=0">
-                                            <h6 class="product-title">quantity</h6>
-                                            <div class="qty-box">
-                                                <div class="input-group">
-                                                    <span class="input-group-prepend">
+                                                    <div class="product-description border-product">
+                                                        <h5 class="avalibility" *ngIf="stock!=0"><span>In Stock</span></h5>
+                                                        <h5 class="avalibility" *ngIf="stock==0"><span>Out of Stock</span></h5>
+                                                        <div *ngIf="stock!=0">
+                                                            <h6 class="product-title">quantity</h6>
+                                                            <div class="qty-box">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-prepend">
                                                         <button type="button" class="btn quantity-left-minus" style="height: 27px;" data-type="minus" (click)="decrement()">
                                                             <i class="ti-angle-left"></i>
                                                         </button>
                                                     </span>
-                                                    <input type="text" name="quantity" class="form-control input-number" style="height: 27px;width: 45px;" [value]="counter" disabled/>
-                                                    <span class="input-group-prepend">
+                                                                    <input type="text" name="quantity" class="form-control input-number" style="height: 27px;width: 45px;" [value]="counter" disabled/>
+                                                                    <span class="input-group-prepend">
                                                         <button type="button" class="btn quantity-right-plus"  style="height: 27px;" data-type="plus" (click)="increment()">
                                                             <i class="ti-angle-right"></i>
                                                         </button>
                                                     </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="product-buttons ">
+                                                                <a (click)="addtocart(products) " class="btn btn-solid ">add to cart</a>
+                                                                <a href="javascrip:void(0) " class="btn btn-solid ">buy now</a>
+                                                            </div>
+                                                        </div>
+                                                        <div *ngIf="stock==0">
+
+                                                            <div class=" qty-box ">
+
+                                                            </div>
+                                                            <div class="product-buttons ">
+                                                                <a href="javascrip:void(0) " class="btn btn-solid ">Notify Me</a>
+                                                                <!-- <a href="javascrip:void(0) " class="btn btn-solid ">buy now</a> -->
+                                                            </div>
+
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="product-right product-form-box">
+
+                                                    <div class="product-description border-product">
+
+                                                    </div>
+
                                                 </div>
                                             </div>
-                                            <div class="product-buttons ">
-                                                <a (click)="addtocart(products) " class="btn btn-solid ">add to cart</a>
-                                                <a href="javascrip:void(0) " class="btn btn-solid ">buy now</a>
-                                            </div>
                                         </div>
-                                        <div *ngIf="stock==0">
-
-                                            <div class=" qty-box ">
-
-                                            </div>
-                                            <div class="product-buttons ">
-                                                <a href="javascrip:void(0) " class="btn btn-solid ">Notify Me</a>
-                                                <!-- <a href="javascrip:void(0) " class="btn btn-solid ">buy now</a> -->
-                                            </div>
-
-                                        </div>
-
-
                                     </div>
-
-                                </div>
-                                <div class="product-right product-form-box">
-
-                                    <div class="product-description border-product">
-
-                                    </div>
-
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <hr role="tournament6 ">
-                    <div class="border-product">
-                        <div class="product-icon">
-                            <div class="theme-card">
-                                <h4>Review</h4>
-                                <div *ngFor="let name of ddlname">
-                                    <h4>{{name.customername}}</h4>
-                                </div>
-                                <div *ngFor="let review of ddlreview">
-                                    <h4>{{review.reviewtitle}}</h4>
-                                    <h4>{{review.reviewdescription}}</h4>
-                                    <h4>Rating:{{review.starrating}}</h4>
-                                </div>
-                                <!-- <div class="product-infinitescroll">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <hr role="tournament6 ">
+                                    <div class="border-product">
+                                        <div class="product-icon">
+                                            <div class="theme-card">
+                                                <h4>Review</h4>
+                                                <div *ngFor="let name of ddlname">
+                                                    <h4>{{name.customername}}</h4>
+                                                </div>
+                                                <div *ngFor="let review of ddlreview">
+                                                    <h4>{{review.reviewtitle}}</h4>
+                                                    <h4>{{review.reviewdescription}}</h4>
+                                                    <h4>Rating:{{review.starrating}}</h4>
+                                                </div>
+                                                <!-- <div class="product-infinitescroll">
                                             <div class="theme-paggination-block">
                                                 <div class="container-fluid p-0">
                                                     <div class="row">
@@ -172,28 +204,28 @@
                                                 </div>
                                             </div>
                                         </div> -->
-                                <ul class="recent-blog">
-                                    <li>
-                                        <div class="media" style="display:flex;">
-                                            <div *ngIf="">
-                                                <!-- <img class="img-fluid" src="http://208.109.8.9:3005/{{review.defectiveimage}}" alt="Generic Image Placeholder"><br> -->
-                                                <div class="media-body align-self-center">
-                                                    <p style="font-size: 15px;padding: 4px;">{{raring}}</p>
-                                                    <h2 style="font-size: 15px;padding: 4px;">{{ title }}</h2>
-                                                    <h6 style="font-size: 15px;padding: 4px;">{{descr}}</h6>
-                                                </div>
+                                                <ul class="recent-blog">
+                                                    <li>
+                                                        <div class="media" style="display:flex;">
+                                                            <div *ngIf="">
+                                                                <!-- <img class="img-fluid" src="http://208.109.8.9:3005/{{review.defectiveimage}}" alt="Generic Image Placeholder"><br> -->
+                                                                <div class="media-body align-self-center">
+                                                                    <p style="font-size: 15px;padding: 4px;">{{raring}}</p>
+                                                                    <h2 style="font-size: 15px;padding: 4px;">{{ title }}</h2>
+                                                                    <h6 style="font-size: 15px;padding: 4px;">{{descr}}</h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
                                             </div>
                                         </div>
-                                    </li>
-
-                                </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
 <!-- Product slider -->
 <section class="section-b-space j-box pets-box ">
