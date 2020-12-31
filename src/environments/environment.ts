@@ -10,9 +10,9 @@ export const environment = {
   // apiurl: 'https://api.salemmathi.com:3030',
     //apiurl:'http://localhost:3069'
 
-  //apiurl: 'https://api.salemmathi.com:3030',
+ // apiurl: 'https://api.salemmathi.com:3030',
 
-   apiurl: 'https://api.salemmathi.com:3030',
+  apiurl: 'https://api.salemmathi.com:3030',
 
 };
 

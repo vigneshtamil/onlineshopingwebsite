@@ -12,6 +12,6 @@ export class OurpagesComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  }
+  };
 
 }
