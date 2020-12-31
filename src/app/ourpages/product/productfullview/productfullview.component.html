@@ -38,7 +38,8 @@
                                 <div class="product-right product-description-box">
                                     <div class="border-product">
                                         <h6 class="product-title">product details</h6>
-                                        <p>{{ desc }}</p>
+                                        <!-- <p>{{ desc }}</p> -->
+                                        <div [innerHTML]="desc"></div>
                                     </div>
                                     <div class="single-product-tables border-product detail-section">
                                         <table>

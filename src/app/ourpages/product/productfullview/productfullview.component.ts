@@ -75,10 +75,10 @@ export class ProductfullviewComponent implements OnInit {
      this.attributes = res['result'][0].attributes;
      this.stock = res['result'][0].availableqty;
      this.minusamount = (res['result'][0].mrpprice - res['result'][0].sellingprice).toString();
-     this.mrppricefinalprice = res.result[0].mrpprice[0];
+     this.mrppricefinalprice = res.result[0].mrpprice;
 
      this.selpr = Number(res['result'][0].sellingprice);
-     this.mrpr = Number(res.result[0].mrpprice[0]);
+     this.mrpr = Number(res.result[0].mrpprice);
 
      var multi=this.selpr * 100
 
@@ -104,7 +104,7 @@ export class ProductfullviewComponent implements OnInit {
     this.minusamount=(res['result'][0].mrpprice-res['result'][0].sellingprice).toString();
 
     this.selpr = Number(res['result'][0].sellingprice);
-    this.mrpr = Number(res.result[0].mrpprice[0]);
+    this.mrpr = Number(res.result[0].mrpprice);
 
     var multi=this.selpr * 100
 
@@ -123,9 +123,9 @@ export class ProductfullviewComponent implements OnInit {
       this.attributes = res['result'][0].attributes;
       this.stock = res['result'][0].availableqty;
       this.minusamount = (res['result'][0].mrpprice - res['result'][0].sellingprice).toString();
-      this.mrppricefinalprice = res.result[0].mrpprice[0];
+      this.mrppricefinalprice = res.result[0].mrpprice;
       this.selpr = Number(res['result'][0].sellingprice);
-      this.mrpr = Number(res.result[0].mrpprice[0]);
+      this.mrpr = Number(res.result[0].mrpprice);
       var multi = this.selpr * 100
       this.offer = Number((100 - ((multi) / this.mrpr)));
       this.amount = res['result'][0].sellingprice;
@@ -146,7 +146,7 @@ export class ProductfullviewComponent implements OnInit {
       this.stock = res['result'][0].availableqty;
       this.minusamount = (res['result'][0].mrpprice - res['result'][0].sellingprice).toString();
       this.selpr = Number(res['result'][0].sellingprice);
-      this.mrpr = Number(res.result[0].mrpprice[0]);
+      this.mrpr = Number(res.result[0].mrpprice);
       var multi = this.selpr * 100
       this.offer = Number((100 - ((multi) / this.mrpr)));
       this.amount = res['result'][0].sellingprice;

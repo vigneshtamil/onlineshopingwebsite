@@ -14,7 +14,7 @@
                     <div class="product-right">
                         <h2>{{ product.displayname | titlecase }}</h2>
                         <h3><i class="fa fa-inr"></i>{{ product.sellingprice | number}}
-                            <del><span class="money"><i class="fa fa-inr"></i>{{ product.sellingprice -product.mrpprice| number}}</span></del>
+                            <del><span class="money"><i class="fa fa-inr"></i>{{ product.mrpprice| number}}</span></del>
                         </h3>
 
                         <div class="border-product">
@@ -46,6 +46,7 @@
                             <a class="btn btn-solid">view detail</a>
                         </div>
                     </div>
+                   
                 </div>
             </div>
         </div>
