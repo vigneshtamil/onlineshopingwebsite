@@ -85,7 +85,7 @@
                                     <h3>
                                         <i class="fa fa-inr"></i>{{amount | number}} <del> <i class="fa fa-inr"></i>{{mrppricefinalprice | number}}</del>
                                     </h3>
-                                    <h4> <span>{{offer | number}}% off</span> </h4>
+                                    <h4> <span>{{offer | number : '1.2-2'}}% off</span> </h4>
 
                                     <div class="product-description border-product">
                                         <h5 class="avalibility" *ngIf="stock!=0"><span>In Stock</span></h5>
@@ -131,7 +131,8 @@
                                 <div class="product-right product-form-box">
 
                                     <div class="product-description border-product">
-
+                                        <!-- <img class="img-fluid" src="https://api.salemmathi.com:3030/images/addimage/1608209985615_cat%20img3.JPG" width="100%" height="auto"> -->
+                                        <img class="img-fluid" src="https://api.salemmathi.com:3030/images/addimage/1608209985804_cat%20image.JPG" width="100%" height="auto">
                                     </div>
 
                                 </div>
