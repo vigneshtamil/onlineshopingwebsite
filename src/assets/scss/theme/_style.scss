@@ -244,8 +244,8 @@ hr.style1 {
 }
 
 .small-section {
-    padding-top: 35px;
-    padding-bottom: 35px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .banner-padding {
@@ -935,7 +935,7 @@ header {
         cursor: pointer;
     }
     .show-div {
-        top: 103px;
+        top: 81px;
         position: absolute;
         z-index: 9;
         background-color: $white;
@@ -5497,7 +5497,7 @@ footer {
 // breadcrumb section //
 .breadcrumb-section {
     background-color: $top-header;
-    padding: 30px 0;
+    padding: 15px 0;
     .page-title {
         display: flex;
         height: 100%;
@@ -11970,7 +11970,8 @@ body.rtl {
 footer {
     &.pet-layout-footer {
         .white-layout {
-            background-color: #f5e1d0;
+            background-color: #f5f5f5;
+            /* #f5e1d0*/
         }
         .footer-brand-logo {
             margin-bottom: 20px;
@@ -11986,8 +11987,8 @@ footer {
         }
         .social-white {
             display: block;
-            margin-top: 40px;
-            margin-bottom: 30px;
+            margin-top: 15px;
+            margin-bottom: 15px;
         }
     }
 }

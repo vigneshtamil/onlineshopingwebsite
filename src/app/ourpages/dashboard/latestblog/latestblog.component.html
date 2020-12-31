@@ -1,21 +1,22 @@
 <owl-carousel-o [options]="BlogSliderConfig" class="no-arrow">
     <ng-container *ngFor="let blog of blogs">
         <ng-template carouselSlide>
-            <div class="col-md-12">
+            <div class="col-md-12" style="width:370px !important;">
                 <a>
                     <div class="classic-effect">
-                        <img [src]="ProductService.apiurl + blog.imagepath" class="img-fluid" alt="blog">
+                        <img [src]="ProductService.apiurl + blog.imagepath" class="img-fluid" alt="{{blog.englishtitle}}">
                         <span></span>
                     </div>
                 </a>
-                <div class="blog-details text-center">
+                <div class="blog-details">
                     <a>
-                        <p style="font-size: 20px;">{{blog.englishtitle}}</p>
+                        <p class=" text-center" style="font-size: 20px;">{{blog.englishtitle}}</p>
                     </a>
                     <hr class="style1">
-                    <p>{{blog.postedon}}</p>
-                    <p> {{ 'by:' +blog.postedby}} </p>
+
                 </div>
+
+                <div class="col-md-12"><span class="col-md-6"><i class="fa fa-calendar" style="color: #ff9944;"></i>  {{blog.postedon}}</span> <i class="fa fa-user" style="color: #ff9944;"></i> {{blog.postedby}} </div>
             </div>
         </ng-template>
     </ng-container>
