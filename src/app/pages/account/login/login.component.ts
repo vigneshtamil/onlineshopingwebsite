@@ -19,10 +19,21 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    localStorage.removeItem("loginresponse");
-    this.router.navigate(['/user/login'])
-    this.formbuildergrp();
+    // localStorage.removeItem("loginresponse");
+    // this.router.navigate(['/user/login'])
+    // this.formbuildergrp();
+
+     this.localvalue = localStorage.getItem('loginresponse')
+      if (this.localvalue == null || this.localvalue == '') {
+  this.localvalue = localStorage.getItem('loginresponse')
+      this.formbuildergrp();
+
+      }
+    else{
+     this.router.navigate(['/user/profile'])
+    }
   }
+  
   formbuildergrp() {
     this.commonform = this.formBuilder.group({
       mobileno: ['', [Validators.required]],
