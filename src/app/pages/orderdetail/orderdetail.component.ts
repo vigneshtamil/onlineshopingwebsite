@@ -4,15 +4,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {ProductService} from '../../ourpages/shared/product.service';
+import jwt_decode from "jwt-decode";
 @Component({
   selector: 'app-orderdetail',
   templateUrl: './orderdetail.component.html',
   styleUrls: ['./orderdetail.component.scss']
 })
 export class OrderdetailComponent implements OnInit {
+  
   stars: number[] = [1, 2, 3, 4, 5];
 public orderdetails:[]
   toastr: any;
+  localvalue:any;
+   decoded:any;
   submitted = false;
   productorderid: any;
   constructor(private route: ActivatedRoute, private router: Router,public ProductService:ProductService,    private modalService: NgbModal,
@@ -35,6 +39,21 @@ public orderdetails:[]
   selectedValue: number = 0;
   orderarr:[];
   ngOnInit(): void {
+    
+ this.localvalue = localStorage.getItem('loginresponse')
+    if( this.localvalue == null || this.localvalue == '')
+    {
+      if (this.localvalue == null || this.localvalue == '') {
+           alert("Please login...")
+        this.router.navigate(['/user/login'])
+      }
+
+    }
+    else{
+      this.localvalue = localStorage.getItem('loginresponse')
+      this.decoded = jwt_decode(this.localvalue);
+      // this.formbuildergrp();
+    }
     this.uploadForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       description:[''],

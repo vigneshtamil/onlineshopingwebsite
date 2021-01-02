@@ -22,18 +22,36 @@ export class AddresslistComponent implements OnInit {
     private route:ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
-    this.localvalue = localStorage.getItem('loginresponse')
-    if (this.localvalue == null || this.localvalue == '') {
+      this.localvalue = localStorage.getItem('loginresponse')
+    if( this.localvalue == null || this.localvalue == '')
+    {
       if (this.localvalue == null || this.localvalue == '') {
-        alert("Please login...")
+         alert("Please login...")
+        this.router.navigate(['/user/login'])
       }
 
     }
-    else {
+    else{
       this.localvalue = localStorage.getItem('loginresponse')
       this.decoded = jwt_decode(this.localvalue);
+      // this.formbuildergrp();
+      // this.addressformgroup();
+      // this.userdetails()
+      //    this.getorderlist()
       this.addressload()
     }
+    // this.localvalue = localStorage.getItem('loginresponse')
+    // if (this.localvalue == null || this.localvalue == '') {
+    //   if (this.localvalue == null || this.localvalue == '') {
+    //     alert("Please login...")
+    //   }
+
+    // }
+    // else {
+    //   this.localvalue = localStorage.getItem('loginresponse')
+    //   this.decoded = jwt_decode(this.localvalue);
+    //   this.addressload()
+    // }
   }
   addressload() {
 

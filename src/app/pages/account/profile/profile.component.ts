@@ -27,10 +27,8 @@ export class ProfileComponent implements OnInit {
    this.localvalue = localStorage.getItem('loginresponse')
     if( this.localvalue == null || this.localvalue == '')
     {
-      if (this.localvalue == null || this.localvalue == '') {
-        this.router.navigate(['/home1'])
-      }
-
+        alert("Please login...")
+        this.router.navigate(['/user/login'])
     }
     else{
       this.localvalue = localStorage.getItem('loginresponse')

@@ -76,7 +76,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr *ngFor="let pr of productlist">
-
+                                                    <!-- <pre>{{productlist | json}}</pre> -->
                                                     <td>
                                                         <div class="row">
                                                             <div class="col-md-3">
@@ -91,7 +91,7 @@
                                                     </td>
                                                     <td>{{pr.producttotalrate}}</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-sm float-right mt-0 btn-primary" (click)="openModal(content,pr)">review</button>
+                                                        <button type="button" class="btn btn-sm float-right mt-0 btn-primary" (click)="openModal(content,pr)">Write a Review</button>
 
                                                     </td>
                                                 </tr>

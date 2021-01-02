@@ -16,13 +16,28 @@ public orderlist : any[]=[]
   ) { }
 
   ngOnInit(): void {
+    
+  //   this.localvalue = localStorage.getItem('loginresponse')
+  //   if (this.localvalue == null || this.localvalue == '') {
+  // alert("Please login")
+  //   }
+  //   else {
+  //     this.decoded = jwt_decode(this.localvalue);
+  //  this.getorderlist()
+  //   }
     this.localvalue = localStorage.getItem('loginresponse')
-    if (this.localvalue == null || this.localvalue == '') {
-  alert("Please login")
+    if( this.localvalue == null || this.localvalue == '')
+    {
+      if (this.localvalue == null || this.localvalue == '') {
+                  alert("Please login...")
+        this.router.navigate(['/user/login'])
+      }
+
     }
-    else {
+    else{
+      this.localvalue = localStorage.getItem('loginresponse')
       this.decoded = jwt_decode(this.localvalue);
-   this.getorderlist()
+      this.getorderlist()
     }
   }
   getorderlist() {
