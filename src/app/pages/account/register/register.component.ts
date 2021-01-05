@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiservicesService } from '../../../../app/services/apiservices.service'
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import jwt_decode from "jwt-decode";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -15,6 +16,8 @@ export class RegisterComponent implements OnInit {
   commonform: FormGroup;
 usrmobilenumber:any;
   otpform: FormGroup;
+  localvalue: string;
+  decoded: any;
   constructor(private formBuilder: FormBuilder,
     private apiservice: ApiservicesService,
     private toastrService: ToastrService,
@@ -22,8 +25,18 @@ usrmobilenumber:any;
   ) { }
 
   ngOnInit(): void {
-    this.formbuildergrp();
-    this.otpformgrp();
+ this.localvalue = localStorage.getItem('loginresponse')
+      if (this.localvalue == null || this.localvalue == '') {
+  this.localvalue = localStorage.getItem('loginresponse')
+      this.decoded = jwt_decode(this.localvalue);
+      this.formbuildergrp();
+      this.otpformgrp();
+      }
+    else{
+     this.router.navigate(['/user/profile'])
+    }
+
+ 
   }
   otpformgrp(): void {
     this.otpform = this.formBuilder.group({

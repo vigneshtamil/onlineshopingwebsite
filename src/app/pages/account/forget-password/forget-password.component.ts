@@ -20,20 +20,30 @@ export class ForgetPasswordComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.localvalue = localStorage.getItem('loginresponse')
-    this.decoded = jwt_decode(this.localvalue);
+    // this.localvalue = localStorage.getItem('loginresponse')
+    // this.decoded = jwt_decode(this.localvalue);
 
-    if( this.localvalue == null || this.localvalue == '')
-    {
-      this.router.navigate(['/home1'])
+    // if( this.localvalue == null || this.localvalue == '')
+    // {
+    //   this.router.navigate(['/home1'])
 
-    }
+    // }
+    // else{
+    //   this.decoded = jwt_decode(this.localvalue);
+
+    //   this.formbuildergrp();
+    // }
+
+ this.localvalue = localStorage.getItem('loginresponse')
+      if (this.localvalue == null || this.localvalue == '') {
+           alert("Please login...")
+        this.router.navigate(['/user/login'])
+      }
     else{
+      this.localvalue = localStorage.getItem('loginresponse')
       this.decoded = jwt_decode(this.localvalue);
-
       this.formbuildergrp();
     }
-
   }
 
   formbuildergrp()

@@ -131,29 +131,31 @@
             <div><img src="assets/images/icon/user.png" class="img-fluid" alt="setting" style="height: 23px;width: 23px;">
                 <i class="ti-settings"></i></div>
             <div class="show-div setting">
-                Welcome Dhaya !!!
-                <h6>My Account</h6>
+                <label *ngIf="profileshow"> Welcome Dhaya !!!</label>
+                <label *ngIf="afterlogin"> Welcome Guest !!!</label>
+                <h6 *ngIf="profileshow">My Account</h6>
                 <ul>
                     <li *ngIf="afterlogin">
                         <a [routerLink]="['/user/login']" [queryParams]="{debug: true}" fragment="salemmathi">
                         Login
                       </a>
                     </li>
+                    <li *ngIf="afterlogin">
+                        <a [routerLink]="['/user/register']" [queryParams]="{debug: true}" fragment="salemmathi">
+                      Register
+                    </a>
+                    </li>
                     <li *ngIf="profileshow">
                         <a [routerLink]="['/user/profile']" [queryParams]="{debug: true}" fragment="salemmathi">
-                        profile
-                </a>
+                        My Profile
+                    </a>
                     </li>
                     <li *ngIf="profileshow">
                         <a (click)="looutfn()">
                     Logout
                   </a>
                     </li>
-                    <li *ngIf="afterlogin">
-                        <a [routerLink]="['/user/register']" [queryParams]="{debug: true}" fragment="salemmathi">
-                      Register
-                    </a>
-                    </li>
+
                     <!-- <li>
                         <a [routerLink]="['/user/changepassword']" [queryParams]="{debug: true}" fragment="salemmathi">
                     Forget Password

@@ -25,6 +25,7 @@ export class AddressbookComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    
     this.route.queryParams.subscribe(res => {
       if (Object.keys(res).length === 0) {
 
@@ -38,18 +39,31 @@ this.usraddresssetailsedit=res
 
 
 
-    this.localvalue = localStorage.getItem('loginresponse')
-    if (this.localvalue == null || this.localvalue == '') {
-      if (this.localvalue == null || this.localvalue == '') {
-       // alert("Please login...")
-       this.router.navigate(['/home1'])
-      }
+    // this.localvalue = localStorage.getItem('loginresponse')
+    // if (this.localvalue == null || this.localvalue == '') {
+    //   if (this.localvalue == null || this.localvalue == '') {
+    //    // alert("Please login...")
+    //    this.router.navigate(['/home1'])
+    //   }
 
+    // }
+    // else {
+    //   this.localvalue = localStorage.getItem('loginresponse')
+    //   this.decoded = jwt_decode(this.localvalue);
+    //   this.addressformgroup()
+    // }
+      this.localvalue = localStorage.getItem('loginresponse')
+    if( this.localvalue == null || this.localvalue == '')
+    {
+      if (this.localvalue == null || this.localvalue == '') {
+           alert("Please login...")
+        this.router.navigate(['/user/login'])
+      }
     }
-    else {
+    else{
       this.localvalue = localStorage.getItem('loginresponse')
       this.decoded = jwt_decode(this.localvalue);
-      this.addressformgroup()
+      this.addressformgroup();
     }
 this.editvalueassign()
   }
