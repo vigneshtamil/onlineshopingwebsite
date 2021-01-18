@@ -6,6 +6,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <owl-carousel-o [options]="ProductDetailsMainSliderConfig" #owlCar class="product-slick">
+                       
                         <ng-container *ngFor="let image of images; index as i" style="max-height: 350px !important; ">
                             <ng-template carouselSlide [id]="i">
                                 <div style="height: auto !important;max-height: 300px;">
@@ -18,6 +19,7 @@
                         <div class="col-12 p-0">
                             <div class="slider-nav">
                                 <owl-carousel-o [options]="ProductDetailsThumbConfig" class="product-slick">
+                                    
                                     <ng-container *ngFor="let image of images; index as i">
                                         <ng-template carouselSlide [id]="i">
                                             <div class="owl-thumb" [class.active]="i == activeSlide">
@@ -28,6 +30,7 @@
                                 </owl-carousel-o>
                             </div>
                         </div>
+                      
                     </div>
                 </div>
                 <div class="col-lg-8">

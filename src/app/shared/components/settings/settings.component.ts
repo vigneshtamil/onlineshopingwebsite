@@ -60,6 +60,7 @@ export class SettingsComponent implements OnInit {
   whishlistempty: boolean;
   cartempty: boolean;
   imageurl: ApiservicesService;
+  customername: any;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
 
@@ -81,13 +82,15 @@ export class SettingsComponent implements OnInit {
     if (this.localvalue == null) {
       this.profileshow = false;
 
-
+      this.customername="salemmathi"
     }
     else {
       this.cartli = true;
       this.wishlistli = true;
       this.profileshow = true;
       this.decoded = jwt_decode(this.localvalue);
+      console.log(this.decoded);
+      this.customername=this.decoded.customername
 this.afterlogin=false;
 
       this.cartlist()

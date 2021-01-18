@@ -25,7 +25,7 @@
                                             <p>{{item.contactnumber}}</p>
 
                                             <div class="row">
-                                                <input type="radio" [(ngModel)]="addressselection" [value]="item._id" name="payment-group" id="payment-2">
+                                                <input type="radio" [(ngModel)]="addressselection" [value]="item" name="payment-group" id="payment-2">
 
                                             </div>
 
@@ -183,7 +183,6 @@
                                                {{ product.producttotalrate | currency:'INR':true }}
                                             </span>
                                         </li>
-                                        <pre>{{ products | json }}</pre>
                                     </ul>
                                     <ul class="qty" *ngIf='!products.length'>
                                         <li class="empty-checkout"> There are no products in cart </li>

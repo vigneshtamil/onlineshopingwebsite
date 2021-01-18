@@ -30,7 +30,7 @@ export class ProductfullviewComponent implements OnInit {
   minusamount: string;
   offer: number;
   amount: string;
-  images: any[]
+  images: any=[];
   localvalue: string;
   nologin: boolean;
   decoded: any;
@@ -42,7 +42,7 @@ export class ProductfullviewComponent implements OnInit {
   title: string;
   raring: string;
   descr: string;
-  ddlname:[];
+  ddlname: [];
   // =[
   //   {src:'assets/images/product/placeholder.jpg',alt:'name'},
   //   {src:'assets/images/product/placeholder.jpg',alt:'name'},
@@ -62,101 +62,128 @@ export class ProductfullviewComponent implements OnInit {
     else {
       this.decoded = jwt_decode(this.localvalue);
       this.nologin = false;
-   this.ddlname=this.decoded['result']
+      this.ddlname = this.decoded['result']
     }
   }
   async bindproduct(filedata) {
     this.ProductService.getfullproductview(filedata).subscribe(res => {
 
-       this.producyquty=res.result[0].qty;
-
-     this.productname = res['result'][0].displayname;
-     this.desc = res['result'][0].description;
-     this.attributes = res['result'][0].attributes;
-     this.stock = res['result'][0].availableqty;
-     this.minusamount = (res['result'][0].mrpprice - res['result'][0].sellingprice).toString();
-     this.mrppricefinalprice = res.result[0].mrpprice;
-
-     this.selpr = Number(res['result'][0].sellingprice);
-     this.mrpr = Number(res.result[0].mrpprice);
-
-     var multi=this.selpr * 100
-
-     this.offer =Number((100 - ((multi) /  this.mrpr)));
-
-
-     this.amount = res['result'][0].sellingprice;
-     this.images = [
-       { src: this.ProductService.apiurl + res['result'][0].img1, alt: 'name' },
-       { src: this.ProductService.apiurl + res['result'][0].img2, alt: 'name' },
-       { src: this.ProductService.apiurl + res['result'][0].img3, alt: 'name' },
-     ];
-
-     this.products = res['relatedproductlist'];
-   })
-
-    await this.ProductService.getfullproductview(filedata).subscribe(res=>{
-    console.log(res);
-    this.productname=res['result'][0].displayname;
-    this.desc=res['result'][0].description;
-    this.attributes=res['result'][0].attributes;
-    this.stock=res['result'][0].availableqty;
-    this.minusamount=(res['result'][0].mrpprice-res['result'][0].sellingprice).toString();
-
-    this.selpr = Number(res['result'][0].sellingprice);
-    this.mrpr = Number(res.result[0].mrpprice);
-
-    var multi=this.selpr * 100
-
-    this.offer =Number((100 - ((multi) /  this.mrpr)));
-    this.amount=res['result'][0].sellingprice;
-    this.images=[
-      {src:this.ProductService.apiurl+res['result'][0].img1,alt:'name'},
-      {src:this.ProductService.apiurl+res['result'][0].img2,alt:'name'},
-      {src:this.ProductService.apiurl+res['result'][0].img3,alt:'name'},
-     ]
-     this.products=res['relatedproductlist']
-
       this.producyquty = res.result[0].qty;
+
       this.productname = res['result'][0].displayname;
       this.desc = res['result'][0].description;
       this.attributes = res['result'][0].attributes;
       this.stock = res['result'][0].availableqty;
       this.minusamount = (res['result'][0].mrpprice - res['result'][0].sellingprice).toString();
       this.mrppricefinalprice = res.result[0].mrpprice;
+
       this.selpr = Number(res['result'][0].sellingprice);
       this.mrpr = Number(res.result[0].mrpprice);
+
       var multi = this.selpr * 100
+
       this.offer = Number((100 - ((multi) / this.mrpr)));
+
+
       this.amount = res['result'][0].sellingprice;
-      this.images = [
-        { src: this.ProductService.apiurl + res['result'][0].img1, alt: 'name' },
-        { src: this.ProductService.apiurl + res['result'][0].img2, alt: 'name' },
-        { src: this.ProductService.apiurl + res['result'][0].img3, alt: 'name' },
-      ];
+
+      //console.log(this.ProductService.apiurl + res['result'][0].img1.length);
+
+      console.log(res.result[0].images);
+      res.result[0].images.forEach((v, i) => {
+        var obj = {
+          "src": this.ProductService.apiurl+ res.result[0].images[i].imagepath
+        }
+        console.log(res.result[0].images[i].imagepath);
+        console.log(obj);
+        
+        this.images.push(obj)
+      });
+      console.log(this.images);
+      
+
+      //  this.images = [
+      //    { src: this.ProductService.apiurl + res['result'][0].img1, alt: 'name' },
+      //    { src: this.ProductService.apiurl + res['result'][0].img2, alt: 'name' },
+      //    { src: this.ProductService.apiurl + res['result'][0].img3, alt: 'name' },
+      //  ];
 
       this.products = res['relatedproductlist'];
-
     })
 
-    await this.ProductService.getfullproductview(filedata).subscribe(res => {
-      this.productname = res['result'][0].displayname;
-      this.desc = res['result'][0].description;
-      this.attributes = res['result'][0].attributes;
-      this.stock = res['result'][0].availableqty;
-      this.minusamount = (res['result'][0].mrpprice - res['result'][0].sellingprice).toString();
-      this.selpr = Number(res['result'][0].sellingprice);
-      this.mrpr = Number(res.result[0].mrpprice);
-      var multi = this.selpr * 100
-      this.offer = Number((100 - ((multi) / this.mrpr)));
-      this.amount = res['result'][0].sellingprice;
-      this.images = [
-        { src: this.ProductService.apiurl + res['result'][0].img1, alt: 'name' },
-        { src: this.ProductService.apiurl + res['result'][0].img2, alt: 'name' },
-        { src: this.ProductService.apiurl + res['result'][0].img3, alt: 'name' },
-      ]
-      this.products = res['relatedproductlist']
-    })
+    //     await this.ProductService.getfullproductview(filedata).subscribe(res=>{
+    //     console.log(res);
+    //     this.productname=res['result'][0].displayname;
+    //     this.desc=res['result'][0].description;
+    //     this.attributes=res['result'][0].attributes;
+    //     this.stock=res['result'][0].availableqty;
+    //     this.minusamount=(res['result'][0].mrpprice-res['result'][0].sellingprice).toString();
+
+    //     this.selpr = Number(res['result'][0].sellingprice);
+    //     this.mrpr = Number(res.result[0].mrpprice);
+
+    //     var multi=this.selpr * 100
+
+    //     this.offer =Number((100 - ((multi) /  this.mrpr)));
+    //     this.amount=res['result'][0].sellingprice;
+    // console.log(res.result[0].images);
+
+    // res.result[0].images.forEach((v,i) => {
+    //   var obj={
+    //     "src":res.result[0].images[i]
+    //   }
+
+    // });
+
+
+
+    //     this.images=[
+    //       {src:this.ProductService.apiurl+res['result'][0].img1,alt:'name'},
+    //       {src:this.ProductService.apiurl+res['result'][0].img2,alt:'name'},
+    //       {src:this.ProductService.apiurl+res['result'][0].img3,alt:'name'},
+    //      ]
+    //      this.products=res['relatedproductlist']
+
+    //       this.producyquty = res.result[0].qty;
+    //       this.productname = res['result'][0].displayname;
+    //       this.desc = res['result'][0].description;
+    //       this.attributes = res['result'][0].attributes;
+    //       this.stock = res['result'][0].availableqty;
+    //       this.minusamount = (res['result'][0].mrpprice - res['result'][0].sellingprice).toString();
+    //       this.mrppricefinalprice = res.result[0].mrpprice;
+    //       this.selpr = Number(res['result'][0].sellingprice);
+    //       this.mrpr = Number(res.result[0].mrpprice);
+    //       var multi = this.selpr * 100
+    //       this.offer = Number((100 - ((multi) / this.mrpr)));
+    //       this.amount = res['result'][0].sellingprice;
+    //       this.images = [
+    //         { src: this.ProductService.apiurl + res['result'][0].img1, alt: 'name' },
+    //         { src: this.ProductService.apiurl + res['result'][0].img2, alt: 'name' },
+    //         { src: this.ProductService.apiurl + res['result'][0].img3, alt: 'name' },
+    //       ];
+
+    //       this.products = res['relatedproductlist'];
+
+    //     })
+
+    //     await this.ProductService.getfullproductview(filedata).subscribe(res => {
+    //       this.productname = res['result'][0].displayname;
+    //       this.desc = res['result'][0].description;
+    //       this.attributes = res['result'][0].attributes;
+    //       this.stock = res['result'][0].availableqty;
+    //       this.minusamount = (res['result'][0].mrpprice - res['result'][0].sellingprice).toString();
+    //       this.selpr = Number(res['result'][0].sellingprice);
+    //       this.mrpr = Number(res.result[0].mrpprice);
+    //       var multi = this.selpr * 100
+    //       this.offer = Number((100 - ((multi) / this.mrpr)));
+    //       this.amount = res['result'][0].sellingprice;
+    //       this.images = [
+    //         { src: this.ProductService.apiurl + res['result'][0].img1, alt: 'name' },
+    //         { src: this.ProductService.apiurl + res['result'][0].img2, alt: 'name' },
+    //         { src: this.ProductService.apiurl + res['result'][0].img3, alt: 'name' },
+    //       ]
+    //       this.products = res['relatedproductlist']
+    //     })
   }
   increment() {
     if (this.counter < this.producyquty) {
@@ -228,8 +255,8 @@ export class ProductfullviewComponent implements OnInit {
       productinwarddetailid: reviewdata.productinwardid,
       productid: reviewdata.productid
     }
-    this.ProductService.reviewlist(data).subscribe(res =>{
-    this.ddlreview=res['result']
+    this.ProductService.reviewlist(data).subscribe(res => {
+      this.ddlreview = res['result']
     })
   }
 }

@@ -16,29 +16,30 @@ import jwt_decode from "jwt-decode";
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
-  addressselection:any;
+  addressselection: any;
 
-  public checkoutForm:  FormGroup;
+  public checkoutForm: FormGroup;
   public products: Product[] = [];
-  public payPalConfig ? : IPayPalConfig;
+  public payPalConfig?: IPayPalConfig;
   public payment: string = 'Stripe';
-  public amount:  any;
+  public amount: any;
   totalamount: any;
   localvalue: string;
   decoded: any;
   nologin: boolean;
   addressdetails: any;
   imageurl: String;
+  customername: any;
 
-  constructor(private router:ActivatedRoute,
-    private route:Router,
+  constructor(private router: ActivatedRoute,
+    private route: Router,
     private fb: FormBuilder,
     private apiservice: ApiservicesService,
     public productService: ProductService,
     private orderService: OrderService,
     private toastrService: ToastrService) {
 
-      this.imageurl=this.apiservice.commenurl
+    this.imageurl = this.apiservice.commenurl
     this.checkoutForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
       lastname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
@@ -62,14 +63,13 @@ export class CheckoutComponent implements OnInit {
     this.localvalue = localStorage.getItem('loginresponse')
 
 
-    if( this.localvalue == null || this.localvalue == '')
-    {
-    this.nologin=true;
+    if (this.localvalue == null || this.localvalue == '') {
+      this.nologin = true;
     }
-    else{
+    else {
       this.decoded = jwt_decode(this.localvalue);
-
-      this.nologin=false;
+      this.customername = this.decoded.customername
+      this.nologin = false;
       var senddata = {
         "mobileno": this.decoded.mobileno
       }
@@ -83,20 +83,19 @@ export class CheckoutComponent implements OnInit {
   }
 
   cartlist() {
-    var senddata={"customer":this.decoded._id}
-this.apiservice.cartlist(senddata).subscribe((res)=>{
+    var senddata = { "customer": this.decoded._id }
+    this.apiservice.cartlist(senddata).subscribe((res) => {
 
-if(res.status == "1")
-{
-  this.products=res.cartlist
+      if (res.status == "1") {
+        this.products = res.cartlist
 
- this.totalamount = this.products.map(o => o.producttotalrate).reduce((a, c) => { return a + c });
+        this.totalamount = this.products.map(o => o.producttotalrate).reduce((a, c) => { return a + c });
 
 
-}else{
+      } else {
 
-}
-})
+      }
+    })
   }
   public get getTotal(): Observable<number> {
     return this.productService.cartTotalAmount();
@@ -123,77 +122,96 @@ if(res.status == "1")
   // Paypal Payment Gateway
   private initConfig(): void {
     this.payPalConfig = {
-        currency: this.productService.Currency.currency,
-        clientId: environment.apiurl,
-        createOrderOnClient: (data) => < ICreateOrderRequest > {
-          intent: 'CAPTURE',
-          purchase_units: [{
-              amount: {
+      currency: this.productService.Currency.currency,
+      clientId: environment.apiurl,
+      createOrderOnClient: (data) => <ICreateOrderRequest>{
+        intent: 'CAPTURE',
+        purchase_units: [{
+          amount: {
+            currency_code: this.productService.Currency.currency,
+            value: this.amount,
+            breakdown: {
+              item_total: {
                 currency_code: this.productService.Currency.currency,
-                value: this.amount,
-                breakdown: {
-                    item_total: {
-                        currency_code: this.productService.Currency.currency,
-                        value: this.amount
-                    }
-                }
+                value: this.amount
               }
-          }]
+            }
+          }
+        }]
       },
-        advanced: {
-            commit: 'true'
-        },
-        style: {
-            label: 'paypal',
-            size:  'small', // small | medium | large | responsive
-            shape: 'rect', // pill | rect
-        },
-        onApprove: (data, actions) => {
-            this.orderService.createOrder(this.products, this.checkoutForm.value, data.orderID, this.getTotal);
-            console.log('onApprove - transaction was approved, but not authorized', data, actions);
-            actions.order.get().then(details => {
-                console.log('onApprove - you can get full order details inside onApprove: ', details);
-            });
-        },
-        onClientAuthorization: (data) => {
-            console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-        },
-        onCancel: (data, actions) => {
-            console.log('OnCancel', data, actions);
-        },
-        onError: err => {
-            console.log('OnError', err);
-        },
-        onClick: (data, actions) => {
-            console.log('onClick', data, actions);
-        }
+      advanced: {
+        commit: 'true'
+      },
+      style: {
+        label: 'paypal',
+        size: 'small', // small | medium | large | responsive
+        shape: 'rect', // pill | rect
+      },
+      onApprove: (data, actions) => {
+        this.orderService.createOrder(this.products, this.checkoutForm.value, data.orderID, this.getTotal);
+        console.log('onApprove - transaction was approved, but not authorized', data, actions);
+        actions.order.get().then(details => {
+          console.log('onApprove - you can get full order details inside onApprove: ', details);
+        });
+      },
+      onClientAuthorization: (data) => {
+        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+      },
+      onCancel: (data, actions) => {
+        console.log('OnCancel', data, actions);
+      },
+      onError: err => {
+        console.log('OnError', err);
+      },
+      onClick: (data, actions) => {
+        console.log('onClick', data, actions);
+      }
     };
   }
 
-  placeorder()
-  {
-    var senddata={
+  placeorder() {
+    //   var senddata={
 
-      "customerid":this.decoded._id,
-      "deleveryaddressid":this.addressselection,
-      "paymenttype":"cash",
-      "totalamount":this.totalamount,
-      "orderproductdetails":this.products
+    //     "customerid":this.decoded._id,
+    //     "deleveryaddressid":this.addressselection,
+    //     "paymenttype":"cash",
+    //     "totalamount":this.totalamount,
+    //     "orderproductdetails":this.products
 
-  }
+    // }
 
-    this.apiservice.placeorderapi(senddata).subscribe((res)=>{
+    var senddata = {
+      "customername": this.customername,
+      "addresslineone": this.addressselection.addresslineone,
+      "addresslinetwo": this.addressselection.addresslinetwo,
+      "pincode": this.addressselection.pincode,
+      "city": this.addressselection.city,
+      "contactnumber": this.addressselection.contactnumber,
+      "county": this.addressselection.county,
+      "addressname": this.addressselection.addressname,
+      ///  "addresstype":this.addressselection._id,
+      "state": this.addressselection.state,
+      "landmark": this.addressselection.landmark,
+
+      "customerid": this.decoded._id,
+      "deleveryaddressid": this.addressselection._id,
+      "paymenttype": "cash",
+      "totalamount": this.totalamount,
+      "orderproductdetails": this.products
+
+    }
+
+    this.apiservice.placeorderapi(senddata).subscribe((res) => {
 
 
-if(res.status == "1")
-{
-  this.toastrService.success(res.message);
-  this.route.navigate(['/shop/checkout/success'],
-  {queryParams: {oid: res.orderdatabaseid}});
-}
-else{
-  this.toastrService.error(res.message);
-}
+      if (res.status == "1") {
+        this.toastrService.success(res.message);
+        this.route.navigate(['/shop/checkout/success'],
+          { queryParams: { oid: res.orderdatabaseid } });
+      }
+      else {
+        this.toastrService.error(res.message);
+      }
     })
   }
 

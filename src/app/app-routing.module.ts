@@ -21,21 +21,21 @@ const routes: Routes = [
     component: OurpagesComponent,
     loadChildren: () => import('./ourpages/ourpages.module').then(m => m.OurpagesModule)
   },
-  // {
-  //   path: 'shop',
-  //   component: ShopComponent,
-  //   loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
-  // },
+  {
+    path: 'shop',
+    component: ShopComponent,
+    loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
+  },
   {
     path: 'user',
     component: PagesComponent,
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
   },
-  // {
-  //   path: 'elements',
-  //   component: ElementsComponent,
-  //   loadChildren: () => import('./elements/elements.module').then(m => m.ElementsModule) 
-  // },
+  {
+    path: 'elements',
+    component: ElementsComponent,
+    loadChildren: () => import('./elements/elements.module').then(m => m.ElementsModule) 
+  },
   {
     path: '**', // Navigate to Home Page if not found any page
     redirectTo: 'home1',

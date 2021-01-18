@@ -29,7 +29,7 @@
         <!-- <li class="mobile-wishlist">
             <a [routerLink]="['/shop/wishlist']"><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a>
         </li> -->
-        <li class="onhover-div mobile-cart">
+        <li class="onhover-div mobile-cart" >
             <div>
                 <a (click)="wishlistclick()">
                     <img src="assets/images/icon/wislist.png" class="img-fluid" alt="" style="height: 23px;width: 23px;">
@@ -131,7 +131,7 @@
             <div><img src="assets/images/icon/user.png" class="img-fluid" alt="setting" style="height: 23px;width: 23px;">
                 <i class="ti-settings"></i></div>
             <div class="show-div setting">
-                <label *ngIf="profileshow"> Welcome Dhaya !!!</label>
+                <label *ngIf="profileshow"> Welcome {{customername | titlecase }} !!!</label>
                 <label *ngIf="afterlogin"> Welcome Guest !!!</label>
                 <h6 *ngIf="profileshow">My Account</h6>
                 <ul>
